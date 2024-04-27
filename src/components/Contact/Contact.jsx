@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { ToastContainer, toast, Bounce } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
@@ -24,7 +26,17 @@ const PortfolioContact = () => {
     const { name, email, message } = data;
 
     if (!name || !email) {
-      window.alert("Name and email are required.");
+      toast.warn("Name and Email are required", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
       return; // Prevent further execution if validation fails
     }
     try {
@@ -44,19 +56,50 @@ const PortfolioContact = () => {
       );
       if (res.status === 201) {
         setData({ name: "", email: "", message: "" });
-        window.alert("Message sent successfully");
+        toast.success("Message sent successfully", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+        });
       } else {
-        window.alert("Message not sent,Either Invalid or Duplicate Email");
+        toast.warn("message not sent, either invalid or duplicate Email", {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+          transition: Bounce,
+        });
       }
     } catch (err) {
       console.error(err);
-      window.alert("An error occurred. Please try again later.");
+      toast.error("an error occured, please try again later", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+        transition: Bounce,
+      });
     }
   };
 
   const { isDarkMode } = useTheme();
   return (
     <div>
+      <ToastContainer />
       <Container
         id="contact"
         className={isDarkMode ? "dark-mode" : "light-mode"}
