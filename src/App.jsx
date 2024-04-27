@@ -6,13 +6,7 @@ import PortfolioNavbar from "./components/Navbar/PortfolioNavbar.jsx";
 import TitleMessage from "./components/Title/Title.jsx";
 import PortfolioContact from "./components/Contact/Contact.jsx";
 import PortfolioFooter from "./components/PortfolioFooter/PortfolioFooter.jsx";
-import Success from "./components/SuccessPage/Success.jsx";
-import {
-  NavLink,
-  BrowserRouter as Router,
-  Route,
-  Routes,
-} from "react-router-dom";
+
 import "./App.css";
 
 const App = () => {

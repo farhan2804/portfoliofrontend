@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
@@ -19,33 +18,33 @@ const PortfolioContact = () => {
     value = e.target.value;
     setData({ ...data, [name]: value });
   };
-//   const navigate = useNavigate();
 
   const postData = async (e) => {
     e.preventDefault();
-    const { name, email, message, } = data;
+    const { name, email, message } = data;
 
     if (!name || !email) {
       window.alert("Name and email are required.");
       return; // Prevent further execution if validation fails
     }
     try {
-      const res = await fetch("https://portfoliobackend-xj5z.onrender.com/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          message,
-        }),
-      });
-      // const resData = await res.json();
+      const res = await fetch(
+        "https://portfoliobackend-xj5z.onrender.com/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            message,
+          }),
+        }
+      );
       if (res.status === 201) {
-        setData({ name: "", email: "", message: "" }); // Clear form on success
+        setData({ name: "", email: "", message: "" });
         window.alert("Message sent successfully");
-        // navigate("/success"); // Assuming a success page route
       } else {
         window.alert("Message not sent,Either Invalid or Duplicate Email");
       }
