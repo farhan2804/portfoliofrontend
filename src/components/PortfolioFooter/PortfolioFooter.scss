@@ -1,0 +1,157 @@
+#FooterContainer {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 220px;
+  padding: 30px;
+  font-size: 23px;
+}
+
+#FooterHeading {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 10px;
+}
+#footer_tooltip {
+  background-color: #333;
+}
+
+#FooterDetails {
+  display: flex;
+  margin-top: auto;
+}
+
+#Name {
+  position: absolute;
+  left: 20px;
+  bottom: 10px;
+}
+
+#BackToTop {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+}
+
+#FooterComponents {
+  display: flex;
+  flex-direction: column;
+  font-size: 30px;
+}
+
+.NavDetails {
+  display: flex;
+  gap: 20px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  justify-content: center;
+}
+
+.NavDetails .home-link:hover,
+.NavDetails .about-link:hover,
+.NavDetails .skill-link:hover,
+.NavDetails .project-link:hover {
+  color: rgba(81, 79, 79, 0.656);
+  cursor: pointer;
+}
+
+.SocialIcons {
+  display: flex;
+  position: absolute;
+  gap: 20px;
+  top: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  font-size: 40px;
+  text-decoration: none;
+  margin-top: 20px;
+}
+
+#emailIcon {
+  font-size: 40px;
+}
+
+.light-mode .SocialIcons .fa-github:hover {
+  color: #fff;
+}
+
+.dark-mode .SocialIcons .fa-github:hover {
+  color: black;
+}
+
+.fa-instagram:hover {
+  color: #dc3545;
+}
+
+.fa-youtube:hover {
+  color: #dc3545;
+}
+
+.fa-linkedin:hover {
+  color: #0a66c2;
+}
+
+.fa-envelope:hover {
+  color: #0a66c2;
+}
+
+.SocialIcons a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (max-width: 418px) {
+  #FooterContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 200px;
+    background: rgb(54, 51, 51);
+    color: white;
+    padding: 30px;
+    font-size: 18px;
+  }
+
+  #FooterComponents {
+    display: flex;
+    flex-direction: column;
+    font-size: 22px;
+  }
+
+  .SocialIcons {
+    font-size: 25px;
+  }
+}
+
+@media (max-width: 575px) {
+  #FooterContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 200px;
+    background: rgb(54, 51, 51);
+    color: white;
+    padding: 30px;
+    font-size: 17px;
+  }
+
+  #FooterComponents {
+    display: flex;
+    flex-direction: column;
+    font-size: 25px;
+  }
+
+  .SocialIcons {
+    font-size: 30px;
+  }
+  #emailIcon {
+    font-size: 30px;
+  }
+}

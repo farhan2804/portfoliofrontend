@@ -1,0 +1,135 @@
+.nav-theme {
+  font-size: 20px;
+}
+
+.animate-navbar {
+  animation: moveDown 0.6s ease-in-out;
+}
+
+@keyframes moveDown {
+  from {
+    transform: translateY(-5rem);
+  }
+
+  to {
+    transform: translateY(1rem);
+  }
+}
+
+#NavbarName {
+  margin-left: 50px;
+  color: rgba(255, 255, 255, 0.63);
+}
+
+#NavbarElements {
+  margin-left: auto;
+  padding-right: 20px;
+}
+
+.navbar.scrolled {
+  background-color: rgba(13, 204, 197, 0.912);
+}
+
+.theme-switch-wrapper {
+  display: flex;
+  z-index: 100;
+  margin-right: 15px;
+}
+
+.theme-switch-wrapper span {
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
+.toggle-text {
+  position: relative;
+  top: -4px;
+  right: 4px;
+  left: 2px;
+  color: var(--on-primary);
+}
+
+.theme-switch {
+  display: inline-block;
+  height: 20px;
+  position: relative;
+  width: 48px;
+}
+
+.theme-switch input {
+  display: none;
+}
+
+.slider {
+  background: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.4s;
+}
+
+.slider::before {
+  background: #fff;
+  bottom: 4px;
+  content: "";
+  height: 13px;
+  left: 4px;
+  position: absolute;
+  transition: 0.4s;
+  width: 13px;
+}
+
+input:checked + .slider {
+  background: #dc3545;
+}
+
+input:checked + .slider::before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round::before {
+  border-radius: 50%;
+}
+
+.fas {
+  font-size: 20px;
+}
+
+#my-tooltip {
+  width: 170px;
+  height: 40px;
+  font-size: 15px;
+  background-color: #333;
+}
+
+@media (max-width: 767px) {
+  #NavbarName {
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+
+  .navbar-toggler {
+    margin-left: 10px;
+  }
+
+  #NavbarElements {
+    padding-left: 15px;
+  }
+
+  #Nav {
+    background-color: rgba(13, 204, 197, 0.912);
+  }
+  .theme-switch-wrapper {
+    display: flex;
+    z-index: 100;
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+}

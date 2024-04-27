@@ -1,0 +1,87 @@
+#ButtonContainer {
+  display: flex;
+  margin-top: 15px;
+}
+
+#TalkButton {
+  margin-right: 15px;
+}
+
+#Resumebutton {
+  margin-right: 15px;
+}
+
+#GitHubButton {
+  margin-right: 15px;
+}
+
+#AboutHeading {
+  margin-bottom: 25px;
+}
+
+#LinkedInButton {
+  margin-right: 20px;
+}
+
+#strName {
+  font-size: larger;
+}
+#about.light-mode {
+  color: #0a0d41;
+}
+#about.dark-mode {
+  color: white;
+}
+
+#AboutContent {
+  font-size: 19px;
+}
+
+@media (max-width: 767px) {
+  #AboutHeading {
+    margin-top: 25px;
+  }
+}
+
+@media (max-width: 992px) and (min-width: 768px) {
+  #AboutHeading {
+    margin-top: 25px;
+  }
+  #AboutContent {
+    font-size: 18px;
+  }
+}
+@media screen and (max-width: 1200px) and (min-width: 991px) {
+  #AboutContent {
+    font-size: 15px;
+  }
+}
+@media (max-width: 357px) {
+  #strName {
+    font-size: 20px;
+  }
+  #ButtonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #TalkButton {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  #Resumebutton {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  #GitHubButton {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  #TalkButton {
+    margin-bottom: 10px;
+    text-align: center;
+  }
+}

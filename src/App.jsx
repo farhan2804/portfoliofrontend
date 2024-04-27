@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import PortfolioCarousel from "./components/Carousel/Carousel.jsx";
+import PortfolioAbout from "./components/About/About.jsx";
+import PortfolioSkills from "./components/Skills/Skills.jsx";
+import PortfolioProjects from "./components/PortfolioProjects/PortfolioProjects.jsx";
+import PortfolioNavbar from "./components/Navbar/PortfolioNavbar.jsx";
+import TitleMessage from "./components/Title/Title.jsx";
+// import PortfolioContact from "./components/Contact/Contact.jsx";
+import PortfolioFooter from "./components/PortfolioFooter/PortfolioFooter.jsx";
+import Success from "./components/SuccessPage/Success.jsx";
+import {
+  NavLink,
+  BrowserRouter as Router,
+  Route,
+  Routes,
+} from "react-router-dom";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <PortfolioNavbar />
+      <PortfolioCarousel />
+      <TitleMessage />
+      <hr className="w-75 mx-auto pt-1" />
+      <PortfolioAbout />
+      <hr className="w-75 mx-auto pt-1" />
+      <PortfolioSkills />
+      <hr className="w-75 mx-auto pt-1" />
+      <PortfolioProjects />
+      <hr className="w-75 mx-auto pt-1" id="contactLine" />
+      {/* <PortfolioContact /> */}
+      <PortfolioFooter />
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;

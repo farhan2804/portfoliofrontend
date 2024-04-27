@@ -1,0 +1,131 @@
+@import "../Themes/Themes.scss";
+
+#ProjectImage {
+  border: 7px solid #0cbab4;
+  border-radius: 5%;
+}
+
+.image-container {
+  height: 250px;
+  /* Set a fixed height for uniformity */
+  position: relative;
+  overflow: hidden;
+  border-radius: 5%;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* Maintain aspect ratio and cover entire container */
+}
+#deployImage {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+}
+#gitHubImage {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+}
+
+.project-details {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Adjust to cover the entire container */
+  background: linear-gradient(
+    to top,
+    rgba(34, 208, 202, 1),
+    rgba(34, 208, 202, 0)
+  );
+  padding: 10px;
+  transition: bottom 0.5s ease;
+  display: flex;
+  flex-direction: column;
+
+  // &.light-mode {
+  //   color: dark #002d62;
+  // }
+
+  // &.dark-mode {
+  //   color: white;
+  // }
+}
+#projects.light-mode {
+  color: #0a0d41;
+}
+#projects.dark-mode {
+  color: white;
+}
+.image-container.hovered .project-details {
+  bottom: 0;
+}
+.details-button {
+  display: flex;
+  background: none;
+  border: none;
+  color: #ffff;
+  cursor: pointer;
+  width: 70px;
+  height: 70px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  border-radius: 50%;
+  padding: 8px;
+  margin: 0 auto;
+}
+
+.details-button:hover {
+  transform: scale(1.2);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+#projects .light-mode #titleOfImage {
+  text-align: center;
+  width: 100%;
+  height: 40px;
+  color: #ffff;
+  background-color: #0a0d41;
+  border-top-left-radius: 15px; /* Round the top left corner */
+  border-bottom-right-radius: 15px; /* Round the bottom right corner */
+  border-top-right-radius: 0; /* Keep the top right corner edgy */
+  border-bottom-left-radius: 0; /* Keep the bottom left corner edgy */
+}
+#projects .dark-mode #titleOfImage {
+  text-align: center;
+  width: 100%;
+  height: 40px;
+  color: #0a0d41;
+  background-color: white;
+  border-top-left-radius: 15px; /* Round the top left corner */
+  border-bottom-right-radius: 15px; /* Round the bottom right corner */
+  border-top-right-radius: 0; /* Keep the top right corner edgy */
+  border-bottom-left-radius: 0; /* Keep the bottom left corner edgy */
+}
+
+#projects .light-mode #descriptionOfImage {
+  text-align: center;
+  width: 100%;
+  height: 25px;
+  color: white;
+  background: #0a0d41;
+  border-top-left-radius: 15px; /* Round the top left corner */
+  border-bottom-right-radius: 15px; /* Round the bottom right corner */
+  border-top-right-radius: 0; /* Keep the top right corner edgy */
+  border-bottom-left-radius: 0; /* Keep the bottom left corner edgy */
+}
+#projects .dark-mode #descriptionOfImage {
+  text-align: center;
+  width: 100%;
+  height: 25px;
+  color: #0a0d41;
+  background-color: white;
+  border-top-left-radius: 15px; /* Round the top left corner */
+  border-bottom-right-radius: 15px; /* Round the bottom right corner */
+  border-top-right-radius: 0; /* Keep the top right corner edgy */
+  border-bottom-left-radius: 0; /* Keep the bottom left corner edgy */
+}
