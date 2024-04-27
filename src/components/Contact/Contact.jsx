@@ -41,7 +41,7 @@ const PortfolioContact = () => {
     }
     try {
       const res = await fetch(
-        "https://portfoliobackend-xj5z.onrender.com/register",
+        "https://portfolio-versel.vercel.app/register",
         {
           method: "POST",
           headers: {
