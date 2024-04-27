@@ -1,138 +1,138 @@
-// #contact.light-mode {
-//   color: #0a0d41;
-// }
+#contact.light-mode {
+  color: #0a0d41;
+}
 
-// #textMessage {
-//   width: 100%;
-//   height: 120px;
-// }
+#textMessage {
+  width: 100%;
+  height: 120px;
+}
 
-// #ContactButton button {
-//   margin-right: 10px;
-// }
+#ContactButton button {
+  margin-right: 10px;
+}
 
-// #formBasicText {
-//   margin-bottom: 10px;
-//   margin-top: 20px;
-// }
+#formBasicText {
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
 
-// #formBasicEmail {
-//   margin-bottom: 10px;
-// }
+#formBasicEmail {
+  margin-bottom: 10px;
+}
 
-// #formBasicMobileNumber {
-//   margin-bottom: 10px;
-// }
+#formBasicMobileNumber {
+  margin-bottom: 10px;
+}
 
-// #formBasicTextArea {
-//   margin-top: 10px;
-//   margin-bottom: 10px;
-// }
-// #getinTouchHeading {
-//   height: 4px;
-//   width: 35px;
-//   border: none;
-//   background-color: rgb(4, 207, 200);
-// }
-// #submitButton {
-//   margin-top: 10px;
-// }
+#formBasicTextArea {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+#getinTouchHeading {
+  height: 4px;
+  width: 35px;
+  border: none;
+  background-color: rgb(4, 207, 200);
+}
+#submitButton {
+  margin-top: 10px;
+}
 
-// #ContactButtonContainer {
-//   display: flex;
-//   margin-left: 45px;
-//   margin-top: 20px;
-// }
+#ContactButtonContainer {
+  display: flex;
+  margin-left: 45px;
+  margin-top: 20px;
+}
 
-// .LinkedButton {
-//   margin-right: 15px;
-// }
+.LinkedButton {
+  margin-right: 15px;
+}
 
-// .MailButton {
-//   margin-right: 15px;
-//   margin-bottom: 15px;
-// }
+.MailButton {
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
 
-// #formBasicCheckbox {
-//   margin-top: 10px;
-// }
+#formBasicCheckbox {
+  margin-top: 10px;
+}
 
-// .textarea-container {
-//   width: 100%;
-//   height: 120px;
-//   border: 2px solid #ccc;
-//   border-radius: 5px;
-//   display: flex;
-//   align-items: flex-start;
-// }
+.textarea-container {
+  width: 100%;
+  height: 120px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  align-items: flex-start;
+}
 
-// #textMessage {
-//   flex: 1;
-//   padding: 10px;
-//   font-size: 16px;
-// }
+#textMessage {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+}
 
-// #textName {
-//   border: 2px solid #ccc;
-//   border-radius: 5px;
-// }
-// #textMail {
-//   border: 2px solid #ccc;
-//   border-radius: 5px;
-// }
+#textName {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+#textMail {
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
 
-// #formBasicText .form-control:focus,
-// #formBasicTextArea .form-control:focus,
-// #formBasicMail.form-control:focus {
-//   border-color: #22d0ca; /* Change border color to red */
-//   box-shadow: 0 0 20px #22d0ca; /* Red shadow when clicked */
-// }
+#formBasicText .form-control:focus,
+#formBasicTextArea .form-control:focus,
+#formBasicMail.form-control:focus {
+  border-color: #22d0ca; /* Change border color to red */
+  box-shadow: 0 0 20px #22d0ca; /* Red shadow when clicked */
+}
 
-// .Contactcontainer {
-//   margin-top: 30px;
-//   margin-bottom: 30px;
-// }
+.Contactcontainer {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
 
-// @media (max-width: 992px) {
-//   #contactmeImage {
-//     width: 300px;
-//   }
-//   #ContactButtonContainer {
-//     display: flex;
-//     margin-left: 5px;
-//     margin-top: 20px;
-//   }
-// }
-// @media (max-width: 768px) {
-//   #contactmeImageContainer {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-items: center;
-//   }
-// }
-// @media (max-width: 347px) {
-//   #contactmeImage {
-//     width: 250px;
-//   }
-//   #ContactButtonContainer {
-//     display: flex;
-//     flex-direction: column;
-//   }
-//   #contactmeImageContainer {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     align-items: center;
-//   }
-//   .LinkedButton {
-//     margin-bottom: 15px;
-//   }
+@media (max-width: 992px) {
+  #contactmeImage {
+    width: 300px;
+  }
+  #ContactButtonContainer {
+    display: flex;
+    margin-left: 5px;
+    margin-top: 20px;
+  }
+}
+@media (max-width: 768px) {
+  #contactmeImageContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media (max-width: 347px) {
+  #contactmeImage {
+    width: 250px;
+  }
+  #ContactButtonContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  #contactmeImageContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .LinkedButton {
+    margin-bottom: 15px;
+  }
 
-//   .MailButton {
-//     margin-bottom: 15px;
-//   }
-//   .GitButton {
-//     margin-bottom: 25px;
-//   }
-// }
+  .MailButton {
+    margin-bottom: 15px;
+  }
+  .GitButton {
+    margin-bottom: 25px;
+  }
+}
