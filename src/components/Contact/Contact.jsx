@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ToastContainer, toast, Bounce } from "react-toastify";
+import { FadeLoader } from "react-spinners";
 import "react-toastify/dist/ReactToastify.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
@@ -7,8 +8,15 @@ import Container from "react-bootstrap/Container";
 import { useTheme } from "../Themes/ThemeProvider";
 import Image from "../../assets/Images/Contact/image.svg";
 import "./Contact.scss";
+const override = {
+  display: "block",
+  margin: "0 auto",
+  borderColor: "red",
+};
 
 const PortfolioContact = () => {
+  const [IsLoading, setIsLoading] = useState(false);
+  let [color, setColor] = useState("#0cbbb4");
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -40,20 +48,18 @@ const PortfolioContact = () => {
       return; // Prevent further execution if validation fails
     }
     try {
-      const res = await fetch(
-        "https://portfolio-versel.vercel.app/register",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name,
-            email,
-            message,
-          }),
-        }
-      );
+      setIsLoading(true);
+      const res = await fetch("https://portfolio-versel.vercel.app/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          message,
+        }),
+      });
       if (res.status === 201) {
         setData({ name: "", email: "", message: "" });
         toast.success("Message sent successfully", {
@@ -93,6 +99,8 @@ const PortfolioContact = () => {
         theme: "colored",
         transition: Bounce,
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -160,6 +168,14 @@ const PortfolioContact = () => {
             >
               <h1> Get in Touch</h1>
               <hr id="getinTouchHeading"></hr>
+              <FadeLoader
+                loading={IsLoading}
+                size={100}
+                color={color}
+                cssOverride={override}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+              />
               <Form method="POST">
                 <Form.Group id="formBasicText">
                   <Form.Label>Name</Form.Label>
