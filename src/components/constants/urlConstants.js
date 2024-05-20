@@ -11,8 +11,8 @@ export const LIGHT_DARK_MODE_Source_Code =
 export const CALCULATOR = "https://farhan2804.github.io/Calculator/";
 export const Calculator_Source_Code =
   "https://github.com/farhan2804/Calculator";
-export const SLIDE_SHOW = "https://farhan2804slideshow.netlify.app/";
-export const SLIDE_SHOW_Source_Code = "https://github.com/farhan2804/slideShow";
+export const WRITERSDIARY = "https://farhan2804writersdiary.netlify.app/";
+export const WRITERS_DIARY_Source_Code = "https://github.com/farhan2804/quotesApp";
 export const QR_CODE_GENERATOR =
   "https://farhan2804.github.io/qr-code-generator/";
 export const QR_CODE_GENERATOR_Source_Code =

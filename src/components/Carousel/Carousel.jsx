@@ -23,6 +23,7 @@ const PortfolioCarousel = () => {
             className="d-block w-100 custom-img"
             src={Image1}
             alt="Slide 1"
+            loading="lazy"
           />
         </Carousel.Item>
         <Carousel.Item>
@@ -30,6 +31,7 @@ const PortfolioCarousel = () => {
             className="d-block w-100 custom-img"
             src={Image2}
             alt="Slide 2"
+            loading="lazy"
           />
         </Carousel.Item>
         <Carousel.Item>
@@ -37,6 +39,7 @@ const PortfolioCarousel = () => {
             className="d-block w-100 custom-img"
             src={Image3}
             alt="Slide 3"
+            loading="lazy"
           />
         </Carousel.Item>
         <Carousel.Item>
@@ -44,6 +47,7 @@ const PortfolioCarousel = () => {
             className="d-block w-100 custom-img"
             src={Image4}
             alt="Slide 2"
+            loading="lazy"
           />
         </Carousel.Item>
         <Carousel.Item>
@@ -51,6 +55,7 @@ const PortfolioCarousel = () => {
             className="d-block w-100 custom-img"
             src={Image5}
             alt="Slide 2"
+            loading="lazy"
           />
         </Carousel.Item>
         <Carousel.Item>
@@ -58,6 +63,7 @@ const PortfolioCarousel = () => {
             className="d-block w-100 custom-img"
             src={Image6}
             alt="Slide 2"
+            loading="lazy"
           />
         </Carousel.Item>
       </Carousel>
