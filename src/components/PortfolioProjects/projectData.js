@@ -7,7 +7,8 @@ import Image6 from "../../assets/Images/Projects/infinity.png";
 import Image7 from "../../assets/Images/Projects/darkMode.svg";
 import Image8 from "../../assets/Images/Projects/calculator.svg";
 import Image9 from "../../assets/Images/Projects/weather.svg";
-
+import Image10 from '../../assets/Images/Projects/pagination.svg';
+import Image11 from '../../assets/Images/Projects/core.svg';
 import {
   TEXTTRACT,
   TEXTTRACT_Source_Code,
@@ -27,6 +28,9 @@ import {
   Todo_List_Source_Code,
   Weather_App,
   Weather_App_Source_Code,
+  Pagination,
+  Pagination_Source_Code,
+  Core
 } from "../constants/urlConstants.js";
 
 export const projectData = [
@@ -61,6 +65,14 @@ export const projectData = [
     description: "Node.js, Express.js",
     Deploy_url: Weather_App,
     SourceCode_url: Weather_App_Source_Code,
+  },
+  {
+    id: "project_11",
+    image: Image10,
+    title: "Pagination",
+    description: "React.js, JavaScript",
+    Deploy_url: Pagination,
+    SourceCode_url: Pagination_Source_Code,
   },
   {
     id: "project_5",
@@ -104,4 +116,12 @@ export const projectData = [
     Deploy_url: INFINITY_SCROLL,
     SourceCode_url: INFINITY_SCROLL_Source_Code,
   },
+  {
+    id: "project_10",
+    image: Image11,
+    title: "Core Projects",
+    description: "Other Core Projects",
+    Deploy_url: Core,
+  },
+  
 ];

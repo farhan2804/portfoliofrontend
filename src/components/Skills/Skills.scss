@@ -141,7 +141,114 @@
   text-decoration: none;
   color: rgba(13, 7, 7, 0.629);
 }
+.vlsiDesign{
+  display: flex;
+  width: 35px;
+  gap: 20px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  color: rgba(13, 7, 7, 0.629);
+}
+.verilog{
+  display: flex;
+  width: 35px;
+  gap: 15px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  color: rgba(13, 7, 7, 0.629);
+}
+.fpga{
+  display: flex;
+  width: 35px;
+  gap: 17px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  color: rgba(13, 7, 7, 0.629);
+}
+.iot{
+  display: flex;
+  width: 35px;
+  gap: 17px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  color: rgba(13, 7, 7, 0.629);
+}
+.arduino{
+  display: flex;
+  width: 35px;
+  gap: 17px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  color: rgba(13, 7, 7, 0.629);
+}
+.eda{
+  display: flex;
+  width: 35px;
+  gap: 13px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  color: rgba(13, 7, 7, 0.629);
 
+}
+.digital{
+  display: flex;
+  width: 35px;
+  gap: 20;
+  margin-left: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  color: rgba(13, 7, 7, 0.629);
+  margin-bottom: 20px;
+}
+.mosfet{
+  display: flex;
+  width: 35px;
+  gap: 10px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  color: rgba(13, 7, 7, 0.629);
+}
+.microcontroller{
+  display: flex;
+  width: 35px;
+  gap: 15;
+  margin-left: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  color: rgba(13, 7, 7, 0.629);
+  margin-bottom: 20px;
+}
+.microprocessor{
+  display: flex;
+  width: 35px;
+  gap: 15;
+  margin-left: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  color: rgba(13, 7, 7, 0.629);
+  margin-bottom: 20px;
+}
 .JavaImage {
   display: flex;
   width: 60px;
@@ -250,6 +357,14 @@
   white-space: nowrap;
   margin-left: 3px;
 }
+.microcontrollerHeading{
+  white-space: nowrap;
+  margin-left: 3px;
+}
+.microprocessorHeading{
+  white-space: nowrap;
+  margin-left: 3px;
+}
 .JavaHeading{
   white-space: nowrap;
   margin-left: -16px;
@@ -303,6 +418,9 @@
 #TechHeading {
   margin-bottom: 20px;
 }
+#CoreHeading {
+  margin-bottom: 20px;
+}
 #skills.light-mode {
   color: #0a0d41;
 }
@@ -315,6 +433,12 @@
     white-space: normal;
     margin-left: 18px;
   }
+  .microcontrollerHeading{
+    font-size:15px;
+  }
+  #instrumentHeading{
+    font-size:23px
+  }
 }
 
 
@@ -323,9 +447,7 @@
     white-space: nowrap;
     margin-left: 10px;
   }
- .ReactRedux{
-
- }
+ 
   #SkillsContainer1 {
     background: rgba(13, 204, 197, 0.912);
     padding: 10px;

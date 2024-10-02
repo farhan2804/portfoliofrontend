@@ -1,5 +1,16 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
+import VlsiDesign from "../../assets/Images/Skills/vlsiDesign.png"
+import hdl from "../../assets/Images/Skills/hdl.png"
+import fpga from "../../assets/Images/Skills/fpga.png"
+import analogDigital from "../../assets/Images/Skills/analogDigital.png"
+import cmos from "../../assets/Images/Skills/cmos.png"
+import microcontroller from "../../assets/Images/Skills/microcontroller.png"
+import microprocessor from "../../assets/Images/Skills/microprocessor.png"
+import plc from "../../assets/Images/Skills/plc.png"
+import iot from "../../assets/Images/Skills/iot.png"
+import arduino from "../../assets/Images/Skills/arduino.png"
+import xilinx from "../../assets/Images/Skills/xilinx.png"
 import L_HTML5 from "../../assets/Images/Skills/html-5.svg";
 import Container from "react-bootstrap/Container";
 import L_CSS3 from "../../assets/Images/Skills/css3.svg";
@@ -256,6 +267,156 @@ const PortfolioSkills = () => {
           </div>
         </div>
       </div>
+      <div className="container">
+        <h1 className="text-center text-capitalize pt-4" id="CoreHeading">
+          Core Skills
+        </h1>
+        <div className="row text-center mb-5">
+          <div className="col-lg-4 col-md-4 col-sm-12 col-12" id="Title1">
+            <div id="SkillsContainer1">
+              <Card.Body>
+                <h2 id="TitleHeading1">Electronics & <p>VLSI</p></h2>
+                <hr id="TitleLine1"></hr>
+                <div id="CardContents1">
+                  <a
+                    className="vlsiDesign focus"
+                    href="https://www.tutorialspoint.com/vlsi_design/index.htm"
+                    target="_blank"
+                    alt="image not loaded"
+                  >
+                    <img src={VlsiDesign} className="img-fluid" />
+                    <h5 className="HTMLHeading">VLSI Design</h5>
+                  </a>
+                  <a
+                    className="verilog focus"
+                    href="https://www.javatpoint.com/verilog"
+                    target="_blank"
+                    alt="image not loaded"
+                  >
+                    <img src={hdl} className="img-fluid" />
+                    <h5 className="CSSHeading">Verilog(HDL)</h5>
+                  </a>
+                  <a
+                    className="fpga focus"
+                    href="https://fpgatutorial.com/"
+                    target="_blank"
+                    alt="image not loaded"
+                  >
+                    <img src={fpga} className="img-fluid" />
+                    <h5 className="BootstrapHeading ">FPGA <p>Development</p></h5>
+                  </a>
+                  <a
+                    className="digital focus"
+                    href="https://www.geeksforgeeks.org/digital-electronics-logic-design-tutorials/"
+                    target="_blank"
+                    alt="image not loaded"
+                  >
+                    <img src={analogDigital} className="img-fluid" />
+                    <div id="ReactBootstrapHeadingContainer">
+                      <h5 className="ReactBootStrapHeading">Digital & <p>Analog Electronic</p></h5>
+                    </div>
+                  </a>
+                  <a
+                    className="mosfet focus"
+                    href="https://en.wikipedia.org/wiki/CMOS"
+                    target="_blank"
+                    alt="image not loaded"
+                  >
+                    <img src={cmos} className="img-fluid" />
+                    <div id="ReduxHeadingContainer">
+                      <h5 className="ReduxHeading">Mosfet/Cmos</h5>
+                    </div>
+                  </a>
+                </div>
+              </Card.Body>
+            </div>
+          </div>
+          <div className="col-lg-4 col-md-4 col-sm-12 col-12" id="title2">
+            <div id="SkillsContainer2">
+              <Card.Body>
+                <h2 id="TitleHeading2">
+                Embedded Systems
+                </h2>
+                <hr id="TitleLine2"></hr>
+                <div id="CardContents2">
+                  <a
+                    className="microcontroller focus"
+                    href="https://www.bharatacharyaeducation.com/"
+                    target="_blank"
+                    alt="image not loaded"
+                  >
+                    <img src={microcontroller} className="img-fluid" />
+                    <h5 className="microcontrollerHeading">Microcontrollers &<p>Embedded Systems</p></h5>
+                  </a>
+                  <a
+                    className="microprocessor focus"
+                    href="https://www.bharatacharyaeducation.com/"
+                    target="_blank"
+                    alt="image not loaded"
+                  >
+                    <img src={microprocessor} className="img-fluid" />
+                    <h5 className="microprocessorHeading">Microprocessor</h5>
+                  </a>
+                </div>
+              </Card.Body>
+            </div>
+            <div id="SkillsContainer3">
+              <Card.Body>
+                <h2 id="instrumentHeading">Instrumentation & Control</h2>
+                <hr id="TitleLine3"></hr>
+                <div id="CardContents2">
+                  <a
+                    className="GITImage focus"
+                    href="https://codeandcompile.com/"
+                    target="_blank"
+                    alt="image not loaded"
+                  >
+                    <img src={plc} className="img-fluid" />
+                    <h5 className="GITHeading">PLC</h5>
+                  </a>
+                </div>
+              </Card.Body>
+            </div>
+          </div>
+          <div className="col-lg-4 col-md-4 col-sm-12 col-12" id="title3">
+            <div id="SkillsContainer4">
+              <Card.Body>
+                <h2 id="TitleHeading4">Other Skills</h2>
+                <hr id="TitleLine4"></hr>
+                <div id="CardContents3">
+                  <a
+                    className="iot focus"
+                    href="https://www.youtube.com/@5MinutesEngineering"
+                    target="_blank"
+                    alt="image not loaded"
+                  >
+                    <img src={iot} className="img-fluid" />
+                    <h5 className="HerokuHeading">IoT</h5>
+                  </a>
+                  <a
+                    className="arduino focus"
+                    href="https://www.youtube.com/playlist?list=PLGs0VKk2DiYw-L-RibttcvK-WBZm8WLEP"
+                    target="_blank"
+                    alt="image not loaded"
+                  >
+                    <img src={arduino} className="img-fluid" />
+                    <h5 className="GitHubHeading">Arduino IDE</h5>
+                  </a>
+                  <a
+                    className="eda focus"
+                    href="https://www.synopsys.com/glossary/what-is-electronic-design-automation.html"
+                    target="_blank"
+                    alt="image not loaded"
+                  >
+                    <img src={xilinx} className="img-fluid" />
+                    <h5 className="NetlifyHeading ">EDA Tool-Xilinx(Vivado)</h5>
+                  </a>
+                </div>
+              </Card.Body>
+            </div>
+          </div>
+          </div>
+        </div>
     </Container>
   );
 };

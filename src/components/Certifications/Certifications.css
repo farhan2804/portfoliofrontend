@@ -1,0 +1,9 @@
+.certificate-image {
+    width: 100%;
+    max-width: 800px; /* Adjust to the desired max size */
+    height: auto; /* Maintain aspect ratio */
+  }
+  #certificateHeading{
+    margin-bottom:20px;
+
+  }

@@ -12,6 +12,9 @@ const PortfolioProjects = lazy(() =>
 const PortfolioNavbar = lazy(() =>
   import("./components/Navbar/PortfolioNavbar.jsx")
 );
+const Certificates = lazy(() =>
+  import("./components/Certifications/Certifications.jsx")
+);
 const TitleMessage = lazy(() => import("./components/Title/Title.jsx"));
 const PortfolioContact = lazy(() => import("./components/Contact/Contact.jsx"));
 const PortfolioFooter = lazy(() =>
@@ -37,6 +40,10 @@ const App = () => {
       <hr className="w-75 mx-auto pt-1" />
       <Suspense fallback={<div>Loading Projects...</div>}>
         <PortfolioProjects />
+      </Suspense>
+      <hr className="w-75 mx-auto pt-1" />
+      <Suspense fallback={<div>Loading Certificates...</div>}>
+        <Certificates />
       </Suspense>
       <hr className="w-75 mx-auto pt-1" id="contactLine" />
       <Suspense fallback={<div>Loading Contact...</div>}>

@@ -57,6 +57,7 @@ const PortfolioNavbar = () => {
             <Nav.Link href="#about">About</Nav.Link>
             <Nav.Link href="#skills">Skills</Nav.Link>
             <Nav.Link href="#projects">Projects</Nav.Link>
+            <Nav.Link href="#Certificates">Certifications</Nav.Link>
             <Nav.Link href={Pdf} target="_blank">
               Resume
             </Nav.Link>

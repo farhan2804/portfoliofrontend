@@ -27,3 +27,8 @@ export const Quiz_App_Source_Code = "https://github.com/farhan2804/quizapp";
 export const Weather_App = "https://weatherapp-e7zp.onrender.com/";
 export const Weather_App_Source_Code =
   "https://github.com/farhan2804/weatherAppExpressJS";
+
+  export const Pagination="https://paginationfarhan28.netlify.app/";
+  export const Pagination_Source_Code="https://github.com/farhan2804/pagination";
+
+  export const Core="https://coreprojectsfarhan28.netlify.app/";
