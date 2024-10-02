@@ -129,3 +129,29 @@
   border-top-right-radius: 0; /* Keep the top right corner edgy */
   border-bottom-left-radius: 0; /* Keep the bottom left corner edgy */
 }
+@media (min-width: 800px) {
+  /* Hide "Click Me" on larger screens */
+  .click-me-overlay {
+    display: none;
+  }
+}
+.click-me-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #1b999995;
+  color: white;
+  padding: 1rem;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+#moreDetails{
+  color: #0a0d41;
+  background-color: white;
+  border-top-left-radius: 15px; /* Round the top left corner */
+  border-bottom-right-radius: 15px; /* Round the bottom right corner */
+}
