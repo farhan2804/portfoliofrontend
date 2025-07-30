@@ -127,11 +127,11 @@ const PortfolioContact = () => {
               <div id="ContactButtonContainer">
                 <div className="MailButton">
                   <a
-                    href="mailto:farhan.akp17el@gmail.com"
+                    href="mailto:farhanmahmood2804@gmail.com"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <Button variant="danger" title="farhan.akp17el@gmail.com">
+                    <Button variant="danger" title="farhanmahmood2804@gmail.com">
                       <i className="fas fa-envelope-square"></i> Email
                     </Button>
                   </a>
