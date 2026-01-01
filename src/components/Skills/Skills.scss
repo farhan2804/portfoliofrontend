@@ -2,11 +2,11 @@
    COMMON EFFECTS
 ========================= */
 .focus {
-  transition: transform 0.3s;
+  transition: transform 0.6s;
 }
 
 .focus:hover {
-  transform: scale(1.25);
+  transform: scale(1.45);
 }
 
 /* =========================
@@ -33,6 +33,7 @@
     rgba(22, 214, 206, 0.95),
     rgba(13, 204, 197, 0.95)
   );
+  
 
   padding: 16px;
   margin-bottom: 30px;

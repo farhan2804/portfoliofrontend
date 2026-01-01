@@ -85,3 +85,41 @@
     text-align: center;
   }
 }
+
+// /* =========================
+// //    ABOUT IMAGE CARD
+// //    (Same as Skills Container)
+// // ========================= */
+
+.AboutImageCard {
+  border-radius: 5px;
+  margin-right: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ☀️ Light mode shadow */
+.light-mode .AboutImageCard {
+  box-shadow: -3px 0 7px #1f2933, 3px 0 7px #1f2933, 0 10px 20px #1f2933;
+}
+
+.light-mode .AboutImageCard:hover {
+  transform: translateY(-2px);
+  box-shadow: -8px 0 20px #04051a, 8px 0 20px #04051a, 0 14px 28px #04051a;
+}
+
+/* 🌙 Dark mode glow */
+.dark-mode .AboutImageCard {
+  box-shadow: -3px 0 5px rgba(255, 255, 255, 0.9),
+    3px 0 5px rgba(255, 255, 255, 0.9), 0 10px 20px rgba(255, 255, 255, 0.9);
+}
+
+.dark-mode .AboutImageCard:hover {
+  transform: translateY(-2px);
+  box-shadow: -8px 0 20px rgba(255, 255, 255, 0.95),
+    8px 0 20px rgba(255, 255, 255, 0.95), 0 14px 28px rgba(255, 255, 255, 0.95);
+}
+
+/* Image polish */
+#AboutImage {
+  border-radius: 12px;
+}

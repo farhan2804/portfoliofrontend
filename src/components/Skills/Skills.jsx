@@ -54,7 +54,7 @@ const PortfolioSkills = () => {
                     alt="image not loaded"
                   >
                     <img src={L_HTML5} className="img-fluid" />
-                    <h5 className="HTMLHeading">HTML5</h5>
+                    <h4 className="HTMLHeading">HTML5</h4>
                   </a>
                   <a
                     className="CSSImage focus"
@@ -63,7 +63,7 @@ const PortfolioSkills = () => {
                     alt="image not loaded"
                   >
                     <img src={L_CSS3} className="img-fluid" />
-                    <h5 className="CSSHeading">CSS3</h5>
+                    <h4 className="CSSHeading">CSS3</h4>
                   </a>
                   <a
                     className="BootStrapImage focus"
@@ -72,7 +72,7 @@ const PortfolioSkills = () => {
                     alt="image not loaded"
                   >
                     <img src={L_BOOTSTRAP} className="img-fluid" />
-                    <h5 className="BootstrapHeading ">Bootstrap5</h5>
+                    <h4 className="BootstrapHeading ">Bootstrap5</h4>
                   </a>
                   <a
                     className="JavaScriptImage1 focus"
@@ -81,7 +81,7 @@ const PortfolioSkills = () => {
                     alt="image not loaded"
                   >
                     <img src={L_JAVASCRIPT} className="img-fluid" />
-                    <h5 className="JavaScriptHeading">JavaScript</h5>
+                    <h4 className="JavaScriptHeading">JavaScript</h4>
                   </a>
                   <a
                     className="ReactImage focus"
@@ -90,7 +90,7 @@ const PortfolioSkills = () => {
                     alt="image not loaded"
                   >
                     <img src={L_REACT} className="img-fluid" />
-                    <h5 className="ReactHeading">React.js</h5>
+                    <h4 className="ReactHeading">React.js</h4>
                   </a>
                   <a
                     className="ReactBootStrapImage focus"
@@ -100,7 +100,7 @@ const PortfolioSkills = () => {
                   >
                     <img src={L_REACT_BOOTSTRAP} className="img-fluid" />
                     <div id="ReactBootstrapHeadingContainer">
-                      <h5 className="ReactBootStrapHeading">React Bootstrap</h5>
+                      <h4 className="ReactBootStrapHeading">React Bootstrap</h4>
                     </div>
                   </a>
                   <a
@@ -111,7 +111,7 @@ const PortfolioSkills = () => {
                   >
                     <img src={L_Redux} className="img-fluid" />
                     <div id="ReduxHeadingContainer">
-                      <h5 className="ReduxHeading">Redux</h5>
+                      <h4 className="ReduxHeading">Redux</h4>
                     </div>
                   </a>
                   <a
@@ -122,7 +122,7 @@ const PortfolioSkills = () => {
                   >
                     <img src={L_React_Router} className="img-fluid" />
                     <div id="ReactRouterHeadingContainer">
-                      <h5 className="ReactRouterHeading">React Router</h5>
+                      <h4 className="ReactRouterHeading">React Router</h4>
                     </div>
                   </a>
                 </div>
@@ -144,7 +144,7 @@ const PortfolioSkills = () => {
                     alt="image not loaded"
                   >
                     <img src={L_JAVASCRIPT} className="img-fluid" />
-                    <h5 className="JavaScriptHeading">JavaScript</h5>
+                    <h4 className="JavaScriptHeading">JavaScript</h4>
                   </a>
                   <a
                     className="JavaImage focus"
@@ -153,7 +153,7 @@ const PortfolioSkills = () => {
                     alt="image not loaded"
                   >
                     <img src={L_JAVA} className="img-fluid" />
-                    <h5 className="JavaHeading">Java</h5>
+                    <h4 className="JavaHeading">Java</h4>
                   </a>
                 </div>
               </Card.Body>
@@ -170,7 +170,7 @@ const PortfolioSkills = () => {
                     alt="image not loaded"
                   >
                     <img src={L_GIT} className="img-fluid" />
-                    <h5 className="GITHeading">GIT</h5>
+                    <h4 className="GITHeading">GIT</h4>
                   </a>
                 </div>
               </Card.Body>
@@ -187,7 +187,7 @@ const PortfolioSkills = () => {
                     alt="image not loaded"
                   >
                     <img src={L_SQL} className="img-fluid" />
-                    <h5 className="SQLHeading">SQL</h5>
+                    <h4 className="SQLHeading">SQL</h4>
                   </a>
                   <a
                     className="mongodb focus"
@@ -196,7 +196,7 @@ const PortfolioSkills = () => {
                     alt="image not loaded"
                   >
                     <img src={L_MongoDb} className="img-fluid" />
-                    <h5 className="mongodbHeading">MongoDB</h5>
+                    <h4 className="mongodbHeading">MongoDB</h4>
                   </a>
                 </div>
               </Card.Body>
@@ -215,7 +215,7 @@ const PortfolioSkills = () => {
                     alt="image not loaded"
                   >
                     <img src={L_Heroku} className="img-fluid" />
-                    <h5 className="HerokuHeading">Heroku</h5>
+                    <h4 className="HerokuHeading">Heroku</h4>
                   </a>
                   <a
                     className="GitHubImage focus"
@@ -224,7 +224,7 @@ const PortfolioSkills = () => {
                     alt="image not loaded"
                   >
                     <img src={L_GITHUB_PAGES} className="img-fluid" />
-                    <h5 className="GitHubHeading">GitHub Pages</h5>
+                    <h4 className="GitHubHeading">GitHub Pages</h4>
                   </a>
                   <a
                     className="NetlifyImage focus"
@@ -233,7 +233,7 @@ const PortfolioSkills = () => {
                     alt="image not loaded"
                   >
                     <img src={L_Netlify} className="img-fluid" />
-                    <h5 className="NetlifyHeading ">Netlify</h5>
+                    <h4 className="NetlifyHeading ">Netlify</h4>
                   </a>
                 </div>
               </Card.Body>
@@ -250,7 +250,7 @@ const PortfolioSkills = () => {
                     alt="image not loaded"
                   >
                     <img src={L_NodeJS} className="img-fluid" />
-                    <h5 className="NodeJSHeading">Node.js</h5>
+                    <h4 className="NodeJSHeading">Node.js</h4>
                   </a>
                   <a
                     className="ExpressJS focus"
@@ -259,7 +259,7 @@ const PortfolioSkills = () => {
                     alt="image not loaded"
                   >
                     <img src={L_ExpressJS} className="img-fluid" />
-                    <h5 className="ExpressJSHeading">Express.js</h5>
+                    <h4 className="ExpressJSHeading">Express.js</h4>
                   </a>
                 </div>
               </Card.Body>
@@ -285,7 +285,7 @@ const PortfolioSkills = () => {
                     alt="image not loaded"
                   >
                     <img src={VlsiDesign} className="img-fluid" />
-                    <h5 className="HTMLHeading">VLSI Design</h5>
+                    <h4 className="HTMLHeading">VLSI Design</h4>
                   </a>
                   <a
                     className="verilog focus"
@@ -294,7 +294,7 @@ const PortfolioSkills = () => {
                     alt="image not loaded"
                   >
                     <img src={hdl} className="img-fluid" />
-                    <h5 className="CSSHeading">Verilog(HDL)</h5>
+                    <h4 className="CSSHeading">Verilog(HDL)</h4>
                   </a>
                   <a
                     className="fpga focus"
@@ -303,7 +303,7 @@ const PortfolioSkills = () => {
                     alt="image not loaded"
                   >
                     <img src={fpga} className="img-fluid" />
-                    <h5 className="BootstrapHeading ">FPGA <p>Development</p></h5>
+                    <h4 className="BootstrapHeading ">FPGA <p>Development</p></h4>
                   </a>
                   <a
                     className="digital focus"
@@ -313,7 +313,7 @@ const PortfolioSkills = () => {
                   >
                     <img src={analogDigital} className="img-fluid" />
                     <div id="ReactBootstrapHeadingContainer">
-                      <h5 className="ReactBootStrapHeading">Digital & <p>Analog Electronic</p></h5>
+                      <h4 className="ReactBootStrapHeading">Digital & <p>Analog Electronic</p></h4>
                     </div>
                   </a>
                   <a
@@ -324,7 +324,7 @@ const PortfolioSkills = () => {
                   >
                     <img src={cmos} className="img-fluid" />
                     <div id="ReduxHeadingContainer">
-                      <h5 className="ReduxHeading">Mosfet/Cmos</h5>
+                      <h4 className="ReduxHeading">Mosfet/Cmos</h4>
                     </div>
                   </a>
                 </div>
@@ -346,7 +346,7 @@ const PortfolioSkills = () => {
                     alt="image not loaded"
                   >
                     <img src={microcontroller} className="img-fluid" />
-                    <h5 className="microcontrollerHeading">Microcontrollers &<p>Embedded Systems</p></h5>
+                    <h4 className="microcontrollerHeading">Microcontrollers &<p>Embedded Systems</p></h4>
                   </a>
                   <a
                     className="microprocessor focus"
@@ -355,7 +355,7 @@ const PortfolioSkills = () => {
                     alt="image not loaded"
                   >
                     <img src={microprocessor} className="img-fluid" />
-                    <h5 className="microprocessorHeading">Microprocessor</h5>
+                    <h4 className="microprocessorHeading">Microprocessor</h4>
                   </a>
                 </div>
               </Card.Body>
@@ -372,7 +372,7 @@ const PortfolioSkills = () => {
                     alt="image not loaded"
                   >
                     <img src={plc} className="img-fluid" />
-                    <h5 className="GITHeading">PLC</h5>
+                    <h4 className="GITHeading">PLC</h4>
                   </a>
                 </div>
               </Card.Body>
@@ -391,7 +391,7 @@ const PortfolioSkills = () => {
                     alt="image not loaded"
                   >
                     <img src={iot} className="img-fluid" />
-                    <h5 className="HerokuHeading">IoT</h5>
+                    <h4 className="HerokuHeading">IoT</h4>
                   </a>
                   <a
                     className="arduino focus"
@@ -400,7 +400,7 @@ const PortfolioSkills = () => {
                     alt="image not loaded"
                   >
                     <img src={arduino} className="img-fluid" />
-                    <h5 className="GitHubHeading">Arduino IDE</h5>
+                    <h4 className="GitHubHeading">Arduino IDE</h4>
                   </a>
                   <a
                     className="eda focus"
@@ -409,7 +409,7 @@ const PortfolioSkills = () => {
                     alt="image not loaded"
                   >
                     <img src={xilinx} className="img-fluid" />
-                    <h5 className="NetlifyHeading ">EDA Tool-Xilinx(Vivado)</h5>
+                    <h4 className="NetlifyHeading ">EDA Tool-Xilinx(Vivado)</h4>
                   </a>
                 </div>
               </Card.Body>
