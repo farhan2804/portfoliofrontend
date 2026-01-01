@@ -32,7 +32,7 @@ const PortfolioAbout = () => {
                   Let's Talk
                 </Button>
               </div>
-              <div id="Resumebutton">
+              {/* <div id="Resumebutton">
                 <Button
                   className="btn"
                   variant="outline-success"
@@ -41,7 +41,7 @@ const PortfolioAbout = () => {
                 >
                   Resume
                 </Button>
-              </div>
+              </div> */}
               <div id="GitHubButton">
                 <Button
                   className="btn"

@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
-import { projectData } from "./projectData";
+import { projectDataCore } from "./ProjectDataCore";
 import detailsButtonIcon from "../../assets/Images/Projects/live_Dark.png";
 import deatilsButtonIconDark from "../../assets/Images/Projects/live_Light.png";
 import githubButtonIcon from "../../assets/Images/Projects/github_Light.png";
 import githubButtonIconDark from "../../assets/Images/Projects/github_Dark.png";
 import { useTheme } from "../Themes/ThemeProvider";
 
-import "./PortfolioProjects.scss";
+import "./PortfolioProjectCore.scss";
 
-const PortfolioProjects = () => {
+const PortfolioProjectCore = () => {
   const { isDarkMode } = useTheme();
   const [hoveredProject, setHoveredProject] = useState(null);
   const [clickedProject, setClickedProject] = useState(null);
@@ -53,12 +53,12 @@ const PortfolioProjects = () => {
     <Container>
       <div
         className={`container mb-5 ${isDarkMode ? "dark-mode" : "light-mode"}`}
-        id="it-projects"
+        id="core-projects"
       >
-        <h1 className="text-center text-capitalize pt-4">IT Projects</h1>
+        <h1 className="text-center text-capitalize pt-4">Electrical Engineering & Planning Projects</h1>
         <br />
         <div className="row">
-          {projectData.map((project) => (
+          {projectDataCore.map((project) => (
             <div
               key={project.id}
               className={`col-lg-4 col-md-4 col-sm-6 col-12 mb-4 image-container ${
@@ -139,4 +139,4 @@ const PortfolioProjects = () => {
   );
 };
 
-export default PortfolioProjects;
+export default PortfolioProjectCore;

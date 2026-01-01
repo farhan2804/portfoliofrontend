@@ -32,3 +32,9 @@ export const Weather_App_Source_Code =
   export const Pagination_Source_Code="https://github.com/farhan2804/pagination";
 
   export const Core="https://coreprojectsfarhan28.netlify.app/";
+
+  export const maintenance_Dashboard = "https://farhan2804dashboard.netlify.app/";
+  export const maintenance_Dashboard_source_code = "https://github.com/farhan2804/Maintenance_dashboard";
+
+  export const cable_builder = "https://farhan2804cablebuilder.netlify.app/";
+  export const cable_builder_source_code = "https://github.com/farhan2804/cable_builder_tool";

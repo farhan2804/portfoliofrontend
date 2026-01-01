@@ -12,6 +12,7 @@ const PortfolioProjects = lazy(() =>
 const PortfolioNavbar = lazy(() =>
   import("./components/Navbar/PortfolioNavbar.jsx")
 );
+import PortfolioProjectCore from './components/PortfolioProjectCore/PortfolioProjectCore.jsx'
 const Certificates = lazy(() =>
   import("./components/Certifications/Certifications.jsx")
 );
@@ -20,6 +21,7 @@ const PortfolioContact = lazy(() => import("./components/Contact/Contact.jsx"));
 const PortfolioFooter = lazy(() =>
   import("./components/PortfolioFooter/PortfolioFooter.jsx")
 );
+
 
 const App = () => {
   return (
@@ -41,6 +43,7 @@ const App = () => {
       <Suspense fallback={<div>Loading Projects...</div>}>
         <PortfolioProjects />
       </Suspense>
+      <PortfolioProjectCore/>
       <hr className="w-75 mx-auto pt-1" />
       <Suspense fallback={<div>Loading Certificates...</div>}>
         <Certificates />

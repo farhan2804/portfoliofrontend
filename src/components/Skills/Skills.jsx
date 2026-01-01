@@ -35,10 +35,10 @@ import "./Skills.scss";
 const PortfolioSkills = () => {
   const { isDarkMode } = useTheme();
   return (
-    <Container id="skills" className={isDarkMode ? "dark-mode" : "light-mode"}>
+    <Container id="it-skills" className={isDarkMode ? "dark-mode" : "light-mode"}>
       <div className="container">
         <h1 className="text-center text-capitalize pt-4" id="TechHeading">
-          Tech Skills
+          IT Skills
         </h1>
         <div className="row text-center mb-5">
           <div className="col-lg-4 col-md-4 col-sm-12 col-12" id="Title1">
@@ -267,7 +267,7 @@ const PortfolioSkills = () => {
           </div>
         </div>
       </div>
-      <div className="container">
+      <div className="container" id="core-skills">
         <h1 className="text-center text-capitalize pt-4" id="CoreHeading">
           Core Skills
         </h1>

@@ -1,13 +1,9 @@
 export const aboutText = `
-
-I recently graduated with a B.Tech in Electronics and Communication from RVS College of Engineering and Technology. My passion lies in crafting digital experiences, seamlessly blending technology with creativity to build innovative solutions. As a tech enthusiast, I thrive on exploring the ever-evolving landscape of web development and design.
-
-In my toolbox, I wield a versatile array of tools including React.js, JavaScript, Java, HTML, CSS, Node.js, and MongoDB, among others. These technologies serve as my palette, allowing me to paint vibrant and intuitive user interfaces while ensuring smooth functionality under the hood.
-
-Moreover, my expertise extends to database management (DBMS), networking, and Node.js, providing me with a well-rounded skill set essential for building robust software solutions.
-
-Having graduated, I'm now eager to apply my knowledge in both web development and electronics and communication. From circuit design to signal processing, I embrace every aspect of the field with enthusiasm and dedication.
-
-Let's connect and explore the cool world where technology meets creativity!
+Electrical & Electronics Engineer with exposure to electrical systems, maintenance workflows, and automation fundamentals across industrial and engineering environments.
+Strong problem-solving mindset supported by practical programming skills, used to build engineering dashboards, internal tools, and data-driven workflows that support planning, reporting, and operational decision-making.
+Technical expertise includes full-stack web development, database design, and scripting for automating repetitive engineering tasks and improving data visibility.
+Experience spans PLC/SCADA concepts, planning and scheduling basics using Primavera P6, and applying software-driven approaches to enhance maintenance efficiency and system monitoring.
+Comfortable working at the intersection of engineering and IT, enabling better coordination between site teams, planners, and management.
+Also an active technical educator on YouTube, where I teach web development with a strong focus on practical, industry-oriented implementation and real-world use cases.
 
 `;
