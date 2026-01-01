@@ -50,9 +50,9 @@
 .light-mode #SkillsContainer3,
 .light-mode #SkillsContainer4 {
   box-shadow:
-    -3px 0 5px #0a0d41,  /* left */
-     3px 0 5px #0a0d41,  /* right */
-     0 10px 20px #0a0d41; /* bottom */
+    -3px 0 5px #1f2933,  /* left */
+     3px 0 5px #1f2933,  /* right */
+     0 10px 20px #1f2933; /* bottom */
 
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
@@ -63,9 +63,9 @@
 .light-mode #SkillsContainer4:hover {
   transform: translateY(-2px);
   box-shadow:
-    -8px 0 20px #0a0d41,
-     8px 0 20px #0a0d41,
-     0 14px 28px #0a0d41;
+    -8px 0 20px #04051a,
+     8px 0 20px #04051a,
+     0 14px 28px #04051a;
 }
 
 /* =========================
