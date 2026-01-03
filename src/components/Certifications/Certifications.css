@@ -1,9 +1,44 @@
+/* =========================
+   CERTIFICATE IMAGE
+========================= */
 .certificate-image {
-    width: 100%;
-    max-width: 800px; /* Adjust to the desired max size */
-    height: auto; /* Maintain aspect ratio */
-  }
-  #certificateHeading{
-    margin-bottom:20px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
 
+/* =========================
+   CERTIFICATE CARD
+========================= */
+.certificate-card {
+  background: #ffffff;
+  padding: 12px;
+  border-radius: 12px;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.certificate-card:hover {
+  cursor:pointer;
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================
+   SECTION HEADING
+========================= */
+#certificateHeading {
+  margin-bottom: 30px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 576px) {
+  .certificate-card {
+    padding: 10px;
   }
+}

@@ -4,7 +4,10 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 220px;
+
+  /* ⬆️ HEIGHT INCREASED */
+  height: 300px;
+
   padding: 30px;
   font-size: 23px;
 }
@@ -14,7 +17,10 @@
   left: 50%;
   transform: translateX(-50%);
   top: 10px;
+  font-weight: 600;
+  letter-spacing: 0.6px;
 }
+
 #footer_tooltip {
   background-color: #333;
 }
@@ -105,13 +111,20 @@
   text-decoration: none;
 }
 
+/* =========================
+   MOBILE RESPONSIVENESS
+========================= */
+
 @media (max-width: 418px) {
   #FooterContainer {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 200px;
+
+    /* ⬆️ HEIGHT INCREASED */
+    height: 240px;
+
     background: rgb(54, 51, 51);
     color: white;
     padding: 30px;
@@ -135,7 +148,10 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 200px;
+
+    /* ⬆️ HEIGHT INCREASED */
+    height: 260px;
+
     background: rgb(54, 51, 51);
     color: white;
     padding: 30px;
@@ -151,7 +167,43 @@
   .SocialIcons {
     font-size: 30px;
   }
+
   #emailIcon {
     font-size: 30px;
+  }
+}
+
+
+/* ================================
+   FOOTER NAV – RESPONSIVE FIX
+================================ */
+
+/* Allow wrapping on smaller screens */
+@media (max-width: 575px) {
+  .NavDetails {
+    position: static;              /* remove absolute positioning */
+    display: flex;
+    flex-wrap: wrap;               /* allow wrapping */
+    justify-content: center;
+    gap: 12px 20px;                /* vertical + horizontal gap */
+    margin-top: 15px;
+    text-align: center;
+  }
+
+  .NavDetails a {
+    font-size: 16px;               /* slightly smaller for mobile */
+    white-space: nowrap;           /* keep each item clean */
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 420px) {
+  .NavDetails {
+    margin-top:10px;
+    gap: 8px;
+  }
+
+  .NavDetails a {
+    font-size: 15px;
   }
 }

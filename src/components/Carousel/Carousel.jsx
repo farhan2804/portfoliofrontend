@@ -11,56 +11,30 @@ import "./Carousel.scss";
 
 const PortfolioCarousel = () => {
   return (
-    <div id="home" className="carousel-container d-flex flex-column">
+    <div id="home" className="carousel-container">
       <Carousel
         controls={false}
         indicators={false}
-        interval={2500}
+        interval={6500}   // ⬅ Slower, professional
         pause={false}
+        fade              // ⬅ Smooth fade (no sliding)
       >
-        <Carousel.Item>
-          <img
-            className="d-block w-100 custom-img"
-            src={Image1}
-            alt="Slide 1"
-          />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100 custom-img"
-            src={Image2}
-            alt="Slide 2"
-          />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100 custom-img"
-            src={Image3}
-            alt="Slide 3"
-          />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100 custom-img"
-            src={Image4}
-            alt="Slide 2"
-          />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100 custom-img"
-            src={Image5}
-            alt="Slide 2"
-          />
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="d-block w-100 custom-img"
-            src={Image6}
-            alt="Slide 2"
-          />
-        </Carousel.Item>
+        {[Image1, Image2, Image3, Image4, Image5, Image6].map(
+          (image, index) => (
+            <Carousel.Item key={index}>
+              <div className="carousel-image-wrapper">
+                <img
+                  className="d-block w-100 custom-img"
+                  src={image}
+                  alt={`Slide ${index + 1}`}
+                />
+                <div className="carousel-overlay" />
+              </div>
+            </Carousel.Item>
+          )
+        )}
       </Carousel>
+
       <ScrollDown />
     </div>
   );

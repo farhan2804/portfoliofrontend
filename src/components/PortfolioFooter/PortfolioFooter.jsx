@@ -26,7 +26,7 @@ const PortfolioFooter = () => {
       <div id="FooterDetails">
         <div id="Name">
           &copy; Farhan Mahmood &nbsp; {new Date().getMonth() + 1}-
-          {new Date().getDate()}-{new Date().getUTCFullYear()}
+          {new Date().getDate()}-{new Date().getUTCFullYear()} 
         </div>
         <div id="BackToTop">
           <Button

@@ -55,7 +55,7 @@ const PortfolioProjects = () => {
         className={`container mb-5 ${isDarkMode ? "dark-mode" : "light-mode"}`}
         id="it-projects"
       >
-        <h1 className="text-center text-capitalize pt-4">IT Projects</h1>
+        <h1 id="it-heading" className="text-center text-capitalize pt-4">IT Projects</h1>
         <br />
         <div className="row">
           {projectData.map((project) => (

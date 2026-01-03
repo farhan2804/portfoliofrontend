@@ -55,7 +55,7 @@ const PortfolioProjectCore = () => {
         className={`container mb-5 ${isDarkMode ? "dark-mode" : "light-mode"}`}
         id="core-projects"
       >
-        <h1 className="text-center text-capitalize pt-4">Electrical Engineering & Planning Projects</h1>
+        <h1 id="core-heading" className="text-center text-capitalize pt-4">Electrical Engineering & Planning Projects</h1>
         <br />
         <div className="row">
           {projectDataCore.map((project) => (

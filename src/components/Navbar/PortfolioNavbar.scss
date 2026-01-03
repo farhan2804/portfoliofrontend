@@ -49,19 +49,11 @@
   font-size: 1rem;
 }
 
-.toggle-text {
-  position: relative;
-  top: -4px;
-  right: 4px;
-  left: 2px;
-  color: var(--on-primary);
-}
-
 .theme-switch {
   display: inline-block;
   height: 20px;
-  position: relative;
   width: 48px;
+  position: relative;
 }
 
 .theme-switch input {
@@ -82,8 +74,8 @@
   position: absolute;
   bottom: 4px;
   left: 4px;
-  height: 13px;
   width: 13px;
+  height: 13px;
   transition: 0.4s;
 }
 
@@ -107,18 +99,24 @@ input:checked + .slider::before {
   font-size: 20px;
 }
 
+/* ================================
+   TOOLTIP
+   ================================ */
 #my-tooltip {
-  width: 170px;
-  height: 40px;
-  font-size: 15px;
+  max-width: 200px;
+  padding: 8px 12px;
+  font-size: 14px;
   background-color: #333;
+  color: #fff;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.4;
+  border-radius: 6px;
 }
 
 /* ================================
-   GLOBAL CLICK / ACTIVE FIX (ALL)
+   REMOVE DEFAULT BROWSER / BOOTSTRAP ACTIVE STYLES
    ================================ */
-
-/* Remove default browser blue */
 a:active,
 a:focus,
 a:focus-visible,
@@ -136,34 +134,37 @@ button:focus-visible,
   box-shadow: none;
 }
 
-/* Light mode click color */
-.light-mode a:active,
-.light-mode a:focus,
-.light-mode button:active,
-.light-mode button:focus,
-.light-mode .nav-link:active,
-.light-mode .dropdown-item:active {
-  color: #0a0d41 !important; /* Navy */
-}
-
-/* Dark mode click color */
-.dark-mode a:active,
-.dark-mode a:focus,
-.dark-mode button:active,
-.dark-mode button:focus,
-.dark-mode .nav-link:active,
-.dark-mode .dropdown-item:active {
-  color: 
-#3B4652 !important; 
-}
-
-/* Pressed feedback */
+/* Subtle pressed feedback */
 a:active,
 button:active,
 .nav-link:active,
-.dropdown-item:active,
-.details-button:active {
+.dropdown-item:active {
   transform: scale(0.97);
+}
+
+/* ================================
+   ACTIVE LINK LOGIC (FINAL)
+   ================================ */
+
+/* NOT scrolled → always white (light & dark mode) */
+#Nav:not(.scrolled) .nav-link.active,
+#Nav:not(.scrolled) .dropdown-toggle.active {
+  color: #ffffff !important;
+  font-weight: 400;
+}
+
+/* Scrolled → navy blue (light & dark mode) */
+#Nav.scrolled .nav-link.active,
+#Nav.scrolled .dropdown-toggle.active,
+#Nav.scrolled .show > .nav-link {
+  color: #0a0d41 !important;
+  font-weight: 500;
+}
+
+/* No underline ever */
+.nav-link.active,
+.dropdown-toggle.active {
+  text-decoration: none !important;
 }
 
 /* ================================
@@ -191,4 +192,15 @@ button:active,
     margin-left: 15px;
     margin-right: 15px;
   }
+}
+
+
+/* ================================
+   DROPDOWN PARENT ACTIVE (SCROLLED)
+   ================================ */
+
+/* When inside dropdown (IT/Core) → keep parent highlighted */
+#Nav.scrolled .nav-link.active,
+#Nav.scrolled .dropdown-toggle.active {
+  color: #0a0d41 !important;
 }

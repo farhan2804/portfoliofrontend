@@ -165,7 +165,7 @@ const PortfolioContact = () => {
               className="col-lg-6 col-md-6 col-sm-12 col-12"
               id="formContainer"
             >
-              <h1> Get in Touch</h1>
+              <h1 id="contact-heading"> Get in Touch</h1>
               <hr id="getinTouchHeading"></hr>
               <FadeLoader
                 loading={IsLoading}
