@@ -1,150 +1,172 @@
-import React from "react";
-import { NavDropdown } from "react-bootstrap";
-import { Tooltip } from "react-tooltip";
+import React, { useState, useEffect, useRef } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import { Tooltip } from "react-tooltip";
 import "./PortfolioNavbar.scss";
 import { useTheme } from "../Themes/ThemeProvider";
 
 const PortfolioNavbar = () => {
   const { toggleTheme, isDarkMode } = useTheme();
-  const [activeNav, setActiveNav] = React.useState("");
 
-  function handleToggleTheme() {
-    toggleTheme();
-    document.body.classList.toggle("light-mode", !isDarkMode);
-    document.body.classList.toggle("dark-mode", isDarkMode);
-  }
+  const [activeNav, setActiveNav] = useState("");
+  const [expanded, setExpanded] = useState(false);
+  const navbarRef = useRef(null);
 
-  function handleScroll() {
-    const navbar = document.getElementById("Nav");
-    if (!navbar) return;
+  /* ===============================
+     SCROLL EFFECT (ADD .scrolled)
+  =============================== */
+  useEffect(() => {
+    const handleScroll = () => {
+      const nav = document.getElementById("Nav");
+      if (!nav) return;
+      nav.classList.toggle("scrolled", window.scrollY > 20);
+    };
 
-    if (window.scrollY > 20) {
-      navbar.classList.add("scrolled");
-    } else {
-      navbar.classList.remove("scrolled");
-    }
-  }
-
-  React.useEffect(() => {
     window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  /* ===============================
+     CLOSE NAVBAR ON OUTSIDE CLICK
+  =============================== */
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (
+        expanded &&
+        navbarRef.current &&
+        !navbarRef.current.contains(e.target)
+      ) {
+        setExpanded(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => document.removeEventListener("mousedown", handleOutsideClick);
+  }, [expanded]);
+
+  /* ===============================
+     COMMON HANDLER
+  =============================== */
+  const handleNavClick = (section) => {
+    setActiveNav(section);
+    setExpanded(false);
+  };
+
+  const handleThemeToggle = () => {
+    toggleTheme();
+    document.body.classList.toggle("light-mode", !isDarkMode);
+    document.body.classList.toggle("dark-mode", isDarkMode);
+  };
+
   return (
     <Navbar
+      ref={navbarRef}
+      id="Nav"
       fixed="top"
-      collapseOnSelect
       expand="md"
       variant="dark"
+      expanded={expanded}
+      onToggle={setExpanded}
       className="animate-navbar nav-theme justify-content-between"
-      id="Nav"
     >
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
 
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav id="NavbarElements">
-
-          {/* -------- Home -------- */}
           <Nav.Link
             href="#home"
-            className={activeNav === "home" ? "active" : ""}
-            onClick={() => setActiveNav("home")}
+            active={activeNav === "home"}
+            onClick={() => handleNavClick("home")}
           >
             Home
           </Nav.Link>
 
-          {/* -------- About -------- */}
           <Nav.Link
             href="#about"
-            className={activeNav === "about" ? "active" : ""}
-            onClick={() => setActiveNav("about")}
+            active={activeNav === "about"}
+            onClick={() => handleNavClick("about")}
           >
             About
           </Nav.Link>
 
-          {/* -------- Skills Dropdown -------- */}
           <NavDropdown
             title="Skills"
             id="skills-dropdown"
-            className={activeNav === "skills" ? "active" : ""}
+            active={activeNav === "skills"}
           >
             <NavDropdown.Item
               href="#it-skills"
-              onClick={() => setActiveNav("skills")}
+              onClick={() => handleNavClick("skills")}
             >
               IT Skills
             </NavDropdown.Item>
 
             <NavDropdown.Item
               href="#core-skills"
-              onClick={() => setActiveNav("skills")}
+              onClick={() => handleNavClick("skills")}
             >
               Core Skills
             </NavDropdown.Item>
           </NavDropdown>
 
-          {/* -------- Projects Dropdown -------- */}
           <NavDropdown
             title="Projects"
             id="projects-dropdown"
-            className={activeNav === "projects" ? "active" : ""}
+            active={activeNav === "projects"}
           >
             <NavDropdown.Item
               href="#it-projects"
-              onClick={() => setActiveNav("projects")}
+              onClick={() => handleNavClick("projects")}
             >
               IT Projects
             </NavDropdown.Item>
 
             <NavDropdown.Item
               href="#core-projects"
-              onClick={() => setActiveNav("projects")}
+              onClick={() => handleNavClick("projects")}
             >
               Core Projects
             </NavDropdown.Item>
           </NavDropdown>
 
-          {/* -------- Certifications -------- */}
           <Nav.Link
             href="#Certificates"
-            className={activeNav === "certifications" ? "active" : ""}
-            onClick={() => setActiveNav("certifications")}
+            active={activeNav === "certifications"}
+            onClick={() => handleNavClick("certifications")}
           >
             Certifications
           </Nav.Link>
 
-          {/* -------- Contact -------- */}
           <Nav.Link
             href="#contactLine"
-            className={activeNav === "contact" ? "active" : ""}
-            onClick={() => setActiveNav("contact")}
+            active={activeNav === "contact"}
+            onClick={() => handleNavClick("contact")}
           >
             Contact
           </Nav.Link>
         </Nav>
       </Navbar.Collapse>
 
-      {/* -------- Theme Switch -------- */}
+      {/* THEME SWITCH */}
       <div className="theme-switch-wrapper">
-        <span id="toggle-icon">
+        <span>
           {isDarkMode ? (
             <i className="fas fa-moon" style={{ color: "white" }} />
           ) : (
             <i className="fas fa-sun" style={{ color: "white" }} />
           )}
         </span>
-
         <label className="theme-switch">
-          <input type="checkbox" onChange={handleToggleTheme} />
+          <input type="checkbox" onChange={handleThemeToggle} />
           <div
             className="slider round"
             data-tooltip-id="my-tooltip"
             data-tooltip-content={
               isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"
             }
-            data-tooltip-place="top"
           >
             <Tooltip id="my-tooltip" />
           </div>
