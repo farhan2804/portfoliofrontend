@@ -175,6 +175,12 @@
 /* =========================
    RESPONSIVE FIXES
 ========================= */
+@media (max-width: 992px) {
+ h2 {
+  font-size: 23px;
+ }
+}
+
 @media (max-width: 767px) {
   #SkillsContainer1,
   #SkillsContainer2,
