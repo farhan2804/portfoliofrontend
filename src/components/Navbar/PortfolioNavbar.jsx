@@ -12,6 +12,7 @@ const PortfolioNavbar = () => {
   const [activeNav, setActiveNav] = useState("");
   const [expanded, setExpanded] = useState(false);
   const navbarRef = useRef(null);
+  const isMobile = window.innerWidth <= 767;
 
   /* ===============================
      SCROLL EFFECT (ADD .scrolled)
@@ -163,12 +164,14 @@ const PortfolioNavbar = () => {
           <input type="checkbox" onChange={handleThemeToggle} />
           <div
             className="slider round"
-            data-tooltip-id="my-tooltip"
-            data-tooltip-content={
-              isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"
-            }
+            {...(!isMobile && {
+              "data-tooltip-id": "my-tooltip",
+              "data-tooltip-content": isDarkMode
+                ? "Switch to Light Mode"
+                : "Switch to Dark Mode",
+            })}
           >
-            <Tooltip id="my-tooltip" />
+            {!isMobile && <Tooltip id="my-tooltip" />}
           </div>
         </label>
       </div>
