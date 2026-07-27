@@ -12,7 +12,8 @@ export const CALCULATOR = "https://farhan2804.github.io/Calculator/";
 export const Calculator_Source_Code =
   "https://github.com/farhan2804/Calculator";
 export const WRITERSDIARY = "https://farhan2804writersdiary.netlify.app/";
-export const WRITERS_DIARY_Source_Code = "https://github.com/farhan2804/quotesApp";
+export const WRITERS_DIARY_Source_Code =
+  "https://github.com/farhan2804/quotesApp";
 export const QR_CODE_GENERATOR =
   "https://farhan2804.github.io/qr-code-generator/";
 export const QR_CODE_GENERATOR_Source_Code =
@@ -28,13 +29,26 @@ export const Weather_App = "https://weatherapp-e7zp.onrender.com/";
 export const Weather_App_Source_Code =
   "https://github.com/farhan2804/weatherAppExpressJS";
 
-  export const Pagination="https://paginationfarhan28.netlify.app/";
-  export const Pagination_Source_Code="https://github.com/farhan2804/pagination";
+export const Pagination = "https://paginationfarhan28.netlify.app/";
+export const Pagination_Source_Code =
+  "https://github.com/farhan2804/pagination";
 
-  export const Core="https://coreprojectsfarhan28.netlify.app/";
+// export const Core = "https://coreprojectsfarhan28.netlify.app/";
 
-  export const maintenance_Dashboard = "https://farhan2804dashboard.netlify.app/";
-  export const maintenance_Dashboard_source_code = "https://github.com/farhan2804/Maintenance_dashboard";
+export const maintenance_Dashboard = "https://farhan2804dashboard.netlify.app/";
+export const maintenance_Dashboard_source_code =
+  "https://github.com/farhan2804/Maintenance_dashboard";
 
-  export const cable_builder = "https://farhan2804cablebuilder.netlify.app/";
-  export const cable_builder_source_code = "https://github.com/farhan2804/cable_builder_tool";
+export const cable_builder = "https://farhan2804cablebuilder.netlify.app/";
+export const cable_builder_source_code =
+  "https://github.com/farhan2804/cable_builder_tool";
+export const Pronounce_AI = "https://pronounce-ai-ap3b-phi.vercel.app/";
+export const Pronounce_AI_Source_Code =
+  "https://github.com/farhan2804/pronounce_AI";
+export const AI_SQL_Assistant = "https://aisqlassistant.netlify.app/";
+export const AI_SQL_Assistant_Source_Code =
+  "https://github.com/farhan2804/AI_sql_assistant";
+
+
+  export const predictive_maintenance = "https://www.linkedin.com/feed/update/urn:li:activity:7475825702777384961/";
+  export const predictive_maintenance_source_code = "https://github.com/farhan2804/predictive_maintenance"

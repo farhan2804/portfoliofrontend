@@ -89,6 +89,7 @@ const PortfolioProjects = () => {
                 >
                   <h3 id="titleOfImage">{project.title}</h3>
                   <p id="descriptionOfImage">{project.description}</p>
+                  <div className="project-links">
                   <a
                     className="details-button"
                     href={project.Deploy_url}
@@ -129,6 +130,7 @@ const PortfolioProjects = () => {
                       />
                     )}
                   </a>
+                  </div>
                 </div>
               </div>
             </div>

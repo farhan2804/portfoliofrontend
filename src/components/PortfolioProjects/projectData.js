@@ -1,14 +1,20 @@
-import Image1 from "../../assets/Images/Projects/text1.svg";
-import Image2 from "../../assets/Images/Projects/quiz1.svg";
-import Image3 from "../../assets/Images/Projects/list1.svg";
-import Image4 from "../../assets/Images/Projects/diary1.svg";
-import Image5 from "../../assets/Images/Projects/qr.svg";
-import Image6 from "../../assets/Images/Projects/infinity.svg";
-// import Image7 from "../../assets/Images/Projects/darkMode.svg";
-import Image8 from "../../assets/Images/Projects/calculator1.svg";
-import Image9 from "../../assets/Images/Projects/weather1.svg";
-import Image10 from '../../assets/Images/Projects/pagination.svg';
-// import Image11 from '../../assets/Images/Projects/core.svg';
+import PronounceAI from "../../assets/Images/Projects/pronounce_AI.png";
+import SQLAssistant from "../../assets/Images/Projects/AI_SQL_Assistant.png";
+import quiz_App from "../../assets/Images/Projects/quiz_app.png";
+import text_tract from "../../assets/Images/Projects/text_tract.png";
+import writer_diary from "../../assets/Images/Projects/writer_diary.png";
+import weather_app from "../../assets/Images/Projects/weather_app.png";
+import qr_code from "../../assets/Images/Projects/qr_code.png";
+import infinite_scroll from "../../assets/Images/Projects/infinite_scroll.png";
+import calculator from "../../assets/Images/Projects/calculator.png";
+import todo_list from "../../assets/Images/Projects/todo_list.png";
+
+
+
+
+
+
+
 import {
   TEXTTRACT,
   TEXTTRACT_Source_Code,
@@ -28,40 +34,62 @@ import {
   Todo_List_Source_Code,
   Weather_App,
   Weather_App_Source_Code,
+  Pronounce_AI,
+  Pronounce_AI_Source_Code,
+  AI_SQL_Assistant,
+  AI_SQL_Assistant_Source_Code,
   // Pagination,
   // Pagination_Source_Code,
 } from "../constants/urlConstants.js";
 
 export const projectData = [
   {
-    id: "project_1",
-    image: Image1,
-    title: "Text Utility App",
-    description: "React.js, JavaScript",
-    Deploy_url: TEXTTRACT,
-    SourceCode_url: TEXTTRACT_Source_Code,
+    id: "project_12",
+    image: PronounceAI,
+    title: "PronounceAI",
+    description: "React • Spring Boot • Azure AI",
+    Deploy_url: Pronounce_AI,
+    SourceCode_url: Pronounce_AI_Source_Code,
+  },
+
+  {
+    id: "project_13",
+    image: SQLAssistant,
+    title: "AI SQL Assistant",
+    description: "React • Spring Boot • PostgreSQL",
+    Deploy_url: AI_SQL_Assistant,
+    SourceCode_url: AI_SQL_Assistant_Source_Code,
   },
   {
     id: "project_2",
-    image: Image2,
+    image: quiz_App,
     title: "Quiz App",
-    description: "React.js, JavaScript",
+    description: "React • JavaScript",
     Deploy_url: Quiz_App,
     SourceCode_url: Quiz_App_Source_Code,
   },
   {
+    id: "project_1",
+    image: text_tract,
+    title: "Text Utility App",
+    description: "React • JavaScript",
+    Deploy_url: TEXTTRACT,
+    SourceCode_url: TEXTTRACT_Source_Code,
+  },
+
+  {
     id: "project_6",
-    image: Image4,
+    image: writer_diary,
     title: "The Writer's Diary",
-    description: "React.js, JavaScript",
+    description: "React • JavaScript",
     Deploy_url: WRITERSDIARY,
     SourceCode_url: WRITERS_DIARY_Source_Code,
   },
   {
     id: "project_4",
-    image: Image9,
+    image: weather_app,
     title: "Weather App",
-    description: "Node.js, Express.js",
+    description: "Node.js • Express.js",
     Deploy_url: Weather_App,
     SourceCode_url: Weather_App_Source_Code,
   },
@@ -75,37 +103,34 @@ export const projectData = [
   // },
   {
     id: "project_5",
-    image: Image5,
+    image: qr_code,
     title: "QR Code Generator",
-    description: "React.js, JavaScript",
+    description: "React • JavaScript",
     Deploy_url: QR_CODE_GENERATOR,
     SourceCode_url: QR_CODE_GENERATOR_Source_Code,
   },
   {
-    id: "project_3",
-    image: Image3,
-    title: "ToDo List",
-    description: "React.js, JavaScript",
-    Deploy_url: Todo_List,
-    SourceCode_url: Todo_List_Source_Code,
-  },
-
-  {
-    id: "project_8",
-    image: Image8,
-    title: "Calculator",
-    description: "HTML, CSS and JavaScript",
-    Deploy_url: CALCULATOR,
-    SourceCode_url: Calculator_Source_Code,
-  },
-
-  {
     id: "project_9",
-    image: Image6,
+    image: infinite_scroll,
     title: "Infinity scroll",
-    description: "HTML, CSS and JavaScript",
+    description: "HTML • CSS • JavaScript",
     Deploy_url: INFINITY_SCROLL,
     SourceCode_url: INFINITY_SCROLL_Source_Code,
   },
-  
+  {
+    id: "project_8",
+    image: calculator,
+    title: "Calculator",
+    description: "HTML • CSS • JavaScript",
+    Deploy_url: CALCULATOR,
+    SourceCode_url: Calculator_Source_Code,
+  },
+  {
+    id: "project_3",
+    image: todo_list,
+    title: "ToDo List",
+    description: "React • JavaScript",
+    Deploy_url: Todo_List,
+    SourceCode_url: Todo_List_Source_Code,
+  },
 ];

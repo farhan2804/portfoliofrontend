@@ -11,18 +11,18 @@ import "./PortfolioProjectCore.scss";
 
 const PortfolioProjectCore = () => {
   const { isDarkMode } = useTheme();
+
   const [hoveredProject, setHoveredProject] = useState(null);
   const [clickedProject, setClickedProject] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // Detect screen width change
     const handleResize = () => {
       setIsMobile(window.innerWidth < 800);
     };
 
     window.addEventListener("resize", handleResize);
-    handleResize(); // Initial check
+    handleResize();
 
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -52,17 +52,29 @@ const PortfolioProjectCore = () => {
   return (
     <Container>
       <div
-        className={`container mb-5 ${isDarkMode ? "dark-mode" : "light-mode"}`}
+        className={`container mb-5 ${
+          isDarkMode ? "dark-mode" : "light-mode"
+        }`}
         id="core-projects"
       >
-        <h1 id="core-heading" className="text-center text-capitalize pt-4">Electrical Engineering & Planning Projects</h1>
+        <h1
+          id="core-heading"
+          className="text-center text-capitalize pt-4"
+        >
+          Electrical Engineering & Planning Projects
+        </h1>
+
         <br />
+
         <div className="row">
           {projectDataCore.map((project) => (
             <div
               key={project.id}
               className={`col-lg-4 col-md-4 col-sm-6 col-12 mb-4 image-container ${
-                (hoveredProject === project.id || clickedProject === project.id) ? "hovered" : ""
+                hoveredProject === project.id ||
+                clickedProject === project.id
+                  ? "hovered"
+                  : ""
               }`}
               onMouseEnter={() => handleMouseEnter(project.id)}
               onMouseLeave={handleMouseLeave}
@@ -74,61 +86,73 @@ const PortfolioProjectCore = () => {
                   className="img-fluid"
                   alt={project.title}
                 />
+
                 {isMobile && clickedProject !== project.id && (
                   <div className="click-me-overlay">
-                  <h3>{project.title}</h3>
+                    <h3>{project.title}</h3>
                     <p id="moreDetails">Tap for Demo</p>
                   </div>
                 )}
+
                 <div
                   className={`project-details ${
-                    (hoveredProject === project.id || clickedProject === project.id)
+                    hoveredProject === project.id ||
+                    clickedProject === project.id
                       ? "hovered"
                       : ""
                   } ${isDarkMode ? "dark-mode" : "light-mode"}`}
                 >
                   <h3 id="titleOfImage">{project.title}</h3>
-                  <p id="descriptionOfImage">{project.description}</p>
-                  <a
-                    className="details-button"
-                    href={project.Deploy_url}
-                    target="_blank"
-                    onClick={handleDetailsButtonClick}
-                  >
-                    {isDarkMode ? (
-                      <img
-                        id="deployImage"
-                        src={deatilsButtonIconDark}
-                        alt="details-button"
-                      />
-                    ) : (
-                      <img
-                        id="deployImage"
-                        src={detailsButtonIcon}
-                        alt="details-button"
-                      />
-                    )}
-                  </a>
-                  <a
-                    className="details-button"
-                    href={project.SourceCode_url}
-                    target="_blank"
-                    onClick={handleDetailsButtonClick}
-                  >
-                    {isDarkMode ? (
-                      <img
-                        id="gitHubImage"
-                        src={githubButtonIconDark}
-                        alt="details-button"
-                      />
-                    ) : (
-                      <img
-                        id="gitHubImage"
-                        src={githubButtonIcon}
-                        alt="details-button"
-                      />
-                    )}
-                  </a>
+
+                  <p id="descriptionOfImage">
+                    {project.description}
+                  </p>
+
+                  <div className="project-links">
+                    <a
+                      className="details-button"
+                      href={project.Deploy_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={handleDetailsButtonClick}
+                    >
+                      {isDarkMode ? (
+                        <img
+                          id="deployImage"
+                          src={deatilsButtonIconDark}
+                          alt="Live Demo"
+                        />
+                      ) : (
+                        <img
+                          id="deployImage"
+                          src={detailsButtonIcon}
+                          alt="Live Demo"
+                        />
+                      )}
+                    </a>
+
+                    <a
+                      className="details-button"
+                      href={project.SourceCode_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={handleDetailsButtonClick}
+                    >
+                      {isDarkMode ? (
+                        <img
+                          id="gitHubImage"
+                          src={githubButtonIconDark}
+                          alt="GitHub"
+                        />
+                      ) : (
+                        <img
+                          id="gitHubImage"
+                          src={githubButtonIcon}
+                          alt="GitHub"
+                        />
+                      )}
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
