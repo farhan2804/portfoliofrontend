@@ -40,11 +40,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-background: linear-gradient(
-  135deg,
-  rgba(12, 186, 180, 0.55),
-  rgba(10, 13, 65, 0.65)
-);
+  background: linear-gradient(
+    135deg,
+    rgba(12, 186, 180, 0.55),
+    rgba(10, 13, 65, 0.65)
+  );
   backdrop-filter: blur(3px);
   opacity: 0;
   transition: all 0.35s ease;
@@ -58,11 +58,9 @@ background: linear-gradient(
   color: white;
 }
 
-
 .image-container.hovered .project-details {
   opacity: 1;
 }
-
 
 .details-button {
   display: flex;
@@ -78,18 +76,15 @@ background: linear-gradient(
   transition: 0.3s;
 }
 
-
 .details-button:hover {
   transform: translateY(-4px);
   // background: #24d2c48b;
-background: linear-gradient(
-  135deg,
-  rgba(12, 186, 180, 0.55),
-  rgba(10, 13, 65, 0.65)
-);
+  background: linear-gradient(
+    135deg,
+    rgba(12, 186, 180, 0.55),
+    rgba(10, 13, 65, 0.65)
+  );
 }
-
-
 
 .project-links {
   display: flex;
@@ -124,8 +119,6 @@ background: linear-gradient(
   }
 }
 
-
-
 .image-container img {
   transition:
     transform 0.45s ease,
@@ -141,7 +134,11 @@ background: linear-gradient(
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #3b4652;
+  background: linear-gradient(
+    135deg,
+    rgba(12, 186, 180, 0.55),
+    rgba(10, 13, 65, 0.65)
+  );
   color: white;
   padding: 1rem;
   border-radius: 5px;
