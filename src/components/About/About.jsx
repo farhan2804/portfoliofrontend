@@ -1,5 +1,5 @@
 import React from "react";
-import Image from "../../assets/Images/About/Farhan1.jpg";
+import Image from "../../assets/Images/About/farhan.png";
 import Button from "react-bootstrap/Button";
 import { aboutText } from "./aboutData";
 import Container from "react-bootstrap/Container";
