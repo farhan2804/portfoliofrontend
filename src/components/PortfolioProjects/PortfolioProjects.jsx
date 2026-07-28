@@ -77,7 +77,7 @@ const PortfolioProjects = () => {
                 {isMobile && clickedProject !== project.id && (
                   <div className="click-me-overlay">
                   <h3>{project.title}</h3>
-                    <p id="moreDetails">Tap for Demo</p>
+                    <p id="moreDetails"><i>Explore Project</i></p>
                   </div>
                 )}
                 <div
