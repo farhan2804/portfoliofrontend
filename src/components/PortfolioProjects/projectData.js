@@ -44,7 +44,7 @@ import {
 
 export const projectData = [
   {
-    id: "project_12",
+    id: "project_1",
     image: PronounceAI,
     title: "PronounceAI",
     description: "React • Spring Boot • Azure AI",
@@ -53,7 +53,7 @@ export const projectData = [
   },
 
   {
-    id: "project_13",
+    id: "project_2",
     image: SQLAssistant,
     title: "AI SQL Assistant",
     description: "React • Spring Boot • PostgreSQL",
@@ -61,15 +61,15 @@ export const projectData = [
     SourceCode_url: AI_SQL_Assistant_Source_Code,
   },
   {
-    id: "project_2",
+    id: "project_3",
     image: quiz_App,
-    title: "Quiz App",
-    description: "React • JavaScript",
+    title: "QuizGenius AI",
+    description: "React • Spring Boot • GroqAI",
     Deploy_url: Quiz_App,
     SourceCode_url: Quiz_App_Source_Code,
   },
   {
-    id: "project_1",
+    id: "project_4",
     image: text_tract,
     title: "Text Utility App",
     description: "React • JavaScript",
@@ -78,7 +78,7 @@ export const projectData = [
   },
 
   {
-    id: "project_6",
+    id: "project_5",
     image: writer_diary,
     title: "The Writer's Diary",
     description: "React • JavaScript",
@@ -86,7 +86,7 @@ export const projectData = [
     SourceCode_url: WRITERS_DIARY_Source_Code,
   },
   {
-    id: "project_4",
+    id: "project_6",
     image: weather_app,
     title: "Weather App",
     description: "Node.js • Express.js",
@@ -102,7 +102,7 @@ export const projectData = [
   //   SourceCode_url: Pagination_Source_Code,
   // },
   {
-    id: "project_5",
+    id: "project_7",
     image: qr_code,
     title: "QR Code Generator",
     description: "React • JavaScript",
@@ -110,7 +110,7 @@ export const projectData = [
     SourceCode_url: QR_CODE_GENERATOR_Source_Code,
   },
   {
-    id: "project_9",
+    id: "project_8",
     image: infinite_scroll,
     title: "Infinity scroll",
     description: "HTML • CSS • JavaScript",
@@ -118,7 +118,7 @@ export const projectData = [
     SourceCode_url: INFINITY_SCROLL_Source_Code,
   },
   {
-    id: "project_8",
+    id: "project_9",
     image: calculator,
     title: "Calculator",
     description: "HTML • CSS • JavaScript",
@@ -126,7 +126,7 @@ export const projectData = [
     SourceCode_url: Calculator_Source_Code,
   },
   {
-    id: "project_3",
+    id: "project_10",
     image: todo_list,
     title: "ToDo List",
     description: "React • JavaScript",
