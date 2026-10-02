@@ -8,12 +8,7 @@ import qr_code from "../../assets/Images/Projects/qr_code.png";
 import infinite_scroll from "../../assets/Images/Projects/infinite_scroll.png";
 import calculator from "../../assets/Images/Projects/calculator.png";
 import todo_list from "../../assets/Images/Projects/todo_list.png";
-
-
-
-
-
-
+import Diagnostic_healthcare_booking_api_image from "../../assets/Images/Projects/Diagnostic_healthcare_booking_api.png";
 
 import {
   TEXTTRACT,
@@ -40,6 +35,8 @@ import {
   AI_SQL_Assistant_Source_Code,
   // Pagination,
   // Pagination_Source_Code,
+  Diagnostic_healthcare_booking_api,
+  Diagnostic_healthcare_booking_api_source_code,
 } from "../constants/urlConstants.js";
 
 export const projectData = [
@@ -47,7 +44,7 @@ export const projectData = [
     id: "project_1",
     image: PronounceAI,
     title: "PronounceAI",
-    description: "React • Spring Boot • Azure AI",
+    description: "Java 21 • Spring Boot • Azure AI • React",
     Deploy_url: Pronounce_AI,
     SourceCode_url: Pronounce_AI_Source_Code,
   },
@@ -56,12 +53,20 @@ export const projectData = [
     id: "project_2",
     image: SQLAssistant,
     title: "AI SQL Assistant",
-    description: "React • Spring Boot • PostgreSQL",
+    description: "Java 21 • Spring Boot • PostgreSQL • LLM / Groq API",
     Deploy_url: AI_SQL_Assistant,
     SourceCode_url: AI_SQL_Assistant_Source_Code,
   },
   {
     id: "project_3",
+    image: Diagnostic_healthcare_booking_api_image,
+    title: "Diagnostic Healthcare Booking API",
+    description: " Java 21 • Spring Boot  • Spring Security • PostgreSQL",
+    Deploy_url: Diagnostic_healthcare_booking_api,
+    SourceCode_url: Diagnostic_healthcare_booking_api_source_code,
+  },
+  {
+    id: "project_4",
     image: quiz_App,
     title: "QuizGenius AI",
     description: "React • Spring Boot • GroqAI",
@@ -69,7 +74,7 @@ export const projectData = [
     SourceCode_url: Quiz_App_Source_Code,
   },
   {
-    id: "project_4",
+    id: "project_5",
     image: text_tract,
     title: "Text Utility App",
     description: "React • JavaScript",
@@ -78,7 +83,7 @@ export const projectData = [
   },
 
   {
-    id: "project_5",
+    id: "project_6",
     image: writer_diary,
     title: "The Writer's Diary",
     description: "React • JavaScript",
@@ -86,7 +91,7 @@ export const projectData = [
     SourceCode_url: WRITERS_DIARY_Source_Code,
   },
   {
-    id: "project_6",
+    id: "project_7",
     image: weather_app,
     title: "Weather App",
     description: "Node.js • Express.js",
@@ -102,7 +107,7 @@ export const projectData = [
   //   SourceCode_url: Pagination_Source_Code,
   // },
   {
-    id: "project_7",
+    id: "project_8",
     image: qr_code,
     title: "QR Code Generator",
     description: "React • JavaScript",
@@ -110,7 +115,7 @@ export const projectData = [
     SourceCode_url: QR_CODE_GENERATOR_Source_Code,
   },
   {
-    id: "project_8",
+    id: "project_9",
     image: infinite_scroll,
     title: "Infinity scroll",
     description: "HTML • CSS • JavaScript",
@@ -118,7 +123,7 @@ export const projectData = [
     SourceCode_url: INFINITY_SCROLL_Source_Code,
   },
   {
-    id: "project_9",
+    id: "project_10",
     image: calculator,
     title: "Calculator",
     description: "HTML • CSS • JavaScript",
@@ -126,7 +131,7 @@ export const projectData = [
     SourceCode_url: Calculator_Source_Code,
   },
   {
-    id: "project_10",
+    id: "project_11",
     image: todo_list,
     title: "ToDo List",
     description: "React • JavaScript",

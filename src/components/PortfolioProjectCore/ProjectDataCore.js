@@ -15,7 +15,7 @@ export const projectDataCore = [
     id: "project_1",
     image: predictive_maintenance_image,
     title: "Predictive Maintenance",
-    description: "Machine Learning • Data Analysis • React",
+    description: "Spring Boot • FastAPI • React Machine • Learning (Random Forest)",
     Deploy_url: predictive_maintenance,
     SourceCode_url: predictive_maintenance_source_code,
   },
