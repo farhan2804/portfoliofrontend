@@ -103,7 +103,7 @@ export default function PortfolioProjectCore() {
               <span className="premium-core-eyebrow-dot" />
               ENGINEERING & PLANNING
             </span>
-            <h2>Core Projects<span className="premium-core-period">.</span></h2>
+            <h2>ECE Projects<span className="premium-core-period">.</span></h2>
             <p>Electrical engineering, planning tools, and software-driven engineering projects.</p>
           </div>
           <div className="premium-core-count" aria-label={`${projects.length} projects`}>

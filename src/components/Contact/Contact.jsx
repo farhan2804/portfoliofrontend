@@ -1,24 +1,27 @@
-import React, { useState } from "react";
-import { ToastContainer, toast, Bounce } from "react-toastify";
-import { FadeLoader } from "react-spinners";
-import "react-toastify/dist/ReactToastify.css";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import Container from "react-bootstrap/Container";
-import { useTheme } from "../Themes/ThemeProvider";
-import "./Contact.scss";
+import { useState } from "react";
 
-const override = {
-  display: "block",
-  margin: "0 auto",
-};
+import { ToastContainer, toast, Slide } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
+
+import Button from "react-bootstrap/Button";
+
+import Form from "react-bootstrap/Form";
+
+import Container from "react-bootstrap/Container";
+
+import { useTheme } from "../Themes/ThemeProvider";
+
+import "./Contact.scss";
 
 const PortfolioContact = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const [data, setData] = useState({
     name: "",
+
     email: "",
+
     message: "",
   });
 
@@ -26,20 +29,30 @@ const PortfolioContact = () => {
 
   const handleInputs = (e) => {
     const { name, value } = e.target;
+
     setData((prev) => ({ ...prev, [name]: value }));
   };
 
   const postData = async (e) => {
     e.preventDefault();
 
-    const { name, email, message } = data;
+    const name = data.name.trim();
+    const email = data.email.trim();
+    const message = data.message.trim();
 
-    if (!name.trim() || !email.trim()) {
-      toast.warn("Name and Email are required", {
+    if (!name || !email) {
+      toast.warning("Please enter your name and email.", {
         position: "top-center",
         autoClose: 5000,
-        theme: "colored",
-        transition: Bounce,
+      });
+      return;
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      toast.warning("Please enter a valid email address.", {
+        position: "top-center",
+        autoClose: 5000,
       });
       return;
     }
@@ -52,45 +65,33 @@ const PortfolioContact = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          name: name.trim(),
-          email: email.trim(),
-          message: message.trim(),
-        }),
+        body: JSON.stringify({ name, email, message }),
       });
 
-      if (res.status === 201) {
-        setData({
-          name: "",
-          email: "",
-          message: "",
-        });
-
-        toast.success("Message sent successfully", {
-          position: "top-center",
-          autoClose: 5000,
-          theme: "colored",
-          transition: Bounce,
-        });
-      } else {
-        toast.warn(
-          "Message not sent. The email may be invalid or already registered.",
+      if (!res.ok) {
+        toast.error(
+          res.status >= 500
+            ? "The server couldn't process your message. Please try again later."
+            : "Message not sent. Please check your details and try again.",
           {
             position: "top-center",
             autoClose: 5000,
-            theme: "colored",
-            transition: Bounce,
           },
         );
+        return;
       }
-    } catch (err) {
-      console.error(err);
 
-      toast.error("An error occurred. Please try again later.", {
+      setData({ name: "", email: "", message: "" });
+
+      toast.success("Message sent successfully. Thanks for reaching out!", {
         position: "top-center",
         autoClose: 5000,
-        theme: "colored",
-        transition: Bounce,
+      });
+    } catch (err) {
+      console.error("Contact form submission failed:", err);
+      toast.error("Couldn't connect to the server. Please try again later.", {
+        position: "top-center",
+        autoClose: 5000,
       });
     } finally {
       setIsLoading(false);
@@ -103,7 +104,21 @@ const PortfolioContact = () => {
       className="contact-section"
       data-theme={isDarkMode ? "dark" : "light"}
     >
-      <ToastContainer />
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        transition={Slide}
+        theme={isDarkMode ? "dark" : "light"}
+        className="portfolio-toast-container"
+        toastClassName="portfolio-toast"
+        style={{ zIndex: 2000, top: "80px" }}
+      />
 
       <Container className="contact-container">
         <header className="contact-header">
@@ -121,10 +136,12 @@ const PortfolioContact = () => {
 
         <div className="contact-grid">
           {/* Contact form */}
+
           <div className="contact-form-card">
-            <Form onSubmit={postData}>
+            <Form onSubmit={postData} noValidate>
               <Form.Group className="contact-field" controlId="contactName">
                 <Form.Label>Name</Form.Label>
+
                 <Form.Control
                   type="text"
                   name="name"
@@ -139,6 +156,7 @@ const PortfolioContact = () => {
 
               <Form.Group className="contact-field" controlId="contactEmail">
                 <Form.Label>Email</Form.Label>
+
                 <Form.Control
                   type="email"
                   name="email"
@@ -156,6 +174,7 @@ const PortfolioContact = () => {
                 controlId="contactMessage"
               >
                 <Form.Label>Message</Form.Label>
+
                 <Form.Control
                   as="textarea"
                   rows={5}
@@ -172,21 +191,26 @@ const PortfolioContact = () => {
                   type="submit"
                   className="contact-submit-btn"
                   disabled={isLoading}
+                  aria-busy={isLoading}
                 >
                   {isLoading ? "Sending..." : "Send Message"}
+
                   {!isLoading && (
                     <i className="fas fa-paper-plane" aria-hidden="true" />
                   )}
                 </Button>
 
                 {isLoading && (
-                  <div className="contact-loader">
-                    <FadeLoader
-                      loading={isLoading}
-                      color="#19D9BD"
-                      cssOverride={override}
-                      aria-label="Sending message"
-                    />
+                  <div className="contact-loading-panel" role="status">
+                    <div className="contact-loading-header">
+                      <span>Sending message</span>
+
+                      <span>Please wait</span>
+                    </div>
+
+                    <div className="contact-progress-track">
+                      <span className="contact-progress-bar" />
+                    </div>
                   </div>
                 )}
               </div>
@@ -194,6 +218,7 @@ const PortfolioContact = () => {
           </div>
 
           {/* Contact information */}
+
           <div className="contact-side">
             <div className="contact-info-card">
               <h2>Contact Information</h2>
@@ -208,9 +233,8 @@ const PortfolioContact = () => {
 
                 <span className="contact-info-copy">
                   <span className="contact-info-label">Email</span>
-                  <span className="contact-info-value">
-                    johndoe@gmail.com
-                  </span>
+
+                  <span className="contact-info-value">johndoe@gmail.com</span>
                 </span>
               </a>
 
@@ -226,6 +250,7 @@ const PortfolioContact = () => {
 
                 <span className="contact-info-copy">
                   <span className="contact-info-label">LinkedIn</span>
+
                   <span className="contact-info-value">
                     Let's connect professionally
                   </span>
@@ -244,6 +269,7 @@ const PortfolioContact = () => {
 
                 <span className="contact-info-copy">
                   <span className="contact-info-label">GitHub</span>
+
                   <span className="contact-info-value">
                     Explore my projects
                   </span>
@@ -254,6 +280,7 @@ const PortfolioContact = () => {
             <div className="contact-availability-card">
               <div className="availability-heading">
                 <span className="availability-dot" />
+
                 <h3>Open to Opportunities</h3>
               </div>
 

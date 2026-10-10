@@ -5,16 +5,21 @@ import { projectData } from "./projectData";
 import "./PortfolioProjects.scss";
 
 const PROJECT_TECH = {
-  "PronounceAI": ["React", "Java 21", "Spring Boot", "Azure AI"],
+  PronounceAI: ["React", "Java 21", "Spring Boot", "Azure AI"],
   "AI SQL Assistant": ["React", "Java 21", "PostgreSQL", "Groq / Llama"],
-  "Diagnostic Healthcare Booking API": ["Java 21", "Spring Boot", "Spring Security", "PostgreSQL"],
+  "Diagnostic Healthcare Booking API": [
+    "Java 21",
+    "Spring Boot",
+    "Spring Security",
+    "PostgreSQL",
+  ],
   "QuizGenius AI": ["React", "Spring Boot", "Groq AI"],
   "Text Utility App": ["React", "JavaScript"],
   "The Writer’s Diary": ["React", "JavaScript"],
   "Weather App": ["Node.js", "Express.js"],
   "QR Code Generator": ["React", "JavaScript"],
   "Infinity scroll": ["HTML", "CSS", "JavaScript"],
-  "Calculator": ["HTML", "CSS", "JavaScript"],
+  Calculator: ["HTML", "CSS", "JavaScript"],
   "ToDo List": ["React", "JavaScript"],
 };
 
@@ -35,13 +40,18 @@ function ProjectCard({ project, index }) {
   const sourceUrl = project.SourceCode_url;
 
   return (
-    <article className={`premium-project-card ${index === 0 ? "premium-project-card--featured" : ""}`}>
+    <article
+      className={`premium-project-card ${index === 0 ? "premium-project-card--featured" : ""}`}
+    >
       <div className="premium-project-card__visual">
         <img
           src={project.image}
           alt={`${project.title} project preview`}
-          loading={index < 3 ? "eager" : "lazy"}
+          loading={index === 0 ? "eager" : "lazy"}
+          fetchPriority={index === 0 ? "high" : "auto"}
+          decoding="async"
         />
+
         <div className="premium-project-card__category">
           {index === 0 ? "Featured Project" : "Selected Work"}
         </div>
@@ -87,10 +97,15 @@ function ProjectCard({ project, index }) {
             {String(index + 1).padStart(2, "0")}
           </span>
         </div>
-        <p className="premium-project-card__description">{project.description}</p>
+        <p className="premium-project-card__description">
+          {project.description}
+        </p>
 
         {technologies.length > 0 && (
-          <div className="premium-project-card__tech" aria-label="Technologies used">
+          <div
+            className="premium-project-card__tech"
+            aria-label="Technologies used"
+          >
             {technologies.map((technology) => (
               <span key={technology} className="premium-project-tech">
                 {technology}
@@ -101,7 +116,12 @@ function ProjectCard({ project, index }) {
 
         <div className="premium-project-card__footer">
           <span className="premium-project-card__footer-label">PROJECT</span>
-          <span className="premium-project-card__footer-mark" aria-hidden="true">↗</span>
+          <span
+            className="premium-project-card__footer-mark"
+            aria-hidden="true"
+          >
+            ↗
+          </span>
         </div>
       </div>
     </article>
@@ -115,7 +135,11 @@ export default function PortfolioProjects() {
   const remainingCount = Math.max(projectData.length - 3, 0);
 
   return (
-    <section className="premium-projects-section" id="projects" data-theme={theme}>
+    <section
+      className="premium-projects-section"
+      id="projects"
+      data-theme={theme}
+    >
       <Container>
         <div className="premium-projects-header">
           <div className="premium-projects-heading-copy">
@@ -131,13 +155,18 @@ export default function PortfolioProjects() {
               modern technologies.
             </p>
           </div>
-          <div className="premium-projects-count" aria-label={`${projectData.length} projects`}>
+          <div
+            className="premium-projects-count"
+            aria-label={`${projectData.length} projects`}
+          >
             <span>{String(projectData.length).padStart(2, "0")}</span>
             <small>PROJECTS</small>
           </div>
         </div>
 
-        <div className={`premium-projects-grid ${showAll ? "is-expanded" : ""}`}>
+        <div
+          className={`premium-projects-grid ${showAll ? "is-expanded" : ""}`}
+        >
           {visibleProjects.map((project, index) => (
             <ProjectCard
               key={project.id ?? project.title}
@@ -158,7 +187,9 @@ export default function PortfolioProjects() {
             >
               <span>{showAll ? "Show Less" : "View All Projects"}</span>
               {!showAll && remainingCount > 0 && (
-                <span className="premium-projects-toggle-count">+{remainingCount}</span>
+                <span className="premium-projects-toggle-count">
+                  +{remainingCount}
+                </span>
               )}
               <svg
                 className={showAll ? "is-rotated" : ""}

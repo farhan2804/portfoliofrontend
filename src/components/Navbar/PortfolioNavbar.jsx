@@ -139,7 +139,7 @@ const PortfolioNavbar = () => {
               href="#core-projects"
               onClick={() => handleNavClick("projects")}
             >
-              Core Projects
+              ECE Projects
             </NavDropdown.Item>
           </NavDropdown>
 

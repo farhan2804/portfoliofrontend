@@ -1,4 +1,3 @@
-
 import React from "react";
 import Image from "../../assets/Images/About/about_image_1.png";
 import Container from "react-bootstrap/Container";
@@ -34,7 +33,11 @@ const PortfolioAbout = () => {
                 src={Image}
                 alt="Farhan Mahmood"
                 className="about-portrait"
-                loading="lazy"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                width="600"
+                height="750"
               />
 
               <div className="about-portrait-caption">
@@ -62,16 +65,15 @@ const PortfolioAbout = () => {
             </p>
 
             <p className="about-description">
-              I build applications using Java, Spring Boot, React,
-              PostgreSQL, and Python. My projects include an AI-powered
-              pronunciation assessment platform and a natural-language-to-SQL
-              application.
+              I build applications using Java, Spring Boot, React, PostgreSQL,
+              and Python. My projects include an AI-powered pronunciation
+              assessment platform and a natural-language-to-SQL application.
             </p>
 
             <p className="about-description">
-              My engineering background also gives me a foundation in
-              industrial automation, PLC/SCADA, and IoT. I enjoy connecting
-              software engineering with practical, real-world problems.
+              My engineering background also gives me a foundation in industrial
+              automation, PLC/SCADA, and IoT. I enjoy connecting software
+              engineering with practical, real-world problems.
             </p>
 
             {/* TECHNOLOGY CHIPS */}
