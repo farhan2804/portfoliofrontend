@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { Tooltip } from "react-tooltip";
+
 import "./PortfolioNavbar.scss";
 import { useTheme } from "../Themes/ThemeProvider";
 
@@ -11,46 +11,45 @@ const PortfolioNavbar = () => {
 
   const [activeNav, setActiveNav] = useState("");
   const [expanded, setExpanded] = useState(false);
-  const navbarRef = useRef(null);
-  const isMobile = window.innerWidth <= 767;
+  const [isScrolled, setIsScrolled] = useState(() => window.scrollY > 20);
 
-  /* ===============================
-     SCROLL EFFECT (ADD .scrolled)
-  =============================== */
+  const navbarRef = useRef(null);
+
+  // Reveal navbar after scrolling; hide it again at the top.
   useEffect(() => {
     const handleScroll = () => {
-      const nav = document.getElementById("Nav");
-      if (!nav) return;
-      nav.classList.toggle("scrolled", window.scrollY > 20);
+      setIsScrolled(window.scrollY > 20);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
 
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
-  /* ===============================
-     CLOSE NAVBAR ON OUTSIDE CLICK
-  =============================== */
+  // Close the mobile menu when clicking outside.
   useEffect(() => {
-    const handleOutsideClick = (e) => {
+    const handleOutsideClick = (event) => {
       if (
         expanded &&
         navbarRef.current &&
-        !navbarRef.current.contains(e.target)
+        !navbarRef.current.contains(event.target)
       ) {
         setExpanded(false);
       }
     };
 
     document.addEventListener("mousedown", handleOutsideClick);
-    return () => document.removeEventListener("mousedown", handleOutsideClick);
+    document.addEventListener("touchstart", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("touchstart", handleOutsideClick);
+    };
   }, [expanded]);
 
-  /* ===============================
-     COMMON HANDLER
-  =============================== */
   const handleNavClick = (section) => {
     setActiveNav(section);
     setExpanded(false);
@@ -58,8 +57,9 @@ const PortfolioNavbar = () => {
 
   const handleThemeToggle = () => {
     toggleTheme();
-    document.body.classList.toggle("light-mode", !isDarkMode);
-    document.body.classList.toggle("dark-mode", isDarkMode);
+
+    document.body.classList.toggle("light-mode", isDarkMode);
+    document.body.classList.toggle("dark-mode", !isDarkMode);
   };
 
   return (
@@ -71,9 +71,19 @@ const PortfolioNavbar = () => {
       variant="dark"
       expanded={expanded}
       onToggle={setExpanded}
-      className="animate-navbar nav-theme justify-content-between"
+      className={`animate-navbar nav-theme ${isScrolled ? "scrolled" : ""}`}
     >
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      <Navbar.Brand href="#home" className="navbar-brand-custom">
+        <span className="navbar-brand-mark">&lt;/&gt;</span>
+        <span>
+          Farhan<span className="navbar-brand-accent">.</span>
+        </span>
+      </Navbar.Brand>
+
+      <Navbar.Toggle
+        aria-controls="responsive-navbar-nav"
+        aria-label="Toggle navigation"
+      />
 
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav id="NavbarElements">
@@ -99,7 +109,7 @@ const PortfolioNavbar = () => {
             active={activeNav === "skills"}
           >
             <NavDropdown.Item
-              href="#it-skills"
+              href="#skills"
               onClick={() => handleNavClick("skills")}
             >
               IT Skills
@@ -109,7 +119,7 @@ const PortfolioNavbar = () => {
               href="#core-skills"
               onClick={() => handleNavClick("skills")}
             >
-              Core Skills
+              ECE Expertise
             </NavDropdown.Item>
           </NavDropdown>
 
@@ -119,7 +129,7 @@ const PortfolioNavbar = () => {
             active={activeNav === "projects"}
           >
             <NavDropdown.Item
-              href="#it-projects"
+              href="#projects"
               onClick={() => handleNavClick("projects")}
             >
               IT Projects
@@ -141,38 +151,37 @@ const PortfolioNavbar = () => {
             Certifications
           </Nav.Link>
 
-          <Nav.Link
+          {/* <Nav.Link
             href="#contactLine"
             active={activeNav === "contact"}
             onClick={() => handleNavClick("contact")}
           >
             Contact
-          </Nav.Link>
+          </Nav.Link> */}
         </Nav>
+
+        <a
+          className="navbar-reach-out"
+          href="#contactLine"
+          onClick={() => handleNavClick("contact")}
+        >
+          Reach Out <span aria-hidden="true">↗</span>
+        </a>
       </Navbar.Collapse>
 
-      {/* THEME SWITCH */}
       <div className="theme-switch-wrapper">
-        <span>
-          {isDarkMode ? (
-            <i className="fas fa-moon" style={{ color: "white" }} />
-          ) : (
-            <i className="fas fa-sun" style={{ color: "white" }} />
-          )}
+        <span className="theme-icon" aria-hidden="true">
+          {isDarkMode ? "☾" : "☀"}
         </span>
+
         <label className="theme-switch">
-          <input type="checkbox" onChange={handleThemeToggle} />
-          <div
-            className="slider round"
-            {...(!isMobile && {
-              "data-tooltip-id": "my-tooltip",
-              "data-tooltip-content": isDarkMode
-                ? "Switch to Light Mode"
-                : "Switch to Dark Mode",
-            })}
-          >
-            {!isMobile && <Tooltip id="my-tooltip" />}
-          </div>
+          <input
+            type="checkbox"
+            checked={isDarkMode}
+            onChange={handleThemeToggle}
+            aria-label="Toggle light and dark theme"
+          />
+          <span className="slider round" />
         </label>
       </div>
     </Navbar>

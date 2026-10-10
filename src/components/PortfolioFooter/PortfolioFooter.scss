@@ -1,209 +1,294 @@
-#FooterContainer {
-  display: flex;
+/* =========================================
+   PREMIUM PORTFOLIO FOOTER
+   Accent: #19D9BD
+========================================= */
+
+.portfolio-footer {
+  --footer-bg: #080b0d;
+  --footer-text: #f5f7f8;
+  --footer-muted: #a0aaae;
+  --footer-accent: #19d9bd;
+  --footer-border: rgba(255, 255, 255, 0.12);
+
   position: relative;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-
-  /* ⬆️ HEIGHT INCREASED */
-  height: 300px;
-
-  padding: 30px;
-  font-size: 23px;
-}
-
-#FooterHeading {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 10px;
-  font-weight: 600;
-  letter-spacing: 0.6px;
-}
-
-#footer_tooltip {
-  background-color: #333;
-}
-
-#FooterDetails {
   display: flex;
-  margin-top: auto;
+  align-items: center;
+  justify-content: center;
+  min-height: 290px;
+  padding: 38px 24px 32px;
+  overflow: hidden;
+  isolation: isolate;
+  border-top: 1px solid rgba(25, 217, 189, 0.25);
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-#Name {
+.portfolio-footer[data-theme="light"] {
+  --footer-bg: #f5f8f8;
+  --footer-text: #172426;
+  --footer-muted: #637477;
+  --footer-border: rgba(20, 60, 58, 0.15);
+}
+
+/* Neon divider */
+.portfolio-footer::before {
+  content: "";
   position: absolute;
-  left: 20px;
-  bottom: 10px;
+  z-index: 2;
+  top: 0;
+  left: 12%;
+  width: 76%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(25, 217, 189, 0.35),
+    #19d9bd,
+    rgba(25, 217, 189, 0.35),
+    transparent
+  );
+  box-shadow: 0 0 12px rgba(25, 217, 189, 0.5);
+  pointer-events: none;
 }
 
-#BackToTop {
+/* Atmospheric teal and blue glows */
+.footer-glow {
   position: absolute;
-  right: 20px;
-  bottom: 10px;
+  z-index: -1;
+  width: 440px;
+  height: 200px;
+  border-radius: 50%;
+  filter: blur(95px);
+  pointer-events: none;
 }
 
-#FooterComponents {
+.footer-glow-teal {
+  left: 2%;
+  top: 20%;
+  background: #00d9b5;
+  opacity: 0.23;
+}
+
+.footer-glow-blue {
+  right: 2%;
+  top: -15%;
+  background: #0878ff;
+  opacity: 0.13;
+}
+
+.portfolio-footer[data-theme="light"] .footer-glow-teal {
+  opacity: 0.12;
+}
+
+.portfolio-footer[data-theme="light"] .footer-glow-blue {
+  opacity: 0.07;
+}
+
+/* Main content */
+.footer-main {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
-  font-size: 30px;
+  align-items: center;
+  width: 100%;
+  text-align: center;
 }
 
-.NavDetails {
+.footer-name {
+  color: var(--footer-text);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 750;
+  line-height: 1.15;
+  letter-spacing: -1.3px;
+  text-decoration: none;
+  text-shadow: 0 0 28px rgba(25, 217, 189, 0.08);
+  transition: color 0.2s ease;
+}
+
+.footer-name:hover {
+  color: var(--footer-accent);
+}
+
+.footer-name-underline {
+  display: block;
+  width: 88px;
+  height: 3px;
+  margin-top: 15px;
+  border-radius: 10px;
+  background: var(--footer-accent);
+  box-shadow:
+    0 0 7px rgba(25, 217, 189, 0.65),
+    0 0 20px rgba(25, 217, 189, 0.25);
+}
+
+/* Larger social icons */
+.footer-socials {
   display: flex;
-  gap: 20px;
-  position: absolute;
-  left: 0;
-  right: 0;
+  align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 23px;
+  margin-top: 19px;
 }
 
-.NavDetails .home-link:hover,
-.NavDetails .about-link:hover,
-.NavDetails .skill-link:hover,
-.NavDetails .project-link:hover {
-  color: rgba(81, 79, 79, 0.656);
-  cursor: pointer;
+.footer-socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  min-height: 28px;
+  color: var(--footer-text);
+  font-size: 23px;
+  text-decoration: none;
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease,
+    filter 0.25s ease;
 }
 
-.SocialIcons {
-  display: flex;
+.footer-socials a:hover {
+  color: var(--footer-accent);
+  transform: translateY(-3px);
+  filter: drop-shadow(0 0 7px rgba(25, 217, 189, 0.45));
+}
+
+.footer-socials a:focus-visible,
+.footer-name:focus-visible,
+.portfolio-footer .footer-back-to-top:focus-visible {
+  outline: 2px solid var(--footer-accent);
+  outline-offset: 5px;
+}
+
+/* Tagline and copyright */
+.footer-tagline {
+  margin: 17px 0 0;
+  color: var(--footer-muted);
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.footer-copyright {
+  position: relative;
+  margin: 20px 0 0;
+  padding-top: 13px;
+  color: var(--footer-muted);
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+
+.footer-copyright::before {
+  content: "";
   position: absolute;
-  gap: 20px;
-  top: 35px;
+  top: 0;
   left: 50%;
+  width: 55px;
+  height: 1px;
   transform: translateX(-50%);
+  background: var(--footer-accent);
+  opacity: 0.45;
+}
+
+/* Back-to-top button */
+.portfolio-footer .footer-back-to-top {
+  position: absolute;
+  z-index: 3;
+  right: 32px;
+  bottom: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgba(25, 217, 189, 0.6);
+  border-radius: 50%;
+  background: var(--footer-accent);
+  color: #062521;
+  box-shadow:
+    0 0 12px rgba(25, 217, 189, 0.24),
+    0 0 30px rgba(25, 217, 189, 0.1);
   cursor: pointer;
-  font-size: 40px;
-  text-decoration: none;
-  margin-top: 20px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-#emailIcon {
-  font-size: 40px;
+.portfolio-footer .footer-back-to-top i {
+  font-size: 20px;
 }
 
-.light-mode .SocialIcons .fa-github:hover {
-  color: #fff;
+.portfolio-footer .footer-back-to-top:hover,
+.portfolio-footer .footer-back-to-top:focus {
+  background: var(--footer-accent);
+  color: #062521;
+  transform: translateY(-3px);
+  box-shadow:
+    0 0 15px rgba(25, 217, 189, 0.55),
+    0 0 32px rgba(25, 217, 189, 0.24);
 }
 
-.dark-mode .SocialIcons .fa-github:hover {
-  color: black;
+/* Tooltip */
+#footer-tooltip {
+  z-index: 10;
 }
 
-.fa-instagram:hover {
-  color: #dc3545;
-}
-
-.fa-youtube:hover {
-  color: #dc3545;
-}
-
-.fa-linkedin:hover {
-  color: #0a66c2;
-}
-
-.fa-envelope:hover {
-  color: #0a66c2;
-}
-
-.SocialIcons a {
-  color: inherit;
-  text-decoration: none;
-}
-
-/* =========================
-   MOBILE RESPONSIVENESS
-========================= */
-
-@media (max-width: 418px) {
-  #FooterContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-
-    /* ⬆️ HEIGHT INCREASED */
-    height: 240px;
-
-    background: rgb(54, 51, 51);
-    color: white;
-    padding: 30px;
-    font-size: 18px;
+/* Responsive */
+@media (max-width: 600px) {
+  .portfolio-footer {
+    min-height: 250px;
+    padding: 36px 18px 70px;
   }
 
-  #FooterComponents {
-    display: flex;
-    flex-direction: column;
-    font-size: 22px;
+  .portfolio-footer::before {
+    left: 8%;
+    width: 84%;
   }
 
-  .SocialIcons {
-    font-size: 25px;
-  }
-}
-
-@media (max-width: 575px) {
-  #FooterContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-
-    /* ⬆️ HEIGHT INCREASED */
-    height: 260px;
-
-    background: rgb(54, 51, 51);
-    color: white;
-    padding: 30px;
-    font-size: 17px;
+  .footer-glow {
+    width: 260px;
+    height: 140px;
+    filter: blur(75px);
   }
 
-  #FooterComponents {
-    display: flex;
-    flex-direction: column;
-    font-size: 25px;
+  .footer-name {
+    letter-spacing: -0.8px;
   }
 
-  .SocialIcons {
-    font-size: 30px;
+  .footer-socials {
+    gap: 20px;
   }
 
-  #emailIcon {
-    font-size: 30px;
+  .footer-socials a {
+    min-width: 26px;
+    min-height: 26px;
+    font-size: 21px;
+  }
+
+  .footer-tagline {
+    max-width: 330px;
+    font-size: 0.82rem;
+  }
+
+  .footer-copyright {
+    font-size: 0.7rem;
+  }
+
+  .portfolio-footer .footer-back-to-top {
+    right: 18px;
+    bottom: 14px;
+    width: 38px;
+    height: 38px;
   }
 }
 
-
-/* ================================
-   FOOTER NAV – RESPONSIVE FIX
-================================ */
-
-/* Allow wrapping on smaller screens */
-@media (max-width: 575px) {
-  .NavDetails {
-    position: static;              /* remove absolute positioning */
-    display: flex;
-    flex-wrap: wrap;               /* allow wrapping */
-    justify-content: center;
-    gap: 12px 20px;                /* vertical + horizontal gap */
-    margin-top: 15px;
-    text-align: center;
-  }
-
-  .NavDetails a {
-    font-size: 16px;               /* slightly smaller for mobile */
-    white-space: nowrap;           /* keep each item clean */
-  }
-}
-
-/* Extra small devices */
-@media (max-width: 420px) {
-  .NavDetails {
-    margin-top:10px;
-    gap: 8px;
-  }
-
-  .NavDetails a {
-    font-size: 15px;
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-footer *,
+  .portfolio-footer *::before,
+  .portfolio-footer *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
   }
 }

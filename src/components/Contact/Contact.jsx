@@ -6,95 +6,89 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import { useTheme } from "../Themes/ThemeProvider";
-import Image from "../../assets/Images/Contact/image.svg";
 import "./Contact.scss";
+
 const override = {
   display: "block",
   margin: "0 auto",
-  borderColor: "red",
 };
+
 const PortfolioContact = () => {
-  const [IsLoading, setIsLoading] = useState(false);
-  let [color, setColor] = useState("#0cbbb4");
+  const [isLoading, setIsLoading] = useState(false);
+
   const [data, setData] = useState({
     name: "",
     email: "",
     message: "",
   });
-  let name, value;
+
+  const { isDarkMode } = useTheme();
+
   const handleInputs = (e) => {
-    name = e.target.name;
-    value = e.target.value;
-    setData({ ...data, [name]: value });
+    const { name, value } = e.target;
+    setData((prev) => ({ ...prev, [name]: value }));
   };
 
   const postData = async (e) => {
     e.preventDefault();
+
     const { name, email, message } = data;
 
-    if (!name || !email) {
+    if (!name.trim() || !email.trim()) {
       toast.warn("Name and Email are required", {
         position: "top-center",
         autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: "colored",
         transition: Bounce,
       });
-      return; // Prevent further execution if validation fails
+      return;
     }
+
     try {
       setIsLoading(true);
+
       const res = await fetch("https://portfolio-versel.vercel.app/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name,
-          email,
-          message,
+          name: name.trim(),
+          email: email.trim(),
+          message: message.trim(),
         }),
       });
+
       if (res.status === 201) {
-        setData({ name: "", email: "", message: "" });
+        setData({
+          name: "",
+          email: "",
+          message: "",
+        });
+
         toast.success("Message sent successfully", {
           position: "top-center",
           autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
           theme: "colored",
           transition: Bounce,
         });
       } else {
-        toast.warn("message not sent, either invalid or duplicate Email", {
-          position: "top-center",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-          transition: Bounce,
-        });
+        toast.warn(
+          "Message not sent. The email may be invalid or already registered.",
+          {
+            position: "top-center",
+            autoClose: 5000,
+            theme: "colored",
+            transition: Bounce,
+          },
+        );
       }
     } catch (err) {
       console.error(err);
-      toast.error("an error occured, please try again later", {
+
+      toast.error("An error occurred. Please try again later.", {
         position: "top-center",
         autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
         theme: "colored",
         transition: Bounce,
       });
@@ -103,133 +97,185 @@ const PortfolioContact = () => {
     }
   };
 
-  const { isDarkMode } = useTheme();
   return (
-    <div>
+    <section
+      id="contact"
+      className="contact-section"
+      data-theme={isDarkMode ? "dark" : "light"}
+    >
       <ToastContainer />
-      <Container
-        id="contact"
-        className={isDarkMode ? "dark-mode" : "light-mode"}
-      >
-        <div id="contact" className="Contactcontainer">
-          <div className="row mb-5">
-            <div
-              className="col-lg-6 col-md-6  col-sm-12 col-12"
-              id="contactmeImageContainer"
-            >
-              <img
-                id="contactmeImage"
-                src={Image}
-                alt="contact-image"
-                width="400"
-                height="auto"
-              />
-              <div id="ContactButtonContainer">
-                <div className="MailButton">
-                  <a
-                    href="mailto:farhanmahmood2804@gmail.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Button variant="danger" title="farhanmahmood2804@gmail.com">
-                      <i className="fas fa-envelope-square"></i> Email
-                    </Button>
-                  </a>
-                </div>
-                <div className="LinkedButton">
-                  <a
-                    href="https://www.linkedin.com/in/10-farhan-mahmood"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Button variant="info" title="Visit my LinkenIn">
-                      <i className="fab fa-linkedin"></i> LinkedIn
-                    </Button>
-                  </a>
-                </div>
-                <div className="GitButton">
-                  <a
-                    href="https://github.com/farhan2804"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Button variant="dark" title="My other projects">
-                      <i className="fab fa-github-square"></i> GitHub
-                    </Button>
-                  </a>
-                </div>
-              </div>
-            </div>
 
-            <div
-              className="col-lg-6 col-md-6 col-sm-12 col-12"
-              id="formContainer"
-            >
-              <h1 id="contact-heading"> Get in Touch</h1>
-              <hr id="getinTouchHeading"></hr>
-              <FadeLoader
-                loading={IsLoading}
-                size={100}
-                color={color}
-                cssOverride={override}
-                aria-label="Loading Spinner"
-                data-testid="loader"
-              />
-              <Form method="POST">
-                <Form.Group id="formBasicText">
-                  <Form.Label>Name</Form.Label>
-                  <Form.Control
-                    id="textName"
-                    type="text"
-                    name="name"
-                    placeholder="Your Name"
-                    value={data.name}
-                    onChange={handleInputs}
-                    autoComplete="off"
-                  />
-                </Form.Group>
-                <Form.Group id="formBasicText">
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control
-                    id="textMail"
-                    type="email"
-                    name="email"
-                    placeholder="johndoe@yahoo.com"
-                    value={data.email}
-                    onChange={handleInputs}
-                    autoComplete="off"
-                  />
-                </Form.Group>
-                <Form.Group id="formBasicTextArea">
-                  <Form.Label>Message</Form.Label>
-                  <div className="textarea-container">
-                    <Form.Control
-                      id="textMessage"
-                      as="textarea"
-                      rows="4"
-                      placeholder="Your Message"
-                      name="message"
-                      value={data.message}
-                      onChange={handleInputs}
-                      autoComplete="off"
+      <Container className="contact-container">
+        <header className="contact-header">
+          <span className="contact-eyebrow">GET IN TOUCH</span>
+
+          <h1>
+            Let's build <span>something great.</span>
+          </h1>
+
+          <p>
+            Have a project in mind? I'd love to hear about it. Send me a message
+            and let's discuss how we can work together.
+          </p>
+        </header>
+
+        <div className="contact-grid">
+          {/* Contact form */}
+          <div className="contact-form-card">
+            <Form onSubmit={postData}>
+              <Form.Group className="contact-field" controlId="contactName">
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="name"
+                  placeholder="Your name"
+                  value={data.name}
+                  onChange={handleInputs}
+                  autoComplete="name"
+                  required
+                  maxLength={100}
+                />
+              </Form.Group>
+
+              <Form.Group className="contact-field" controlId="contactEmail">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  name="email"
+                  placeholder="you@example.com"
+                  value={data.email}
+                  onChange={handleInputs}
+                  autoComplete="email"
+                  required
+                  maxLength={254}
+                />
+              </Form.Group>
+
+              <Form.Group
+                className="contact-field contact-message-field"
+                controlId="contactMessage"
+              >
+                <Form.Label>Message</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={5}
+                  name="message"
+                  placeholder="Tell me about your project..."
+                  value={data.message}
+                  onChange={handleInputs}
+                  maxLength={5000}
+                />
+              </Form.Group>
+
+              <div className="contact-submit-wrap">
+                <Button
+                  type="submit"
+                  className="contact-submit-btn"
+                  disabled={isLoading}
+                >
+                  {isLoading ? "Sending..." : "Send Message"}
+                  {!isLoading && (
+                    <i className="fas fa-paper-plane" aria-hidden="true" />
+                  )}
+                </Button>
+
+                {isLoading && (
+                  <div className="contact-loader">
+                    <FadeLoader
+                      loading={isLoading}
+                      color="#19D9BD"
+                      cssOverride={override}
+                      aria-label="Sending message"
                     />
                   </div>
-                </Form.Group>
-                <Button
-                  variant="danger"
-                  id="submitButton"
-                  type="submit"
-                  value="message"
-                  onClick={postData}
-                >
-                  Send Message
-                </Button>
-              </Form>
+                )}
+              </div>
+            </Form>
+          </div>
+
+          {/* Contact information */}
+          <div className="contact-side">
+            <div className="contact-info-card">
+              <h2>Contact Information</h2>
+
+              <a
+                className="contact-info-item"
+                href="mailto:farhanmahmood2804@gmail.com"
+              >
+                <span className="contact-info-icon">
+                  <i className="fas fa-envelope" aria-hidden="true" />
+                </span>
+
+                <span className="contact-info-copy">
+                  <span className="contact-info-label">Email</span>
+                  <span className="contact-info-value">
+                    johndoe@gmail.com
+                  </span>
+                </span>
+              </a>
+
+              <a
+                className="contact-info-item"
+                href="https://www.linkedin.com/in/10-farhan-mahmood"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="contact-info-icon">
+                  <i className="fab fa-linkedin-in" aria-hidden="true" />
+                </span>
+
+                <span className="contact-info-copy">
+                  <span className="contact-info-label">LinkedIn</span>
+                  <span className="contact-info-value">
+                    Let's connect professionally
+                  </span>
+                </span>
+              </a>
+
+              <a
+                className="contact-info-item"
+                href="https://github.com/farhan2804"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <span className="contact-info-icon">
+                  <i className="fab fa-github" aria-hidden="true" />
+                </span>
+
+                <span className="contact-info-copy">
+                  <span className="contact-info-label">GitHub</span>
+                  <span className="contact-info-value">
+                    Explore my projects
+                  </span>
+                </span>
+              </a>
+            </div>
+
+            <div className="contact-availability-card">
+              <div className="availability-heading">
+                <span className="availability-dot" />
+                <h3>Open to Opportunities</h3>
+              </div>
+
+              <p>
+                I'm interested in full-stack development roles and exciting
+                projects involving Java, Spring Boot, React, and AI. Let's build
+                something meaningful together!
+              </p>
+
+              <a
+                className="availability-email"
+                href="mailto:farhanmahmood2804@gmail.com"
+              >
+                Let's talk{" "}
+                <i className="fas fa-arrow-right" aria-hidden="true" />
+              </a>
             </div>
           </div>
         </div>
       </Container>
-    </div>
+    </section>
   );
 };
+
 export default PortfolioContact;

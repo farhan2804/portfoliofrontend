@@ -1,166 +1,127 @@
-import { useState, useEffect } from "react";
+import React, { useMemo } from "react";
 import Container from "react-bootstrap/Container";
 import { projectDataCore } from "./ProjectDataCore";
-import detailsButtonIcon from "../../assets/Images/Projects/live_Dark.png";
-import deatilsButtonIconDark from "../../assets/Images/Projects/live_Light.png";
-import githubButtonIcon from "../../assets/Images/Projects/github_Light.png";
-import githubButtonIconDark from "../../assets/Images/Projects/github_Dark.png";
 import { useTheme } from "../Themes/ThemeProvider";
-
 import "./PortfolioProjectCore.scss";
 
-const PortfolioProjectCore = () => {
-  const { isDarkMode } = useTheme();
-
-  const [hoveredProject, setHoveredProject] = useState(null);
-  const [clickedProject, setClickedProject] = useState(null);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 800);
-    };
-
-    window.addEventListener("resize", handleResize);
-    handleResize();
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  const handleMouseEnter = (id) => {
-    if (!isMobile) {
-      setHoveredProject(id);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    setHoveredProject(null);
-  };
-
-  const handleProjectClick = (id) => {
-    if (isMobile) {
-      setClickedProject(clickedProject === id ? null : id);
-    }
-  };
-
-  const handleDetailsButtonClick = (event) => {
-    event.stopPropagation();
-  };
-
-  return (
-    <Container>
-      <div
-        className={`container mb-5 ${
-          isDarkMode ? "dark-mode" : "light-mode"
-        }`}
-        id="core-projects"
-      >
-        <h1
-          id="core-heading"
-          className="text-center text-capitalize pt-4"
-        >
-          Electrical Engineering & Planning Projects
-        </h1>
-
-        <br />
-
-        <div className="row">
-          {projectDataCore.map((project) => (
-            <div
-              key={project.id}
-              className={`col-lg-4 col-md-4 col-sm-6 col-12 mb-4 image-container ${
-                hoveredProject === project.id ||
-                clickedProject === project.id
-                  ? "hovered"
-                  : ""
-              }`}
-              onMouseEnter={() => handleMouseEnter(project.id)}
-              onMouseLeave={handleMouseLeave}
-              onClick={() => handleProjectClick(project.id)}
-            >
-              <div className="image-container" id="ProjectImage">
-                <img
-                  src={project.image}
-                  className="img-fluid"
-                  alt={project.title}
-                />
-
-                {isMobile && clickedProject !== project.id && (
-                  <div className="click-me-overlay">
-                    <h3>{project.title}</h3>
-                    <p id="moreDetails"><i>Explore Project</i></p>
-                  </div>
-                )}
-
-                <div
-                  className={`project-details ${
-                    hoveredProject === project.id ||
-                    clickedProject === project.id
-                      ? "hovered"
-                      : ""
-                  } ${isDarkMode ? "dark-mode" : "light-mode"}`}
-                >
-                  <h3 id="titleOfImage">{project.title}</h3>
-
-                  <p id="descriptionOfImage">
-                    {project.description}
-                  </p>
-
-                  <div className="project-links">
-                    <a
-                      className="details-button"
-                      href={project.Deploy_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={handleDetailsButtonClick}
-                    >
-                      {isDarkMode ? (
-                        <img
-                          id="deployImage"
-                          src={deatilsButtonIconDark}
-                          alt="Live Demo"
-                        />
-                      ) : (
-                        <img
-                          id="deployImage"
-                          src={detailsButtonIcon}
-                          alt="Live Demo"
-                        />
-                      )}
-                    </a>
-
-                    <a
-                      className="details-button"
-                      href={project.SourceCode_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={handleDetailsButtonClick}
-                    >
-                      {isDarkMode ? (
-                        <img
-                          id="gitHubImage"
-                          src={githubButtonIconDark}
-                          alt="GitHub"
-                        />
-                      ) : (
-                        <img
-                          id="gitHubImage"
-                          src={githubButtonIcon}
-                          alt="GitHub"
-                        />
-                      )}
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </Container>
-  );
+const TECH_BY_TITLE = {
+  "Predictive Maintenance": ["Spring Boot", "FastAPI", "React", "Machine Learning", "Random Forest"],
+  "Maintenance Dashboard": ["React", "JavaScript"],
+  "Engineering Utility Tools Suite": ["React", "JavaScript"],
 };
 
-export default PortfolioProjectCore;
+function getTechnologies(project) {
+  return (
+    project.technologies ||
+    project.techStack ||
+    project.technologiesUsed ||
+    TECH_BY_TITLE[project.title?.trim()] ||
+    []
+  );
+}
+
+function ProjectAction({ href, label, type }) {
+  if (!href || href === "#") return null;
+
+  return (
+    <a
+      className="premium-core-action"
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`${label} for project`}
+      title={label}
+    >
+      {type === "demo" ? (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M14 4h6v6M20 4 10 14" />
+          <path d="M18 13v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h5" />
+        </svg>
+      ) : (
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 6v-3.9a3.4 3.4 0 0 0-.9-2.7c3-.3 6.1-1.5 6.1-6.7a5.2 5.2 0 0 0-1.4-3.6 4.8 4.8 0 0 0-.1-3.6S17.5 1.2 15 3a13.2 13.2 0 0 0-7 0C5.5 1.2 4.3 1.5 4.3 1.5a4.8 4.8 0 0 0-.1 3.6 5.2 5.2 0 0 0-1.4 3.6c0 5.2 3.1 6.4 6.1 6.7a3.4 3.4 0 0 0-.9 2.7V22" />
+        </svg>
+      )}
+      <span>{label}</span>
+    </a>
+  );
+}
+
+function CoreProjectCard({ project, index }) {
+  const technologies = getTechnologies(project);
+  const title = project.title?.trim() || "Project";
+
+  return (
+    <article className={`premium-core-card ${index === 0 ? "premium-core-card--featured" : ""}`}>
+      <div className="premium-core-card__visual">
+        <img src={project.image} alt={`${title} project preview`} loading="lazy" />
+        <span className="premium-core-card__category">
+          {index === 0 ? "Featured Project" : "Engineering Project"}
+        </span>
+        <div className="premium-core-card__actions">
+          <ProjectAction href={project.Deploy_url} label="Live Demo" type="demo" />
+          <ProjectAction href={project.SourceCode_url} label="Source Code" type="source" />
+        </div>
+      </div>
+
+      <div className="premium-core-card__body">
+        <div className="premium-core-card__heading">
+          <h3>{title}</h3>
+          <span className="premium-core-card__index">{String(index + 1).padStart(2, "0")}</span>
+        </div>
+
+        <p className="premium-core-card__description">{project.description}</p>
+
+        {technologies.length > 0 && (
+          <div className="premium-core-card__tech" aria-label="Technologies used">
+            {technologies.map((technology) => (
+              <span className="premium-core-tech" key={technology}>{technology}</span>
+            ))}
+          </div>
+        )}
+
+        <div className="premium-core-card__footer">
+          <span className="premium-core-card__footer-label">ENGINEERING & PLANNING</span>
+          <span className="premium-core-card__footer-mark" aria-hidden="true">↗</span>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+export default function PortfolioProjectCore() {
+  const { isDarkMode } = useTheme();
+  const theme = isDarkMode ? "dark" : "light";
+  const projects = useMemo(() => projectDataCore || [], []);
+
+  return (
+    <section className="premium-core-section" id="core-projects" data-theme={theme}>
+      <Container>
+        <div className="premium-core-header">
+          <div className="premium-core-heading-copy">
+            <span className="premium-core-eyebrow">
+              <span className="premium-core-eyebrow-dot" />
+              ENGINEERING & PLANNING
+            </span>
+            <h2>Core Projects<span className="premium-core-period">.</span></h2>
+            <p>Electrical engineering, planning tools, and software-driven engineering projects.</p>
+          </div>
+          <div className="premium-core-count" aria-label={`${projects.length} projects`}>
+            <span>{String(projects.length).padStart(2, "0")}</span>
+            <small>PROJECTS</small>
+          </div>
+        </div>
+
+        <div className="premium-core-grid">
+          {projects.map((project, index) => (
+            <CoreProjectCard
+              key={project.id ?? project.title ?? index}
+              project={project}
+              index={index}
+            />
+          ))}
+        </div>
+      </Container>
+    </section>
+  );
+}

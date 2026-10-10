@@ -1,127 +1,396 @@
-#ButtonContainer {
+
+.about-section {
+  --about-accent: #25d9bd;
+
+  position: relative;
+  overflow: hidden;
+  padding: 110px 0;
+  color: #edf5f1;
+  background:
+    radial-gradient(
+      ellipse at 5% 45%,
+      rgba(37, 217, 189, 0.06),
+      transparent 38%
+    ),
+    #060b09;
+}
+
+.about-section .container {
+  max-width: 1200px;
+}
+
+.about-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: clamp(40px, 7vw, 95px);
+}
+
+/* =========================
+   PORTRAIT
+========================= */
+
+.about-portrait-column {
+  min-width: 0;
+}
+
+.about-portrait-card {
+  position: relative;
+  max-width: 430px;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid rgba(37, 217, 189, 0.25);
+  border-radius: 18px;
+  background: #0b1512;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.about-portrait-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(37, 217, 189, 0.55);
+  box-shadow: 0 22px 65px rgba(0, 0, 0, 0.45);
+}
+
+.about-portrait {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 540px;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.about-portrait-caption {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  left: 12px;
   display: flex;
-  margin-top: 15px;
-}
-
-#TalkButton {
-  margin-right: 15px;
-}
-
-#Resumebutton {
-  margin-right: 15px;
-}
-
-#GitHubButton {
-  margin-right: 15px;
-}
-
-#AboutHeading {
-  margin-bottom: 25px;
+  align-items: center;
+  gap: 9px;
+  padding: 13px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background: rgba(4, 12, 10, 0.82);
+  color: #e4efea;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.6px;
+  backdrop-filter: blur(12px);
 }
 
-#LinkedInButton {
-  margin-right: 20px;
+.about-status-dot,
+.about-eyebrow > span {
+  flex: 0 0 7px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--about-accent);
 }
 
-#strName {
-  font-size: larger;
-}
-#about.light-mode {
-  color: #0a0d41;
-}
-#about.dark-mode {
-  color: white;
+.about-status-dot {
+  box-shadow: 0 0 12px rgba(37, 217, 189, 0.45);
 }
 
-#AboutContent {
+/* =========================
+   CONTENT
+========================= */
+
+.about-content {
+  min-width: 0;
+}
+
+.about-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  color: var(--about-accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.about-heading {
+  margin: 0 0 24px;
+  color: #f5f8f6;
+  font-size: clamp(36px, 4vw, 55px);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -1.8px;
+}
+
+.about-heading span {
+  display: block;
+  color: var(--about-accent);
+}
+
+.about-intro {
+  margin: 0 0 18px;
+  color: #dce7e2;
   font-size: 19px;
+  font-weight: 500;
+  line-height: 1.8;
+}
+
+.about-intro strong {
+  color: #ffffff;
+  font-weight: 750;
+}
+
+.about-description {
+  margin: 0 0 15px;
+  color: #aebeb7;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+/* =========================
+   TECHNOLOGY CHIPS
+========================= */
+
+.about-tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 26px 0 30px;
+}
+
+.about-tech-chip {
+  padding: 7px 12px;
+  border: 1px solid rgba(37, 217, 189, 0.2);
+  border-radius: 7px;
+  background: rgba(37, 217, 189, 0.055);
+  color: #c8e8df;
+  font-size: 12px;
+  font-weight: 600;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.about-tech-chip:hover {
+  transform: translateY(-2px);
+  border-color: rgba(37, 217, 189, 0.6);
+  background: rgba(37, 217, 189, 0.11);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.about-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.about-button {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 11px 17px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.025);
+  color: #edf5f1;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.about-button:hover {
+  transform: translateY(-2px);
+  border-color: var(--about-accent);
+  color: #ffffff;
+}
+
+.about-button-primary {
+  border-color: var(--about-accent);
+  background: var(--about-accent);
+  color: #04110e;
+}
+
+.about-button-primary:hover {
+  background: #64ead6;
+  color: #04110e;
+}
+
+/* =========================
+   LIGHT THEME
+========================= */
+
+.about-section.light-mode {
+  color: #16231f;
+  background:
+    radial-gradient(
+      ellipse at 5% 45%,
+      rgba(37, 180, 157, 0.07),
+      transparent 38%
+    ),
+    #f6faf8;
+}
+
+.about-section.light-mode .about-heading {
+  color: #10201b;
+}
+
+.about-section.light-mode .about-intro,
+.about-section.light-mode .about-intro strong {
+  color: #243b33;
+}
+
+.about-section.light-mode .about-description {
+  color: #53665e;
+}
+
+.about-section.light-mode .about-tech-chip {
+  color: #176a5a;
+  background: rgba(37, 180, 157, 0.07);
+  border-color: rgba(20, 120, 100, 0.18);
+}
+
+.about-section.light-mode .about-button {
+  color: #19342b;
+  border-color: rgba(15, 60, 45, 0.22);
+}
+
+.about-section.light-mode .about-button-primary {
+  color: #04110e;
+  border-color: var(--about-accent);
+  background: var(--about-accent);
+}
+
+.about-section.light-mode .about-portrait-card {
+  box-shadow: 0 18px 50px rgba(10, 35, 28, 0.14);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 991px) {
+  .about-section {
+    padding: 85px 0;
+  }
+
+  .about-layout {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 35px;
+  }
+
+  .about-heading {
+    font-size: 39px;
+  }
+
+  .about-intro {
+    font-size: 17px;
+  }
+
+  .about-description {
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 767px) {
-  #AboutHeading {
-    margin-top: 25px;
+  .about-section {
+    padding: 70px 0;
+  }
+
+  .about-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 38px;
+  }
+
+  .about-portrait-card {
+    width: min(100%, 360px);
+  }
+
+  .about-portrait {
+    max-height: 470px;
+  }
+
+  .about-content {
+    padding: 0 4px;
+  }
+
+  .about-eyebrow {
+    margin-bottom: 16px;
+  }
+
+  .about-heading {
+    margin-bottom: 20px;
+    font-size: clamp(35px, 9vw, 45px);
+    letter-spacing: -1px;
+  }
+
+  .about-intro {
+    font-size: 17px;
+    line-height: 1.75;
+  }
+
+  .about-description {
+    font-size: 14px;
+    line-height: 1.85;
+  }
+
+  .about-tech-stack {
+    gap: 8px;
+    margin: 22px 0 26px;
   }
 }
 
-@media (max-width: 992px) and (min-width: 768px) {
-  #AboutHeading {
-    margin-top: 25px;
-  }
-  #AboutContent {
-    font-size: 18px;
-  }
-}
-@media screen and (max-width: 1200px) and (min-width: 991px) {
-  #AboutContent {
-    font-size: 15px;
-  }
-}
-@media (max-width: 357px) {
-  #strName {
-    font-size: 20px;
-  }
-  #ButtonContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  #TalkButton {
-    margin-bottom: 10px;
-    text-align: center;
-  }
-
-  #Resumebutton {
-    margin-bottom: 10px;
-    text-align: center;
-  }
-
-  #GitHubButton {
-    margin-bottom: 10px;
-    text-align: center;
-  }
-  #TalkButton {
-    margin-bottom: 10px;
-    text-align: center;
+@media (prefers-reduced-motion: reduce) {
+  .about-portrait-card,
+  .about-tech-chip,
+  .about-button {
+    transition: none;
   }
 }
 
-// /* =========================
-// //    ABOUT IMAGE CARD
-// //    (Same as Skills Container)
-// // ========================= */
-
-.AboutImageCard {
-  border-radius: 5px;
-  margin-right: 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Stronger cinematic green atmosphere */
+.about-portrait-column {
+  position: relative;
+  isolation: isolate;
 }
 
-/* ☀️ Light mode shadow */
-.light-mode .AboutImageCard {
-  box-shadow: -3px 0 7px #1f2933, 3px 0 7px #1f2933, 0 10px 20px #1f2933;
+.about-portrait-column::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+
+  width: 140%;
+  height: 110%;
+  top: -5%;
+  left: -20%;
+
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0, 95, 69, 0.38) 0%,
+    rgba(0, 75, 57, 0.26) 30%,
+    rgba(0, 48, 38, 0.16) 52%,
+    transparent 72%
+  );
+
+  filter: blur(45px);
 }
 
-.light-mode .AboutImageCard:hover {
-  transform: translateY(-2px);
-  box-shadow: -8px 0 20px #04051a, 8px 0 20px #04051a, 0 14px 28px #04051a;
-}
+.about-portrait-card {
+  border-color: rgba(25, 217, 189, 0.22);
 
-/* 🌙 Dark mode glow */
-.dark-mode .AboutImageCard {
-  box-shadow: -3px 0 5px rgba(255, 255, 255, 0.9),
-    3px 0 5px rgba(255, 255, 255, 0.9), 0 10px 20px rgba(255, 255, 255, 0.9);
-}
-
-.dark-mode .AboutImageCard:hover {
-  transform: translateY(-2px);
-  box-shadow: -8px 0 20px rgba(255, 255, 255, 0.95),
-    8px 0 20px rgba(255, 255, 255, 0.95), 0 14px 28px rgba(255, 255, 255, 0.95);
-}
-
-/* Image polish */
-#AboutImage {
-  border-radius: 12px;
+  box-shadow:
+    0 0 35px rgba(0, 95, 69, 0.22),
+    0 0 80px rgba(0, 75, 57, 0.18),
+    0 18px 60px rgba(0, 0, 0, 0.4);
 }

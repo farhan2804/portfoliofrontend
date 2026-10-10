@@ -3,35 +3,14 @@ import Container from "react-bootstrap/Container";
 import { useTheme } from "../Themes/ThemeProvider";
 import "./Skills.scss";
 
-/* =========================================================
-   EXISTING IT SKILL IMAGES
-========================================================= */
-
+// Keep these paths aligned with the image assets in your existing project.
 import L_HTML5 from "../../assets/Images/Skills/html.svg";
 import L_CSS3 from "../../assets/Images/Skills/css.svg";
 import L_JAVASCRIPT from "../../assets/Images/Skills/javascript.svg";
 import L_REACT from "../../assets/Images/Skills/react.png";
-import L_JAVA from "../../assets/Images/Skills/java.svg";
-
-import L_GIT from "../../assets/Images/Skills/git.svg";
-import L_GITHUB from "../../assets/Images/Skills/github.svg";
-
-import L_SQL from "../../assets/Images/Skills/sql.svg";
-import L_MongoDb from "../../assets/Images/Skills/mongodb.svg";
-
-import L_AI from "../../assets/Images/Skills/ai.svg";
-
-/* =========================================================
-   NEW FRONTEND SKILL IMAGES
-========================================================= */
-
 import L_VITE from "../../assets/Images/Skills/vite.png";
 import L_TAILWIND from "../../assets/Images/Skills/tailwind.png";
-
-/* =========================================================
-   NEW BACKEND SKILL IMAGES
-========================================================= */
-
+import L_JAVA from "../../assets/Images/Skills/java.svg";
 import L_SPRING_BOOT from "../../assets/Images/Skills/spring_boot.png";
 import L_SPRING_SECURITY from "../../assets/Images/Skills/spring_security.png";
 import L_SPRING_DATA_JPA from "../../assets/Images/Skills/spring_data.png";
@@ -39,11 +18,7 @@ import L_HIBERNATE from "../../assets/Images/Skills/hibernate.png";
 import L_REST_API from "../../assets/Images/Skills/rest_api.png";
 import L_PYTHON from "../../assets/Images/Skills/python.png";
 import L_FASTAPI from "../../assets/Images/Skills/fast_api.png";
-
-/* =========================================================
-   AI / GENAI SKILL IMAGES
-========================================================= */
-
+import L_AI from "../../assets/Images/Skills/ai.svg";
 import L_LLM from "../../assets/Images/Skills/llm.png";
 import L_RAG from "../../assets/Images/Skills/rag.png";
 import L_LANGCHAIN from "../../assets/Images/Skills/langchain.png";
@@ -51,708 +26,229 @@ import L_AI_AGENTS from "../../assets/Images/Skills/ai_agents.png";
 import L_EMBEDDINGS from "../../assets/Images/Skills/embeddings.png";
 import L_VECTOR_SEARCH from "../../assets/Images/Skills/vector_search.png";
 import L_AZURE_AI from "../../assets/Images/Skills/azure_ai.png";
-
-/* =========================================================
-   DATABASE SKILL IMAGES
-========================================================= */
-
+import L_GIT from "../../assets/Images/Skills/git.svg";
+import L_GITHUB from "../../assets/Images/Skills/github.svg";
+import L_MAVEN from "../../assets/Images/Skills/maven.png";
+import L_POSTMAN from "../../assets/Images/Skills/postman.png";
 import L_POSTGRESQL from "../../assets/Images/Skills/postgre_sql.png";
-
-/* =========================================================
-   DEVOPS / CLOUD SKILL IMAGES
-========================================================= */
-
+import L_SQL from "../../assets/Images/Skills/sql.svg";
+import L_MongoDb from "../../assets/Images/Skills/mongodb.svg";
 import L_DOCKER from "../../assets/Images/Skills/docker.png";
 import L_GITHUB_ACTIONS from "../../assets/Images/Skills/github_actions.png";
 import L_AWS from "../../assets/Images/Skills/aws.png";
 import L_NETLIFY from "../../assets/Images/Skills/netlify.png";
 import L_RAILWAY from "../../assets/Images/Skills/railway.png";
 
-/* =========================================================
-   TOOLS
-========================================================= */
+const skillGroups = [
+  {
+    title: "Frontend Engineering",
+    icon: "⌘",
+    description:
+      "Building responsive, accessible interfaces with reusable components and a focus on clean user experiences.",
+    skills: [
+      ["React.js", L_REACT, "https://react.dev/"],
+      ["HTML5", L_HTML5, "https://developer.mozilla.org/en-US/docs/Web/HTML"],
+      ["CSS3", L_CSS3, "https://developer.mozilla.org/en-US/docs/Web/CSS"],
+      ["JavaScript", L_JAVASCRIPT, "https://developer.mozilla.org/en-US/docs/Web/JavaScript"],
+      ["Vite", L_VITE, "https://vite.dev/"],
+      ["Tailwind CSS", L_TAILWIND, "https://tailwindcss.com/"],
+    ],
+  },
+  {
+    title: "Backend Development",
+    icon: "⌘",
+    description:
+      "Developing REST APIs and backend services with Java, Spring technologies, and Python-based APIs.",
+    skills: [
+      ["Java", L_JAVA, "https://www.java.com/"],
+      ["Spring Boot", L_SPRING_BOOT, "https://spring.io/projects/spring-boot"],
+      ["Spring Security", L_SPRING_SECURITY, "https://spring.io/projects/spring-security"],
+      ["Spring Data JPA", L_SPRING_DATA_JPA, "https://spring.io/projects/spring-data-jpa"],
+      ["Hibernate", L_HIBERNATE, "https://hibernate.org/"],
+      ["REST APIs", L_REST_API, "https://www.redhat.com/en/topics/api/what-is-a-rest-api"],
+      ["Python", L_PYTHON, "https://www.python.org/"],
+      ["FastAPI", L_FASTAPI, "https://fastapi.tiangolo.com/"],
+    ],
+  },
+  {
+    title: "Database Systems",
+    icon: "▦",
+    description:
+      "Working with relational and document databases to store, query, and manage application data.",
+    skills: [
+      ["PostgreSQL", L_POSTGRESQL, "https://www.postgresql.org/"],
+      ["SQL", L_SQL, "https://www.w3schools.com/sql/"],
+      ["MongoDB", L_MongoDb, "https://www.mongodb.com/"],
+    ],
+  },
+  {
+    title: "AI & Generative AI",
+    icon: "✳",
+    description:
+      "Building AI-powered applications with language models, retrieval workflows, and AI service integrations.",
+    skills: [
+      ["AI / ML", L_AI, null],
+      ["LLMs", L_LLM, null],
+      ["RAG", L_RAG, null],
+      ["LangChain", L_LANGCHAIN, "https://www.langchain.com/"],
+      ["AI Agents", L_AI_AGENTS, null],
+      ["Embeddings", L_EMBEDDINGS, null],
+      ["Vector Search", L_VECTOR_SEARCH, null],
+      ["Azure AI", L_AZURE_AI, "https://azure.microsoft.com/en-us/products/ai-services"],
+    ],
+  },
+  {
+    title: "Development Tools",
+    icon: "⚒",
+    description:
+      "Using version control, API testing, and build tools to support reliable development workflows.",
+    skills: [
+      ["Git", L_GIT, "https://git-scm.com/"],
+      ["GitHub", L_GITHUB, "https://github.com/"],
+      ["Maven", L_MAVEN, "https://maven.apache.org/"],
+      ["Postman", L_POSTMAN, "https://www.postman.com/"],
+    ],
+  },
+  {
+    title: "DevOps & Cloud",
+    icon: "☁",
+    description:
+      "Familiar with deployment platforms and automation tools used to ship and host applications.",
+    skills: [
+      ["Docker", L_DOCKER, "https://www.docker.com/"],
+      ["GitHub Actions", L_GITHUB_ACTIONS, "https://github.com/features/actions"],
+      ["AWS EC2", L_AWS, "https://aws.amazon.com/ec2/"],
+      ["Netlify", L_NETLIFY, "https://www.netlify.com/"],
+      ["Railway", L_RAILWAY, "https://railway.app/"],
+    ],
+  },
+];
 
-import L_MAVEN from "../../assets/Images/Skills/maven.png";
-import L_POSTMAN from "../../assets/Images/Skills/postman.png";
+const coreGroups = [
+  {
+    title: "Electronics & VLSI",
+    icon: "⌁",
+    description: "Fundamentals of digital hardware and integrated circuit design.",
+    skills: ["VLSI Design", "Verilog (HDL)", "Digital Logic Design", "CMOS Fundamentals"],
+  },
+  {
+    title: "Embedded Systems",
+    icon: "▣",
+    description: "Core concepts for embedded hardware and processor-based systems.",
+    skills: ["Microcontrollers & Embedded Systems", "Microprocessor Architecture"],
+  },
+  {
+    title: "Maintenance & Planning",
+    icon: "⚙",
+    description: "Engineering maintenance practices and basic planning workflows.",
+    skills: [
+      "Primavera P6 (Basics)",
+      "Preventive Maintenance Concepts",
+      "Electrical Maintenance",
+      "Planning & Scheduling",
+    ],
+  },
+  {
+    title: "Instrumentation & Control",
+    icon: "⌁",
+    description: "Industrial monitoring, automation, and control-system fundamentals.",
+    skills: ["PLC", "SCADA", "HMI"],
+  },
+  {
+    title: "Other Engineering Skills",
+    icon: "◇",
+    description: "Additional hands-on tools and foundational engineering concepts.",
+    skills: ["IoT Fundamentals", "Arduino IDE", "EDA Tools – Xilinx (Vivado)"],
+  },
+];
 
-const PortfolioSkills = () => {
+function SkillCard({ group, index, showLogos = true }) {
+  return (
+    <Card className="portfolio-skill-card h-100" style={{ "--card-index": index }}>
+      <Card.Body>
+        <div className="skill-card-heading">
+          <span className="skill-card-icon" aria-hidden="true">{group.icon}</span>
+          <h3>{group.title}</h3>
+        </div>
+        <p className="skill-card-description">{group.description}</p>
+        <div className="skill-tag-list">
+          {group.skills.map((skill) => {
+            const [name, logo, url] = Array.isArray(skill) ? skill : [skill, null, null];
+            const content = (
+              <>
+                {showLogos && logo && (
+                  <img src={logo} alt="" className="skill-tag-logo" loading="lazy" />
+                )}
+                <span>{name}</span>
+              </>
+            );
+
+            return url ? (
+              <a
+                className="skill-tag"
+                href={url}
+                key={name}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${name} documentation (opens in a new tab)`}
+              >
+                {content}
+              </a>
+            ) : (
+              <span className="skill-tag" key={name}>{content}</span>
+            );
+          })}
+        </div>
+      </Card.Body>
+    </Card>
+  );
+}
+
+export default function PortfolioSkills() {
   const { isDarkMode } = useTheme();
 
   return (
     <Container
-      id="it-skills"
-      className={isDarkMode ? "dark-mode" : "light-mode"}
+      fluid
+      id="skills"
+      className={`portfolio-skills-section ${isDarkMode ? "dark-mode" : "light-mode"}`}
     >
-      {/* =====================================================
-          IT SKILLS
-      ===================================================== */}
+      <div className="portfolio-skills-inner">
+        <header className="skills-section-header">
+          <p className="skills-eyebrow">WHAT I WORK WITH</p>
+          <h2 id="TechHeading">Information Technology<span>.</span></h2>
+          <span className="skills-heading-rule" />
+          <p className="skills-section-intro">
+            Technologies and tools I use to build full-stack applications and AI-powered products.
+          </p>
+        </header>
 
-      <div className="container">
-        <h1 className="text-center text-capitalize pt-4" id="TechHeading">
-          IT Skills
-        </h1>
-
-        <div className="row text-center mb-5">
-          {/* =================================================
-              COLUMN 1
-          ================================================= */}
-
-          <div className="col-lg-4 col-md-4 col-sm-12 col-12">
-            {/* ================= FRONTEND ================= */}
-
-            <div id="SkillsContainer1">
-              <Card.Body>
-                <h2 id="TitleHeading1">Frontend</h2>
-
-                <hr id="TitleLine1" />
-
-                <div id="CardContents1">
-                  <a
-                    className="HTMLImage focus"
-                    href="https://developer.mozilla.org/en-US/docs/Web/HTML"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img src={L_HTML5} className="img-fluid" alt="HTML5" />
-                    <h4 className="HTMLHeading">HTML5</h4>
-                  </a>
-
-                  <a
-                    className="CSSImage focus"
-                    href="https://developer.mozilla.org/en-US/docs/Web/CSS"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img src={L_CSS3} className="img-fluid" alt="CSS3" />
-                    <h4 className="CSSHeading">CSS3</h4>
-                  </a>
-
-                  <a
-                    className="JavaScriptImage1 focus"
-                    href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src={L_JAVASCRIPT}
-                      className="img-fluid"
-                      alt="JavaScript"
-                    />
-                    <h4 className="JavaScriptHeading">JavaScript</h4>
-                  </a>
-
-                  <a
-                    className="ReactImage focus"
-                    href="https://react.dev/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img src={L_REACT} className="img-fluid" alt="React.js" />
-                    <h4 className="ReactHeading">React.js</h4>
-                  </a>
-
-                  <a
-                    className="SkillImage focus"
-                    href="https://vite.dev/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img src={L_VITE} className="img-fluid" alt="Vite" />
-                    <h4 className="SkillHeading">Vite</h4>
-                  </a>
-
-                  <a
-                    className="SkillImage focus"
-                    href="https://tailwindcss.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src={L_TAILWIND}
-                      className="img-fluid"
-                      alt="Tailwind CSS"
-                    />
-                    <h4 className="SkillHeading">Tailwind CSS</h4>
-                  </a>
-                </div>
-              </Card.Body>
-            </div>
-
-            {/* ================= BACKEND ================= */}
-
-            <div id="SkillsContainer4">
-              <Card.Body>
-                <h2 id="TitleHeading4">Backend</h2>
-
-                <hr id="TitleLine4" />
-
-                <div id="CardContents4">
-                  <a
-                    className="JavaImage focus"
-                    href="https://www.java.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img src={L_JAVA} className="img-fluid" alt="Java" />
-                    <h4 className="JavaHeading">Java</h4>
-                  </a>
-
-                  <a
-                    className="SkillImage focus"
-                    href="https://spring.io/projects/spring-boot"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src={L_SPRING_BOOT}
-                      className="img-fluid"
-                      alt="Spring Boot"
-                    />
-                    <h4 className="SkillHeading">Spring Boot</h4>
-                  </a>
-
-                  <a
-                    className="SkillImage focus"
-                    href="https://spring.io/projects/spring-security"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src={L_SPRING_SECURITY}
-                      className="img-fluid"
-                      alt="Spring Security"
-                    />
-                    <h4 className="SkillHeading">Spring Security</h4>
-                  </a>
-
-                  <a
-                    className="SkillImage focus"
-                    href="https://spring.io/projects/spring-data-jpa"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src={L_SPRING_DATA_JPA}
-                      className="img-fluid"
-                      alt="Spring Data JPA"
-                    />
-                    <h4 className="SkillHeading">Spring Data JPA</h4>
-                  </a>
-
-                  <a
-                    className="SkillImage focus"
-                    href="https://hibernate.org/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src={L_HIBERNATE}
-                      className="img-fluid"
-                      alt="Hibernate"
-                    />
-                    <h4 className="SkillHeading">Hibernate</h4>
-                  </a>
-
-                  <a
-                    className="SkillImage focus"
-                    href="#rest-api"
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    <img
-                      src={L_REST_API}
-                      className="img-fluid"
-                      alt="REST API"
-                    />
-                    <h4 className="SkillHeading">REST APIs</h4>
-                  </a>
-
-                  <a
-                    className="SkillImage focus"
-                    href="https://www.python.org/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img src={L_PYTHON} className="img-fluid" alt="Python" />
-                    <h4 className="SkillHeading">Python</h4>
-                  </a>
-
-                  <a
-                    className="SkillImage focus"
-                    href="https://fastapi.tiangolo.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img src={L_FASTAPI} className="img-fluid" alt="FastAPI" />
-                    <h4 className="SkillHeading">FastAPI</h4>
-                  </a>
-                </div>
-              </Card.Body>
-            </div>
-          </div>
-
-          {/* =================================================
-              COLUMN 2
-          ================================================= */}
-
-          <div className="col-lg-4 col-md-4 col-sm-12 col-12">
-            {/* ============== PROGRAMMING LANGUAGES ============== */}
-
-            <div id="SkillsContainer2">
-              <Card.Body>
-                <h2 id="TitleHeading2">
-                  Programming
-                  <p>Languages</p>
-                </h2>
-
-                <hr id="TitleLine2" />
-
-                <div id="CardContents2">
-                  <a
-                    className="JavaScriptImage2 focus"
-                    href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src={L_JAVASCRIPT}
-                      className="img-fluid"
-                      alt="JavaScript"
-                    />
-                    <h4 className="JavaScriptHeading">JavaScript</h4>
-                  </a>
-
-                  <a
-                    className="JavaImage focus"
-                    href="https://www.java.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img src={L_JAVA} className="img-fluid" alt="Java" />
-                    <h4 className="JavaHeading">Java</h4>
-                  </a>
-
-                  <a
-                    className="SkillImage focus"
-                    href="https://www.python.org/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img src={L_PYTHON} className="img-fluid" alt="Python" />
-                    <h4 className="SkillHeading">Python</h4>
-                  </a>
-                </div>
-              </Card.Body>
-            </div>
-
-            {/* ================= AI & GENAI ================= */}
-
-            <div id="SkillsContainer3">
-              <Card.Body>
-                <h2 id="TitleHeading3">AI & GenAI</h2>
-
-                <hr id="TitleLine3" />
-
-                <div id="CardContents2">
-                  <a
-                    className="SkillImage focus"
-                    href="#ai-ml"
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    <img
-                      src={L_AI}
-                      className="img-fluid"
-                      alt="AI and Machine Learning"
-                    />
-                    <h4 className="SkillHeading">AI / ML</h4>
-                  </a>
-
-                  <a
-                    className="SkillImage focus"
-                    href="#llm"
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    <img
-                      src={L_LLM}
-                      className="img-fluid"
-                      alt="Large Language Models"
-                    />
-                    <h4 className="SkillHeading">LLMs</h4>
-                  </a>
-
-                  <a
-                    className="SkillImage focus"
-                    href="#rag"
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    <img src={L_RAG} className="img-fluid" alt="RAG" />
-                    <h4 className="SkillHeading">RAG</h4>
-                  </a>
-
-                  {/* <a
-                    className="SkillImage focus"
-                    href="https://www.langchain.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src={L_LANGCHAIN}
-                      className="img-fluid"
-                      alt="LangChain"
-                    />
-                    <h4 className="SkillHeading">LangChain</h4>
-                  </a> */}
-
-                  <a
-                    className="SkillImage focus"
-                    href="#ai-agents"
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    <img
-                      src={L_AI_AGENTS}
-                      className="img-fluid"
-                      alt="AI Agents"
-                    />
-                    <h4 className="SkillHeading">AI Agents</h4>
-                  </a>
-
-                  {/* <a
-                    className="SkillImage focus"
-                    href="#embeddings"
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    <img
-                      src={L_EMBEDDINGS}
-                      className="img-fluid"
-                      alt="Embeddings"
-                    />
-                    <h4 className="SkillHeading">Embeddings</h4>
-                  </a> */}
-
-                  {/* <a
-                    className="SkillImage focus"
-                    href="#vector-search"
-                    onClick={(e) => e.preventDefault()}
-                  >
-                    <img
-                      src={L_VECTOR_SEARCH}
-                      className="img-fluid"
-                      alt="Vector Search"
-                    />
-                    <h4 className="SkillHeading">Vector Search</h4>
-                  </a> */}
-
-                  <a
-                    className="SkillImage focus"
-                    href="https://azure.microsoft.com/en-us/products/ai-services"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src={L_AZURE_AI}
-                      className="img-fluid"
-                      alt="Azure AI"
-                    />
-                    <h4 className="SkillHeading">Azure AI</h4>
-                  </a>
-                </div>
-              </Card.Body>
-            </div>
-
-            {/* ================= VERSION CONTROL & TOOLS ================= */}
-
-            <div id="SkillsContainer3">
-              <Card.Body>
-                <h2 id="TitleHeading3">Version Control & Tools</h2>
-
-                <hr id="TitleLine3" />
-
-                <div id="CardContents2">
-                  <a
-                    className="GITImage focus"
-                    href="https://git-scm.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img src={L_GIT} className="img-fluid" alt="Git" />
-                    <h4 className="GITHeading">Git</h4>
-                  </a>
-
-                  <a
-                    className="GITImage focus"
-                    href="https://github.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img src={L_GITHUB} className="img-fluid" alt="GitHub" />
-                    <h4 className="GITHeading">GitHub</h4>
-                  </a>
-
-                  <a
-                    className="SkillImage focus"
-                    href="https://maven.apache.org/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img src={L_MAVEN} className="img-fluid" alt="Maven" />
-                    <h4 className="SkillHeading">Maven</h4>
-                  </a>
-
-                  <a
-                    className="SkillImage focus"
-                    href="https://www.postman.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img src={L_POSTMAN} className="img-fluid" alt="Postman" />
-                    <h4 className="SkillHeading">Postman</h4>
-                  </a>
-                </div>
-              </Card.Body>
-            </div>
-          </div>
-
-          {/* =================================================
-              COLUMN 3
-          ================================================= */}
-
-          <div className="col-lg-4 col-md-4 col-sm-12 col-12">
-            {/* ================= DATABASES ================= */}
-
-            <div id="SkillsContainer4">
-              <Card.Body>
-                <h2 id="TitleHeading4">Databases</h2>
-
-                <hr id="TitleLine4" />
-
-                <div id="CardContents3">
-                  <a
-                    className="SQlImage focus"
-                    href="https://www.postgresql.org/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src={L_POSTGRESQL}
-                      className="img-fluid"
-                      alt="PostgreSQL"
-                    />
-                    <h4 className="SQLHeading">PostgreSQL</h4>
-                  </a>
-
-                  <a
-                    className="SQlImage focus"
-                    href="https://www.w3schools.com/sql/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img src={L_SQL} className="img-fluid" alt="SQL" />
-                    <h4 className="SQLHeading">SQL</h4>
-                  </a>
-
-                  <a
-                    className="mongodb focus"
-                    href="https://www.mongodb.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img src={L_MongoDb} className="img-fluid" alt="MongoDB" />
-                    <h4 className="mongodbHeading">MongoDB</h4>
-                  </a>
-                </div>
-              </Card.Body>
-            </div>
-
-            {/* ================= DEVOPS & CLOUD ================= */}
-
-            <div id="SkillsContainer4">
-              <Card.Body>
-                <h2 id="TitleHeading4">DevOps & Cloud</h2>
-
-                <hr id="TitleLine4" />
-
-                <div id="CardContents3">
-                  <a
-                    className="SkillImage focus"
-                    href="https://www.docker.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img src={L_DOCKER} className="img-fluid" alt="Docker" />
-                    <h4 className="SkillHeading">Docker</h4>
-                  </a>
-
-                  <a
-                    className="SkillImage focus"
-                    href="https://github.com/features/actions"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      src={L_GITHUB_ACTIONS}
-                      className="img-fluid"
-                      alt="GitHub Actions"
-                    />
-                    <h4 className="SkillHeading">GitHub Actions</h4>
-                  </a>
-
-                  <a
-                    className="SkillImage focus"
-                    href="https://aws.amazon.com/ec2/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img src={L_AWS} className="img-fluid" alt="AWS EC2" />
-                    <h4 className="SkillHeading">AWS EC2</h4>
-                  </a>
-
-                  <a
-                    className="SkillImage focus"
-                    href="https://www.netlify.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img src={L_NETLIFY} className="img-fluid" alt="Netlify" />
-                    <h4 className="SkillHeading">Netlify</h4>
-                  </a>
-
-                  <a
-                    className="SkillImage focus"
-                    href="https://railway.app/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img src={L_RAILWAY} className="img-fluid" alt="Railway" />
-                    <h4 className="SkillHeading">Railway</h4>
-                  </a>
-                </div>
-              </Card.Body>
-            </div>
-          </div>
+        <div className="skills-card-grid">
+          {skillGroups.map((group, index) => (
+            <SkillCard group={group} index={index} key={group.title} />
+          ))}
         </div>
-      </div>
 
-      {/* =========================================================
-          CORE SKILLS
-          YOUR EXISTING CORE SECTION — UNCHANGED
-      ========================================================= */}
+        <header className="skills-section-header core-skills-header">
+          <p className="skills-eyebrow">ENGINEERING FOUNDATION</p>
+          <h2 id="CoreHeading">Electronics & Communication Engineering <span>.</span></h2>
+          <span className="skills-heading-rule" />
+          <p className="skills-section-intro">
+            Electronics, industrial automation, and engineering knowledge from my ECE background.
+          </p>
+        </header>
 
-      <div className="container" id="core-skills">
-        <h1 className="text-center text-capitalize pt-4" id="CoreHeading">
-          Core Skills
-        </h1>
-
-        <div className="row text-center mb-5">
-          {/* -------- Electronics & VLSI -------- */}
-
-          <div className="col-lg-4 col-md-4 col-sm-12 col-12">
-            <div id="SkillsContainer1">
-              <Card.Body>
-                <h2 id="TitleHeading1">
-                  Electronics & <p>VLSI</p>
-                </h2>
-
-                <hr id="TitleLine1" />
-
-                <div id="CardContents1">
-                  <div className="core-skill-pill">VLSI Design</div>
-
-                  <div className="core-skill-pill">Verilog (HDL)</div>
-
-                  <div className="core-skill-pill">Digital Logic Design</div>
-
-                  <div className="core-skill-pill">CMOS Fundamentals</div>
-                </div>
-              </Card.Body>
-            </div>
-
-            {/* -------- Embedded Systems -------- */}
-
-            <div id="SkillsContainer2">
-              <Card.Body>
-                <h2 id="TitleHeading2">Embedded Systems</h2>
-
-                <hr id="TitleLine2" />
-
-                <div id="CardContents2">
-                  <div className="core-skill-pill">
-                    Microcontrollers & Embedded Systems
-                  </div>
-
-                  <div className="core-skill-pill">
-                    Microprocessor Architecture
-                  </div>
-                </div>
-              </Card.Body>
-            </div>
-          </div>
-
-          {/* -------- Maintenance & Planning -------- */}
-
-          <div className="col-lg-4 col-md-4 col-sm-12 col-12">
-            <div id="SkillsContainer1">
-              <Card.Body>
-                <h2 id="TitleHeading1">Maintenance & Planning</h2>
-
-                <hr id="TitleLine1" />
-
-                <div id="CardContents1">
-                  <div className="core-skill-pill">Primavera P6 (Basics)</div>
-
-                  <div className="core-skill-pill">
-                    Preventive Maintenance Concepts
-                  </div>
-
-                  <div className="core-skill-pill">Electrical Maintenance</div>
-
-                  <div className="core-skill-pill">Planning & Scheduling</div>
-                </div>
-              </Card.Body>
-            </div>
-          </div>
-
-          {/* -------- Instrumentation & Control -------- */}
-
-          <div className="col-lg-4 col-md-4 col-sm-12 col-12">
-            <div id="SkillsContainer3">
-              <Card.Body>
-                <h2 id="instrumentHeading">Instrumentation & Control</h2>
-
-                <hr id="TitleLine3" />
-
-                <div id="CardContents2">
-                  <div className="core-skill-pill">PLC</div>
-
-                  <div className="core-skill-pill">SCADA</div>
-
-                  <div className="core-skill-pill">HMI</div>
-                </div>
-              </Card.Body>
-            </div>
-
-            {/* -------- Other Skills -------- */}
-
-            <div id="SkillsContainer4">
-              <Card.Body>
-                <h2 id="TitleHeading4">Other Skills</h2>
-
-                <hr id="TitleLine4" />
-
-                <div id="CardContents3">
-                  <div className="core-skill-pill">IoT Fundamentals</div>
-
-                  <div className="core-skill-pill">Arduino IDE</div>
-
-                  <div className="core-skill-pill">
-                    EDA Tools – Xilinx (Vivado)
-                  </div>
-                </div>
-              </Card.Body>
-            </div>
-          </div>
+        <div className="skills-card-grid core-skills-grid" id="core-skills">
+          {coreGroups.map((group, index) => (
+            <SkillCard
+              group={group}
+              index={index}
+              key={group.title}
+              showLogos={false}
+            />
+          ))}
         </div>
       </div>
     </Container>
   );
-};
-
-export default PortfolioSkills;
+}

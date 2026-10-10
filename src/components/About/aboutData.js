@@ -1,5 +1,5 @@
-export const aboutText = `
-I'm a Full Stack Java Developer who enjoys building applications that solve real-world problems. Over the past few months, I've been working with Java, Spring Boot, React, PostgreSQL, and REST APIs to develop full-stack projects, while also exploring AI integration using Microsoft Azure Speech Services and Large Language Models.
-I like working across both frontend and backend development—from designing user interfaces to building APIs, connecting databases, and deploying applications to the cloud. Recently, I've built projects such as an AI-powered pronunciation assessment platform and a natural language to SQL application, which helped me gain practical experience with cloud services, AI APIs, and production deployments.
-I'm always looking to improve my skills, learn new technologies, and build software that is practical, scalable, and useful. My goal is to contribute to meaningful products while continuing to grow as a software engineer.
-`;
+// export const aboutText = `
+// I'm a Full Stack Java Developer who enjoys building applications that solve real-world problems. Over the past few months, I've been working with Java, Spring Boot, React, PostgreSQL, and REST APIs to develop full-stack projects, while also exploring AI integration using Microsoft Azure Speech Services and Large Language Models.
+// I like working across both frontend and backend development—from designing user interfaces to building APIs, connecting databases, and deploying applications to the cloud. Recently, I've built projects such as an AI-powered pronunciation assessment platform and a natural language to SQL application, which helped me gain practical experience with cloud services, AI APIs, and production deployments.
+// I'm always looking to improve my skills, learn new technologies, and build software that is practical, scalable, and useful. My goal is to contribute to meaningful products while continuing to grow as a software engineer.
+// `;

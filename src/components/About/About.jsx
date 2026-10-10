@@ -1,58 +1,121 @@
+
 import React from "react";
-import Image from "../../assets/Images/About/farhan.png";
-import Button from "react-bootstrap/Button";
-import { aboutText } from "./aboutData";
+import Image from "../../assets/Images/About/about_image_1.png";
 import Container from "react-bootstrap/Container";
 import { useTheme } from "../Themes/ThemeProvider";
 import { LINKED_IN, GITHUB } from "../constants/urlConstants";
 import "./About.scss";
 
+const technologies = [
+  "Java",
+  "Spring Boot",
+  "React",
+  "Python",
+  "FastAPI",
+  "PostgreSQL",
+  "LLMs",
+  "RAG",
+];
+
 const PortfolioAbout = () => {
   const { isDarkMode } = useTheme();
 
   return (
-    <Container id="about" className={isDarkMode ? "dark-mode" : "light-mode"}>
-      <div className="container">
-        <div className="row mb-5">
-          
-          {/* 👇 IMAGE WITH CARD STYLE */}
-          <div className="col-lg-6 col-md-12 col-12">
-            <div className="AboutImageCard">
-              <img src={Image} className="img-fluid" id="AboutImage" />
-            </div>
-          </div>
+    <section
+      id="about"
+      className={`about-section ${isDarkMode ? "dark-mode" : "light-mode"}`}
+    >
+      <Container>
+        <div className="about-layout">
+          {/* PROFILE IMAGE */}
+          <div className="about-portrait-column">
+            <div className="about-portrait-card">
+              <img
+                src={Image}
+                alt="Farhan Mahmood"
+                className="about-portrait"
+                loading="lazy"
+              />
 
-          {/* CONTENT (UNCHANGED) */}
-          <div className="col-lg-6 col-md-12 col-12" id="AboutContent">
-            <h1 id="AboutHeading">About Me</h1>
-             Hi there! I am <strong id="strName">&nbsp;Farhan Mahmood.</strong>
-            <br />
-            {aboutText}
-
-            <div id="ButtonContainer">
-              <div id="TalkButton">
-                <Button variant="outline-warning" href="#FooterContainer">
-                  Let's Talk
-                </Button>
-              </div>
-
-              <div id="GitHubButton">
-                <Button variant="outline-danger" href={GITHUB} target="_blank">
-                  GitHub
-                </Button>
-              </div>
-
-              <div id="LinkedInButton">
-                <Button variant="outline-info" href={LINKED_IN} target="_blank">
-                  LinkedIn
-                </Button>
+              <div className="about-portrait-caption">
+                <span className="about-status-dot" />
+                Full-Stack Development · AI
               </div>
             </div>
           </div>
 
+          {/* ABOUT CONTENT */}
+          <div className="about-content">
+            <span className="about-eyebrow">
+              <span /> ABOUT ME
+            </span>
+
+            <h2 className="about-heading">
+              Engineering meets
+              <span> software.</span>
+            </h2>
+
+            <p className="about-intro">
+              I'm <strong>Farhan Mahmood</strong>, an Electronics &
+              Communication Engineering graduate focused on full-stack
+              development and practical AI integration.
+            </p>
+
+            <p className="about-description">
+              I build applications using Java, Spring Boot, React,
+              PostgreSQL, and Python. My projects include an AI-powered
+              pronunciation assessment platform and a natural-language-to-SQL
+              application.
+            </p>
+
+            <p className="about-description">
+              My engineering background also gives me a foundation in
+              industrial automation, PLC/SCADA, and IoT. I enjoy connecting
+              software engineering with practical, real-world problems.
+            </p>
+
+            {/* TECHNOLOGY CHIPS */}
+            <div className="about-tech-stack" aria-label="Core technologies">
+              {technologies.map((technology) => (
+                <span className="about-tech-chip" key={technology}>
+                  {technology}
+                </span>
+              ))}
+            </div>
+
+            {/* ACTIONS */}
+            <div className="about-actions">
+              <a
+                className="about-button about-button-primary"
+                href="/resume.pdf"
+                target="_blank"
+                rel="noreferrer"
+              >
+                View Resume <span aria-hidden="true">↗</span>
+              </a>
+
+              <a
+                className="about-button"
+                href={GITHUB}
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub <span aria-hidden="true">↗</span>
+              </a>
+
+              <a
+                className="about-button"
+                href={LINKED_IN}
+                target="_blank"
+                rel="noreferrer"
+              >
+                LinkedIn <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
-    </Container>
+      </Container>
+    </section>
   );
 };
 
