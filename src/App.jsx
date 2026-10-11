@@ -1,27 +1,29 @@
 import { lazy, Suspense } from "react";
 import "./App.css";
 
-const PortfolioCarousel = lazy(() =>
-  import("./components/Carousel/Carousel.jsx")
+const PortfolioCarousel = lazy(
+  () => import("./components/Carousel/Carousel.jsx"),
 );
 const PortfolioAbout = lazy(() => import("./components/About/About.jsx"));
 const PortfolioSkills = lazy(() => import("./components/Skills/Skills.jsx"));
-const PortfolioProjects = lazy(() =>
-  import("./components/PortfolioProjects/PortfolioProjects.jsx")
+const PortfolioProjects = lazy(
+  () => import("./components/PortfolioProjects/PortfolioProjects.jsx"),
 );
-const PortfolioNavbar = lazy(() =>
-  import("./components/Navbar/PortfolioNavbar.jsx")
+const PortfolioExperience = lazy(
+  () => import("./components/Experience/Experience.jsx"),
 );
-import PortfolioProjectCore from './components/PortfolioProjectCore/PortfolioProjectCore.jsx'
-const Certificates = lazy(() =>
-  import("./components/Certifications/Certifications.jsx")
+const PortfolioNavbar = lazy(
+  () => import("./components/Navbar/PortfolioNavbar.jsx"),
+);
+import PortfolioProjectCore from "./components/PortfolioProjectCore/PortfolioProjectCore.jsx";
+const Certificates = lazy(
+  () => import("./components/Certifications/Certifications.jsx"),
 );
 const TitleMessage = lazy(() => import("./components/Title/Title.jsx"));
 const PortfolioContact = lazy(() => import("./components/Contact/Contact.jsx"));
-const PortfolioFooter = lazy(() =>
-  import("./components/PortfolioFooter/PortfolioFooter.jsx")
+const PortfolioFooter = lazy(
+  () => import("./components/PortfolioFooter/PortfolioFooter.jsx"),
 );
-
 
 const App = () => {
   return (
@@ -35,6 +37,9 @@ const App = () => {
       <Suspense fallback={<div>Loading About...</div>}>
         <PortfolioAbout />
       </Suspense>
+      <Suspense fallback={<div>Loading Experience...</div>}>
+        <PortfolioExperience />
+      </Suspense>
       <hr className="w-75 mx-auto pt-1" />
       <Suspense fallback={<div>Loading Skills...</div>}>
         <PortfolioSkills />
@@ -43,7 +48,7 @@ const App = () => {
       <Suspense fallback={<div>Loading Projects...</div>}>
         <PortfolioProjects />
       </Suspense>
-      <PortfolioProjectCore/>
+      <PortfolioProjectCore />
       <hr className="w-75 mx-auto pt-1" />
       <Suspense fallback={<div>Loading Certificates...</div>}>
         <Certificates />

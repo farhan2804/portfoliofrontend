@@ -103,6 +103,14 @@ const PortfolioNavbar = () => {
             About
           </Nav.Link>
 
+          <Nav.Link
+            href="#experience"
+            active={activeNav === "experience"}
+            onClick={() => handleNavClick("experience")}
+          >
+            Experience
+          </Nav.Link>
+
           <NavDropdown
             title="Skills"
             id="skills-dropdown"
