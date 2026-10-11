@@ -1,16 +1,16 @@
-import { useMemo, useRef, useState } from "react";
+
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import "./Certifications.css";
+
 import Certificate1 from "../../assets/Images/Certifications/cloud.png";
 import Certificate2 from "../../assets/Images/Certifications/AI.png";
-// import Certificate3 from "../../assets/Images/Certifications/primavera.png";
-// import Certificate4 from "../../assets/Images/Certifications/kodnest.png";
 import Certificate5 from "../../assets/Images/Certifications/sql.png";
 import Certificate6 from "../../assets/Images/Certifications/react.png";
 import Certificate7 from "../../assets/Images/Certifications/scada.png";
 import Certificate8 from "../../assets/Images/Certifications/hmi.png";
 import Certificate9 from "../../assets/Images/Certifications/plc.png";
 import Certificate10 from "../../assets/Images/Certifications/vlsi.png";
-// import Certificate11 from "../../assets/Images/Certifications/sikharthy.png";
+
 import { useTheme } from "../Themes/ThemeProvider";
 
 const certificates = [
@@ -108,13 +108,19 @@ const filters = [
   "VLSI",
 ];
 
-const Certifications = () => {
+export default function Certifications() {
   const sliderRef = useRef(null);
   const { isDarkMode } = useTheme();
+
   const [activeFilter, setActiveFilter] = useState("All");
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [visibleCount, setVisibleCount] = useState(4);
 
   const visibleCertificates = useMemo(() => {
-    if (activeFilter === "All") return certificates;
+    if (activeFilter === "All") {
+      return certificates;
+    }
+
     return certificates.filter(
       (certificate) =>
         certificate.category === activeFilter ||
@@ -122,24 +128,145 @@ const Certifications = () => {
     );
   }, [activeFilter]);
 
-  const slide = (direction) => {
+  // Match the number of visible cards to the existing CSS breakpoints.
+  const updateVisibleCount = useCallback(() => {
+    if (window.innerWidth <= 600) {
+      setVisibleCount(1);
+    } else if (window.innerWidth <= 900) {
+      setVisibleCount(2);
+    } else if (window.innerWidth <= 1250) {
+      setVisibleCount(3);
+    } else {
+      setVisibleCount(4);
+    }
+  }, []);
+
+  const maxStartIndex = Math.max(
+    0,
+    visibleCertificates.length - visibleCount
+  );
+
+  // Track the first certificate aligned in the carousel.
+  const updateActiveSlide = useCallback(() => {
     const track = sliderRef.current;
+
     if (!track) return;
 
-    const firstCard = track.querySelector(".certificate-slide");
-    const styles = window.getComputedStyle(track);
-    const gap = parseFloat(styles.columnGap || styles.gap) || 24;
-    const amount = firstCard
-      ? firstCard.getBoundingClientRect().width + gap
-      : track.clientWidth;
+    const cards = Array.from(
+      track.querySelectorAll(".certificate-slide")
+    );
 
-    track.scrollBy({ left: direction * amount, behavior: "smooth" });
-  };
+    if (cards.length === 0) {
+      setActiveIndex(0);
+      return;
+    }
 
-  const selectFilter = (filter) => {
+    const firstCardOffset = cards[0].offsetLeft;
+    let nearestIndex = 0;
+    let nearestDistance = Infinity;
+
+    cards.forEach((card, index) => {
+      const position = card.offsetLeft - firstCardOffset;
+      const distance = Math.abs(position - track.scrollLeft);
+
+      if (distance < nearestDistance) {
+        nearestDistance = distance;
+        nearestIndex = index;
+      }
+    });
+
+    setActiveIndex(Math.min(nearestIndex, maxStartIndex));
+  }, [maxStartIndex]);
+
+  useEffect(() => {
+    updateVisibleCount();
+
+    window.addEventListener("resize", updateVisibleCount);
+
+    return () => {
+      window.removeEventListener("resize", updateVisibleCount);
+    };
+  }, [updateVisibleCount]);
+
+  useEffect(() => {
+    const track = sliderRef.current;
+
+    if (!track) return undefined;
+
+    track.addEventListener("scroll", updateActiveSlide, {
+      passive: true,
+    });
+
+    window.addEventListener("resize", updateActiveSlide);
+
+    const frame = window.requestAnimationFrame(updateActiveSlide);
+
+    return () => {
+      track.removeEventListener("scroll", updateActiveSlide);
+      window.removeEventListener("resize", updateActiveSlide);
+      window.cancelAnimationFrame(frame);
+    };
+  }, [updateActiveSlide, visibleCertificates.length, visibleCount]);
+
+  // Scroll to a certificate while respecting the final scroll position.
+  const goToSlide = useCallback(
+    (index) => {
+      const track = sliderRef.current;
+
+      if (!track) return;
+
+      const cards = Array.from(
+        track.querySelectorAll(".certificate-slide")
+      );
+
+      if (!cards.length) return;
+
+      const targetIndex = Math.max(
+        0,
+        Math.min(index, maxStartIndex)
+      );
+
+      const targetCard = cards[targetIndex];
+
+      if (!targetCard) return;
+
+      const targetPosition =
+        targetCard.offsetLeft - cards[0].offsetLeft;
+
+      setActiveIndex(targetIndex);
+
+      track.scrollTo({
+        left: targetPosition,
+        behavior: "smooth",
+      });
+    },
+    [maxStartIndex]
+  );
+
+  // Each arrow click advances or reverses by one certificate.
+  const slide = useCallback(
+    (direction) => {
+      const nextIndex = Math.max(
+        0,
+        Math.min(activeIndex + direction, maxStartIndex)
+      );
+
+      if (nextIndex !== activeIndex) {
+        goToSlide(nextIndex);
+      }
+    },
+    [activeIndex, maxStartIndex, goToSlide]
+  );
+
+  const selectFilter = useCallback((filter) => {
     setActiveFilter(filter);
-    if (sliderRef.current) sliderRef.current.scrollTo({ left: 0, behavior: "smooth" });
-  };
+    setActiveIndex(0);
+
+    sliderRef.current?.scrollTo({
+      left: 0,
+      behavior: "smooth",
+    });
+  }, []);
 
   return (
     <section
@@ -157,16 +284,23 @@ const Certifications = () => {
         <h2 id="certificateHeading">
           Certification <span>Achievements</span>
         </h2>
+
         <p className="certifications-subtitle">
-          Courses and certifications that validate my skills and continuous learning journey.
+          Courses and certifications that validate my skills and
+          continuous learning journey.
         </p>
 
-        <div className="certification-filters" aria-label="Filter certificates">
+        <div
+          className="certification-filters"
+          aria-label="Filter certificates"
+        >
           {filters.map((filter) => (
             <button
               type="button"
               key={filter}
-              className={`certification-filter${activeFilter === filter ? " is-active" : ""}`}
+              className={`certification-filter${
+                activeFilter === filter ? " is-active" : ""
+              }`}
               aria-pressed={activeFilter === filter}
               onClick={() => selectFilter(filter)}
             >
@@ -181,37 +315,48 @@ const Certifications = () => {
             type="button"
             aria-label="Show previous certificates"
             onClick={() => slide(-1)}
+            disabled={activeIndex === 0}
           >
             <span aria-hidden="true">‹</span>
           </button>
 
           <div className="certifications-track" ref={sliderRef}>
             {visibleCertificates.map((certificate, index) => (
-              <article className="certificate-slide" key={certificate.title}>
+              <article
+                className="certificate-slide"
+                key={certificate.title}
+              >
                 <div className="certificate-card">
                   <div className="certificate-preview">
                     <img
                       src={certificate.image}
                       className="certificate-image"
                       alt={certificate.title}
-                      loading="lazy"
+                      loading={index === 0 ? "eager" : "lazy"}
+                      decoding="async"
                     />
                   </div>
 
                   <div className="certificate-details">
                     <h3>{certificate.title}</h3>
-                    <p className="certificate-issuer">{certificate.issuer}</p>
+
+                    <p className="certificate-issuer">
+                      {certificate.issuer}
+                    </p>
 
                     <div className="certificate-tags">
                       {certificate.tags.map((tag) => (
-                        <span className="certificate-tag" key={tag}>{tag}</span>
+                        <span className="certificate-tag" key={tag}>
+                          {tag}
+                        </span>
                       ))}
                     </div>
 
                     <div className="certificate-card-footer">
                       {certificate.date ? (
                         <span className="certificate-date">
-                          <span aria-hidden="true">▦</span> {certificate.date}
+                          <span aria-hidden="true">▦</span>{" "}
+                          {certificate.date}
                         </span>
                       ) : (
                         <span className="certificate-date certificate-date-empty" />
@@ -220,13 +365,24 @@ const Certifications = () => {
                       <div className="certificate-actions">
                         <a
                           className="certificate-action"
-                          href={certificate.downloadUrl || certificate.image}
+                          href={
+                            certificate.downloadUrl || certificate.image
+                          }
                           download={!certificate.downloadUrl}
-                          target={certificate.downloadUrl ? "_blank" : undefined}
-                          rel={certificate.downloadUrl ? "noreferrer" : undefined}
+                          target={
+                            certificate.downloadUrl
+                              ? "_blank"
+                              : undefined
+                          }
+                          rel={
+                            certificate.downloadUrl
+                              ? "noreferrer"
+                              : undefined
+                          }
                         >
                           <span aria-hidden="true">⇩</span> Download
                         </a>
+
                         <a
                           className="certificate-action certificate-view-action"
                           href={certificate.viewUrl || certificate.image}
@@ -248,22 +404,22 @@ const Certifications = () => {
             type="button"
             aria-label="Show next certificates"
             onClick={() => slide(1)}
+            disabled={activeIndex >= maxStartIndex}
           >
             <span aria-hidden="true">›</span>
           </button>
         </div>
 
-        <div className="certifications-pagination" aria-hidden="true">
+        {/* Decorative pagination: the pill remains, with no dot or interaction. */}
+        <div
+          className="certifications-pagination"
+          aria-hidden="true"
+        >
           <span className="certifications-pagination-line" />
           <span className="certifications-pagination-active" />
-          {visibleCertificates.slice(1).map((certificate) => (
-            <span className="certifications-pagination-dot" key={certificate.title} />
-          ))}
           <span className="certifications-pagination-line" />
         </div>
       </div>
     </section>
   );
-};
-
-export default Certifications;
+}

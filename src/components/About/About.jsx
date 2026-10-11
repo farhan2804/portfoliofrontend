@@ -34,7 +34,7 @@ const PortfolioAbout = () => {
                 alt="Farhan Mahmood"
                 className="about-portrait"
                 loading="eager"
-                fetchPriority="high"
+                fetchpriority="high"
                 decoding="async"
                 width="600"
                 height="750"
