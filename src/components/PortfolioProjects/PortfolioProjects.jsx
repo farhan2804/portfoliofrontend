@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 import { useTheme } from "../Themes/ThemeProvider";
 import { projectData } from "./projectData";
+import { Link } from "react-router-dom";
 import "./PortfolioProjects.scss";
 
 const PROJECT_TECH = {
@@ -114,15 +115,26 @@ function ProjectCard({ project, index }) {
           </div>
         )}
 
-        <div className="premium-project-card__footer">
-          <span className="premium-project-card__footer-label">PROJECT</span>
+        <Link
+          to={`/projects/${project.title
+            .trim()
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, "-")
+            .replace(/(^-|-$)/g, "")}`}
+          className="premium-project-card__footer"
+          aria-label={`Explore ${project.title} project case study`}
+        >
+          <span className="premium-project-card__footer-label">
+            EXPLORE PROJECT
+          </span>
+
           <span
             className="premium-project-card__footer-mark"
             aria-hidden="true"
           >
             ↗
           </span>
-        </div>
+        </Link>
       </div>
     </article>
   );

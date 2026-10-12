@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BootstrapCarousel from "react-bootstrap/Carousel";
 import ScrollDown from "../ScrollDown/ScrollDown";
-
+import { YOUTUBE } from "../constants/urlConstants";
 import Image1 from "../../assets/Images/Carousel/image1.jpg";
 import Image2 from "../../assets/Images/Carousel/image2.jpg";
 import Image3 from "../../assets/Images/Carousel/image3.jpg";
@@ -15,9 +15,9 @@ import "./Carousel.scss";
 const images = [Image1, Image2, Image3, Image4, Image5, Image6];
 
 const roles = [
-  "Full-Stack Java Developer",
-  "AI Application Developer",
+  "Full-Stack Developer | Java & AI",
   "Software Engineer",
+  "AI Application Developer",
 ];
 
 const PortfolioCarousel = () => {
@@ -82,9 +82,9 @@ const PortfolioCarousel = () => {
 
       <div className="hero-content">
         <div className="hero-copy">
-          <p className="hero-role">
+          <p className="hero-role" aria-label={displayText}>
             <span className="hero-role-dot" />
-            {displayText}
+            <span aria-hidden="true">{displayText}</span>
             <span className="typewriter-cursor" aria-hidden="true" />
           </p>
 
@@ -95,11 +95,11 @@ const PortfolioCarousel = () => {
           </h1>
 
           <h2 className="hero-tagline">
-            I turn ideas into <span> applications.</span>
+            I turn ideas into <span>applications.</span>
           </h2>
 
           <p className="hero-description">
-            Full-stack development meets AI. I build practical applications
+            I build scalable web applications and practical AI-powered solutions
             using Java, Spring Boot, React, Python, and modern AI technologies.
           </p>
 
@@ -110,23 +110,28 @@ const PortfolioCarousel = () => {
 
             <a
               className="hero-button hero-button-secondary"
-              href="/resume.pdf"
+              href={YOUTUBE}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
             >
-              My Resume <span aria-hidden="true">↗</span>
+              My YouTube Tutorials{" "}
+              <span id="youtubeLink" aria-hidden="true">
+                ↗
+              </span>
             </a>
           </div>
 
-          {/* <div className="hero-socials">
-            <a href={GITHUB} target="_blank" rel="noreferrer">
+          {/*
+          <div className="hero-socials">
+            <a href={GITHUB} target="_blank" rel="noopener noreferrer">
               GitHub
             </a>
             <span aria-hidden="true">/</span>
-            <a href={LINKED_IN} target="_blank" rel="noreferrer">
+            <a href={LINKED_IN} target="_blank" rel="noopener noreferrer">
               LinkedIn
             </a>
-          </div> */}
+          </div>
+          */}
         </div>
 
         <div className="hero-visual" aria-hidden="true">

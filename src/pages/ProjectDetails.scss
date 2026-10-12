@@ -1,0 +1,135 @@
+.project-details {
+  min-height: 100vh;
+  padding: 100px 24px 80px;
+  background: var(--project-details-bg, #0b0f14);
+  color: var(--project-details-text, #f5f7fa);
+
+  &__container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  &__back {
+    display: inline-block;
+    margin-bottom: 48px;
+    color: #19d9bd;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+
+  &__eyebrow {
+    color: #19d9bd;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+  }
+
+  h1 {
+    margin: 12px 0;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 750;
+    overflow-wrap: anywhere;
+  }
+
+  &__subtitle {
+    color: #aab4c0;
+    line-height: 1.8;
+  }
+
+  &__image {
+    margin: 36px 0 56px;
+    overflow: hidden;
+    border: 1px solid rgba(25, 217, 189, 0.2);
+    border-radius: 18px;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__section {
+    margin: 0 0 44px;
+
+    h2 {
+      margin-bottom: 16px;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+    }
+
+    p,
+    li {
+      color: #b8c1cc;
+      line-height: 1.85;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__architecture {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+
+    article {
+      padding: 22px;
+      border: 1px solid rgba(25, 217, 189, 0.22);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.025);
+    }
+
+    h3 {
+      color: #19d9bd;
+      font-size: 1.1rem;
+    }
+
+    p {
+      margin-bottom: 0;
+      font-size: 0.95rem;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 48px;
+
+    a {
+      padding: 12px 20px;
+      border: 1px solid #19d9bd;
+      border-radius: 8px;
+      color: #19d9bd;
+      text-decoration: none;
+      transition:
+        background 0.2s ease,
+        color 0.2s ease;
+
+      &:hover {
+        background: #19d9bd;
+        color: #07110f;
+      }
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .project-details {
+    padding: 80px 18px 56px;
+
+    &__architecture {
+      grid-template-columns: 1fr;
+    }
+
+    &__back {
+      margin-bottom: 32px;
+    }
+  }
+}

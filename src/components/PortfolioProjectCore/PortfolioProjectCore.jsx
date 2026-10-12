@@ -1,11 +1,18 @@
 import React, { useMemo } from "react";
 import Container from "react-bootstrap/Container";
+import { Link } from "react-router-dom";
 import { projectDataCore } from "./ProjectDataCore";
 import { useTheme } from "../Themes/ThemeProvider";
 import "./PortfolioProjectCore.scss";
 
 const TECH_BY_TITLE = {
-  "Predictive Maintenance": ["Spring Boot", "FastAPI", "React", "Machine Learning", "Random Forest"],
+  "Predictive Maintenance": [
+    "Spring Boot",
+    "FastAPI",
+    "React",
+    "Machine Learning",
+    "Random Forest",
+  ],
   "Maintenance Dashboard": ["React", "JavaScript"],
   "Engineering Utility Tools Suite": ["React", "JavaScript"],
 };
@@ -18,6 +25,15 @@ function getTechnologies(project) {
     TECH_BY_TITLE[project.title?.trim()] ||
     []
   );
+}
+
+function getProjectSlug(title = "") {
+  return title
+    .trim()
+    .toLowerCase()
+    .replace(/['’]/g, "")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
 }
 
 function ProjectAction({ href, label, type }) {
@@ -52,38 +68,71 @@ function CoreProjectCard({ project, index }) {
   const title = project.title?.trim() || "Project";
 
   return (
-    <article className={`premium-core-card ${index === 0 ? "premium-core-card--featured" : ""}`}>
+    <article
+      className={`premium-core-card ${
+        index === 0 ? "premium-core-card--featured" : ""
+      }`}
+    >
       <div className="premium-core-card__visual">
-        <img src={project.image} alt={`${title} project preview`} loading="lazy" />
+        <img
+          src={project.image}
+          alt={`${title} project preview`}
+          loading="lazy"
+        />
+
         <span className="premium-core-card__category">
           {index === 0 ? "Featured Project" : "Engineering Project"}
         </span>
+
         <div className="premium-core-card__actions">
-          <ProjectAction href={project.Deploy_url} label="Live Demo" type="demo" />
-          <ProjectAction href={project.SourceCode_url} label="Source Code" type="source" />
+          <ProjectAction
+            href={project.Deploy_url}
+            label="Live Demo"
+            type="demo"
+          />
+          <ProjectAction
+            href={project.SourceCode_url}
+            label="Source Code"
+            type="source"
+          />
         </div>
       </div>
 
       <div className="premium-core-card__body">
         <div className="premium-core-card__heading">
           <h3>{title}</h3>
-          <span className="premium-core-card__index">{String(index + 1).padStart(2, "0")}</span>
+          <span className="premium-core-card__index">
+            {String(index + 1).padStart(2, "0")}
+          </span>
         </div>
 
         <p className="premium-core-card__description">{project.description}</p>
 
         {technologies.length > 0 && (
-          <div className="premium-core-card__tech" aria-label="Technologies used">
+          <div
+            className="premium-core-card__tech"
+            aria-label="Technologies used"
+          >
             {technologies.map((technology) => (
-              <span className="premium-core-tech" key={technology}>{technology}</span>
+              <span className="premium-core-tech" key={technology}>
+                {technology}
+              </span>
             ))}
           </div>
         )}
 
-        <div className="premium-core-card__footer">
-          <span className="premium-core-card__footer-label">ENGINEERING & PLANNING</span>
-          <span className="premium-core-card__footer-mark" aria-hidden="true">↗</span>
-        </div>
+        <Link
+          to={`/projects/${getProjectSlug(title)}`}
+          className="premium-core-card__footer"
+          aria-label={`Explore ${title} project case study`}
+        >
+          <span className="premium-core-card__footer-label">
+            EXPLORE PROJECT
+          </span>
+          <span className="premium-core-card__footer-mark" aria-hidden="true">
+            ↗
+          </span>
+        </Link>
       </div>
     </article>
   );
@@ -95,7 +144,11 @@ export default function PortfolioProjectCore() {
   const projects = useMemo(() => projectDataCore || [], []);
 
   return (
-    <section className="premium-core-section" id="core-projects" data-theme={theme}>
+    <section
+      className="premium-core-section"
+      id="core-projects"
+      data-theme={theme}
+    >
       <Container>
         <div className="premium-core-header">
           <div className="premium-core-heading-copy">
@@ -103,10 +156,22 @@ export default function PortfolioProjectCore() {
               <span className="premium-core-eyebrow-dot" />
               ENGINEERING & PLANNING
             </span>
-            <h2>ECE Projects<span className="premium-core-period">.</span></h2>
-            <p>Electrical engineering, planning tools, and software-driven engineering projects.</p>
+
+            <h2>
+              ECE Projects
+              <span className="premium-core-period">.</span>
+            </h2>
+
+            <p>
+              Electrical engineering, planning tools, and software-driven
+              engineering projects.
+            </p>
           </div>
-          <div className="premium-core-count" aria-label={`${projects.length} projects`}>
+
+          <div
+            className="premium-core-count"
+            aria-label={`${projects.length} projects`}
+          >
             <span>{String(projects.length).padStart(2, "0")}</span>
             <small>PROJECTS</small>
           </div>

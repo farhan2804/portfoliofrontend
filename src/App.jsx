@@ -1,67 +1,89 @@
 import { lazy, Suspense } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LoadingScreen from "./components/Loading/LoadingScreen.jsx";
 import "./App.css";
+
+import ProjectDetails from "./pages/ProjectDetails.jsx";
 
 const PortfolioCarousel = lazy(
   () => import("./components/Carousel/Carousel.jsx"),
 );
+
 const PortfolioAbout = lazy(() => import("./components/About/About.jsx"));
+
 const PortfolioSkills = lazy(() => import("./components/Skills/Skills.jsx"));
+
 const PortfolioProjects = lazy(
   () => import("./components/PortfolioProjects/PortfolioProjects.jsx"),
 );
+
 const PortfolioExperience = lazy(
   () => import("./components/Experience/Experience.jsx"),
 );
+
 const PortfolioNavbar = lazy(
   () => import("./components/Navbar/PortfolioNavbar.jsx"),
 );
-import PortfolioProjectCore from "./components/PortfolioProjectCore/PortfolioProjectCore.jsx";
+
+const PortfolioProjectCore = lazy(
+  () => import("./components/PortfolioProjectCore/PortfolioProjectCore.jsx"),
+);
+
 const Certificates = lazy(
   () => import("./components/Certifications/Certifications.jsx"),
 );
+
 const TitleMessage = lazy(() => import("./components/Title/Title.jsx"));
+
 const PortfolioContact = lazy(() => import("./components/Contact/Contact.jsx"));
+
 const PortfolioFooter = lazy(
   () => import("./components/PortfolioFooter/PortfolioFooter.jsx"),
 );
 
-const App = () => {
+function HomePage() {
   return (
     <>
       <PortfolioNavbar />
-      <PortfolioCarousel />
-      <Suspense fallback={<div>Loading Title Message...</div>}>
+
+      <Suspense fallback={<LoadingScreen />}>
+        <PortfolioCarousel />
         <TitleMessage />
-      </Suspense>
-      <hr className="w-75 mx-auto pt-1" />
-      <Suspense fallback={<div>Loading About...</div>}>
+        <hr className="w-75 mx-auto pt-1" />
         <PortfolioAbout />
-      </Suspense>
-      <Suspense fallback={<div>Loading Experience...</div>}>
         <PortfolioExperience />
-      </Suspense>
-      <hr className="w-75 mx-auto pt-1" />
-      <Suspense fallback={<div>Loading Skills...</div>}>
+        <hr className="w-75 mx-auto pt-1" />
         <PortfolioSkills />
-      </Suspense>
-      <hr className="w-75 mx-auto pt-1" />
-      <Suspense fallback={<div>Loading Projects...</div>}>
+        <hr className="w-75 mx-auto pt-1" />
         <PortfolioProjects />
-      </Suspense>
-      <PortfolioProjectCore />
-      <hr className="w-75 mx-auto pt-1" />
-      <Suspense fallback={<div>Loading Certificates...</div>}>
+        <PortfolioProjectCore />
+        <hr className="w-75 mx-auto pt-1" />
         <Certificates />
-      </Suspense>
-      <hr className="w-75 mx-auto pt-1" id="contactLine" />
-      <Suspense fallback={<div>Loading Contact...</div>}>
+        <hr className="w-75 mx-auto pt-1" id="contactLine" />
         <PortfolioContact />
-      </Suspense>
-      <Suspense fallback={<div>Loading Footer...</div>}>
         <PortfolioFooter />
       </Suspense>
     </>
   );
-};
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+
+        <Route
+          path="/projects/:slug"
+          element={
+            <Suspense fallback={<div>Loading project details...</div>}>
+              <ProjectDetails />
+            </Suspense>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
+  );
+}
 
 export default App;

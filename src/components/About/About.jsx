@@ -89,9 +89,9 @@ const PortfolioAbout = () => {
             <div className="about-actions">
               <a
                 className="about-button about-button-primary"
-                href="/resume.pdf"
+                href="/Farhan_Mahmood.pdf"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
               >
                 View Resume <span aria-hidden="true">↗</span>
               </a>
