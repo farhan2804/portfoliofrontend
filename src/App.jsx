@@ -1,6 +1,8 @@
 import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoadingScreen from "./components/Loading/LoadingScreen.jsx";
+import ScrollToTop from "./components/ScrollToTop.jsx";
+
 import "./App.css";
 
 import ProjectDetails from "./pages/ProjectDetails.jsx";
@@ -70,6 +72,7 @@ function HomePage() {
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
 
