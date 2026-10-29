@@ -3,27 +3,17 @@ import "./Experience.scss";
 
 const experiences = [
   {
-    id: "sikharthy",
-    role: "Software Development Intern",
-    organization: "Sikharthy Infotech Pvt. Ltd.",
-    period: "Jun 2023 – Aug 2023",
-    type: "Internship",
+    id: "grubweb",
+    role: "Full-Stack Developer",
+    organization: "Grubweb Service",
+    period: "Apr 2023 – Present",
+    type: "Professional Experience",
     points: [
-      "Developed web application features using JavaScript and React.js within a 15-person development team.",
-      "Built and integrated frontend functionality with server-side application logic and REST-based workflows.",
-      "Collaborated with team members to debug issues, improve features and maintain application functionality.",
-    ],
-  },
-  {
-    id: "kodnest",
-    role: "Full Stack Development Trainee",
-    organization: "Kodnest",
-    period: "Jan 2025 – Jun 2025",
-    type: "Training",
-    points: [
-      "Completed a six-month full-stack development program focused on Java, Python, JavaScript, SQL and software testing.",
-      "Built hands-on applications using Java, Spring Boot, REST APIs and relational databases.",
-      "Practiced OOP, Data Structures & Algorithms, API integration, debugging and software testing.",
+      "Designed and developed an internal Project & Client Management System covering client and project management, employee assignments, task tracking, and the complete project lifecycle from onboarding to delivery.",
+      "Built and shipped end-to-end web products for clients across real estate, healthcare, e-commerce, and consultancy using React.js, Next.js, Node.js, and TypeScript.",
+      "Developed server-side rendered applications using Next.js App Router, focusing on fast load times and strong Core Web Vitals.",
+      "Built RESTful APIs with JWT authentication and role-based access control (RBAC) for Admin, Manager, and Developer roles.",
+      "Designed a normalized PostgreSQL database using Prisma ORM for clients, projects, tasks, feedback, and employee management.",
     ],
   },
 ];
@@ -51,7 +41,7 @@ export default function Experience() {
           const index = Number(entry.target.dataset.experienceIndex);
 
           setRevealed((current) =>
-            current.includes(id) ? current : [...current, id]
+            current.includes(id) ? current : [...current, id],
           );
 
           setProgress((current) =>
@@ -59,8 +49,8 @@ export default function Experience() {
               current,
               experiences.length <= 1
                 ? 100
-                : (index / (experiences.length - 1)) * 100
-            )
+                : (index / (experiences.length - 1)) * 100,
+            ),
           );
 
           observer.unobserve(entry.target);
@@ -69,7 +59,7 @@ export default function Experience() {
       {
         threshold: 0.2,
         rootMargin: "0px 0px -8% 0px",
-      }
+      },
     );
 
     items.forEach((item) => observer.observe(item));
@@ -90,7 +80,8 @@ export default function Experience() {
             Experience<span>.</span>
           </h2>
           <p className="experience-section__intro">
-            The roles and hands-on training that have shaped my development journey.
+            The roles and hands-on training that have shaped my development
+            journey.
           </p>
         </header>
 
@@ -121,8 +112,12 @@ export default function Experience() {
 
                 <div className="experience-item__content">
                   <div className="experience-item__meta">
-                    <span className="experience-item__type">{experience.type}</span>
-                    <span className="experience-item__period">{experience.period}</span>
+                    <span className="experience-item__type">
+                      {experience.type}
+                    </span>
+                    <span className="experience-item__period">
+                      {experience.period}
+                    </span>
                   </div>
 
                   <h3 className="experience-item__role">{experience.role}</h3>
