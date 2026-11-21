@@ -1,19 +1,33 @@
 import { useEffect, useRef, useState } from "react";
 import "./Experience.scss";
 
+// const experiences = [
+//   {
+//     id: "grubweb",
+//     role: "Full-Stack Developer",
+//     organization: "Grubweb Service",
+//     period: "Apr 2023 – Present",
+//     type: "Professional Experience",
+//     points: [
+//       "Designed and developed an internal Project & Client Management System covering client and project management, employee assignments, task tracking, and the complete project lifecycle from onboarding to delivery.",
+//       "Built and shipped end-to-end web products for clients across real estate, healthcare, e-commerce, and consultancy using React.js, Next.js, Node.js, and TypeScript.",
+//       "Developed server-side rendered applications using Next.js App Router, focusing on fast load times and strong Core Web Vitals.",
+//       "Built RESTful APIs with JWT authentication and role-based access control (RBAC) for Admin, Manager, and Developer roles.",
+//       "Designed a normalized PostgreSQL database using Prisma ORM for clients, projects, tasks, feedback, and employee management.",
+//     ],
+//   },
+// ];
 const experiences = [
   {
-    id: "grubweb",
-    role: "Full-Stack Developer",
-    organization: "Grubweb Service",
-    period: "Apr 2023 – Present",
-    type: "Professional Experience",
+    id: "kodnest",
+    role: "Full Stack Development Trainee",
+    organization: "Kodnest",
+    period: "6 Months",
+    type: "Training",
     points: [
-      "Designed and developed an internal Project & Client Management System covering client and project management, employee assignments, task tracking, and the complete project lifecycle from onboarding to delivery.",
-      "Built and shipped end-to-end web products for clients across real estate, healthcare, e-commerce, and consultancy using React.js, Next.js, Node.js, and TypeScript.",
-      "Developed server-side rendered applications using Next.js App Router, focusing on fast load times and strong Core Web Vitals.",
-      "Built RESTful APIs with JWT authentication and role-based access control (RBAC) for Admin, Manager, and Developer roles.",
-      "Designed a normalized PostgreSQL database using Prisma ORM for clients, projects, tasks, feedback, and employee management.",
+      "Completed a six-month full-stack development program focused on Java, Python, JavaScript, SQL and software testing.",
+      "Built hands-on applications using Java, Spring Boot, REST APIs and relational databases.",
+      "Practiced OOP, Data Structures & Algorithms, API integration, debugging and software testing.",
     ],
   },
 ];
